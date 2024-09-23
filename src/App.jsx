@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Typewriter } from 'react-simple-typewriter';
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const text = "noted...";
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='container'>
+      <div className='typewriter'>
+        <h1 style={{fontsize:'4rem'}}>
+          <Typewriter 
+           words={[text]}
+           loop={1} // Number of times to loop the text
+          //  cursor
+          //  cursorStyle='|' // You can customize the cursor style here
+           typeSpeed={140} // Speed of typing
+           deleteSpeed={50} // Speed of deleting (if needed)
+           delaySpeed={1000} // Delay before starting to type again (in ms)
+           />
+        </h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
-
-export default App
+ 
