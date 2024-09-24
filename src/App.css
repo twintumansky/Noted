@@ -9,23 +9,30 @@
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
-  color: black;
   font-family: 'Century Gothic', sans-serif;
-  font-weight: 300;
-  /* font-size: small; */
+  font-weight: 200;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  text-align: center;
 }
-/* 
-.typewriter h1 {
-  font-size: 5rem;
-} */
+
+.typewriter {
+  display: inline-block;
+  
+}
+
+p {
+  font-size: 1rem;
+  min-height: 2rem;
+  visibility: visible;
+}
 
 
 
