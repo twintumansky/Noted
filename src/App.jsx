@@ -3,7 +3,7 @@ import './App.css'
 
 export default function App() {
   const mainText = "noted...";
-  const subText = "< A TRULY MINIMAL NOTE TAKING APP >";
+  const subText = ["< A TRULY MINIMAL NOTE TAKING APP >","< CAPTURE YOUR THOUGHTS >","< ORGANIZE YOUR IDEAS >"];
 
   return (
     <div className='container'>
@@ -19,7 +19,7 @@ export default function App() {
         </h1><br></br>
         <p style={{fontSize:'1rem', minHeight: '2rem', color:'#444343'}}>
           < TypingAnimation
-            text={[subText]}
+            text={subText}
             loop={Infinity}
             typeSpeed={100}
             delaySpeed={1000}
