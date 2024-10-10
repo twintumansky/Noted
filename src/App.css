@@ -11,9 +11,11 @@
   background-color: whitesmoke;
   font-family: 'Century Gothic', sans-serif;
   font-weight: 200;
+  overflow-x: hidden;
 }
 
-.container {
+
+.introduction {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,11 +23,15 @@
   width: 100vw;
   height: 100vh;
   text-align: center;
+  position: relative;
 }
 
 .typewriter {
   display: inline-block;
-  
+}
+
+h1{
+  overflow-y: hidden;
 }
 
 p {
@@ -34,5 +40,45 @@ p {
   visibility: visible;
 }
 
+/* The arrow button */
+.arrow-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow-y: hidden;
+}
+
+.arrow {
+  display: inline-block;
+  font-size: 2rem; /* Adjust as needed */
+  color: black;
+  cursor: pointer;
+  animation: swipeDown 1.5s infinite;
+}
+
+@keyframes swipeDown {
+  0% {
+    transform: translateY(0); /* Start in the original position */
+  }
+  50% {
+    transform: translateY(10px); /* Move down 15px */
+  }
+  100% {
+    transform: translateY(0); /* Move back up */
+  }
+}
+
+.notesSection {
+  /* padding: 50px; */
+  height: 100vh;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
 
 
