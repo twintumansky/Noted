@@ -69,10 +69,42 @@ p {
   }
 }
 
-.notesSection {
+.notesSection-container {
   height: 100vh;
   background-color: whitesmoke;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
+}
+
+.nav-items {
+  display: flex;
+  gap: 1rem;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-right: 1px solid #e0e0e0;
+}
+
+.note-area {
+  flex: 1;
+  padding: 1rem;
 }
 
 html {
