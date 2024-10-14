@@ -5,10 +5,14 @@ const NotesSection = forwardRef((props, ref) => {
   return (
     <div className="notesSection-container" ref={ref}>
       <nav className="navbar">
-        <h1>Noted</h1>
+        <h1>noted</h1>
         <div className="nav-items">
-          <button>New Note</button>
-          <button>Settings</button>
+          <ul>
+            <li><button>Home</button></li>
+            <li><button>Notes</button></li>
+            <li><button>Saved</button></li>
+            <li><button>Collection</button></li>
+          </ul>
         </div>
       </nav>
       <div className="main-content">
