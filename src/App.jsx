@@ -20,17 +20,16 @@ export default function App() {
       {/* Introduction Section */}
       <div className="introduction">
         <div className="typewriter">
-          <h1 style={{ fontSize: "3rem", color: "black" }}>
+          <h1>
             <TypingAnimation
               text={[mainText]}
               loop={1}
-              typeSpeed={140}
+              typeSpeed={160}
               deleteSpeed={0}
               delaySpeed={5000}
             />
           </h1>
-          <br></br>
-          <p style={{ fontSize: "1rem", minHeight: "2rem", color: "#444343" }}>
+          <p>
             <TypingAnimation
               text={subText}
               loop={Infinity}
