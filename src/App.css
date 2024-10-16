@@ -68,15 +68,44 @@
 }
 
 .notesSection-container {
+  display: flex;
+  flex:1;
+  width: 100vw;
   box-sizing: border-box;
   height: 100vh;
   text-align: center;
   background-color:#dcd9d7;
 }
 
+.sidebar {
+  width: 15%;
+  padding: 0.8rem;
+  background-color: #c4c2c1;
+  margin: 0.5rem 0.25rem;
+  border-radius: 0.4rem;
+}
+
+.sidebar h2{
+  font-size: 400;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  margin: 0.5rem 0.25rem;
+  /* height:100vh; */
+  /* margin-bottom:0.5rem; */
+}
+
+.main-content h2{
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
 .navbar {
   height: 2.75rem;
-  margin: 0.5rem;
+  margin: 0 0.5rem;
   padding: 0.8rem;
   display: flex;
   justify-content: flex-end;
@@ -114,26 +143,6 @@
   box-shadow: none;
   color: #000000;
   background-color:#979594;
-}
-
-.main-content {
-  display: flex;
-  flex: 1;
-  height:90.75%;
-  margin-bottom:0.5rem;
-}
-
-.main-content h2{
-  font-size: 1.75rem;
-  font-weight: 500;
-}
-
-.sidebar {
-  width: 15%;
-  padding: 0.8rem;
-  background-color: #c4c2c1;
-  margin: 0 0.5rem;
-  border-radius: 0.4rem;
 }
 
 .note-area {
