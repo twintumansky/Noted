@@ -5,7 +5,6 @@ const NotesSection = forwardRef((props, ref) => {
   return (
     <div className="notesSection-container" ref={ref}>
       <nav className="navbar">
-        <h1>noted</h1>
         <div className="nav-items">
           <ul>
             <li><button>Home</button></li>

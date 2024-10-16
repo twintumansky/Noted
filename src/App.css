@@ -18,7 +18,7 @@
   align-items: center;
   text-align: center;
   position: relative;
-  background-color: #d6bda0;
+  background-color: #dcd9d7;
 }
 
 .typewriter {
@@ -71,7 +71,7 @@
   box-sizing: border-box;
   height: 100vh;
   text-align: center;
-  background-color:#d6bda0;
+  background-color:#dcd9d7;
 }
 
 .navbar {
@@ -79,16 +79,10 @@
   margin: 0.5rem;
   padding: 0.8rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   border-radius: 0.4rem;
   overflow-y: hidden;
-  background-color: #b2936f;
-}
-
-.navbar h1{
-  font-weight: 400;
-  font-size: 2rem;
 }
 
 .nav-items ul{
@@ -100,25 +94,26 @@
 
 .nav-items button{
   border: none;
-  font-size: 1.2rem;
-  padding: 0.3rem 0.6rem;
-  background-color: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.65rem 1.5rem;
+  background-color:#c4c2c1;
   color: #333;
-  border-radius: 0.3rem;
+  border-radius: 1.2rem;
   transition: all 0.3s ease;
 }
 
 .nav-items button:hover {
-  background-color: rgba(184, 183, 183, 0.4);
-  color: rgb(0, 0, 0);
+  background-color: #979594;
+  color: #000000;
   cursor: pointer;
-  transform: translateY(-2px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.nav-items button:active {
+.nav-items button:focus {
   transform: translateY(0);
   box-shadow: none;
+  color: #000000;
+  background-color:#979594;
 }
 
 .main-content {
@@ -128,10 +123,15 @@
   margin-bottom:0.5rem;
 }
 
+.main-content h2{
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
 .sidebar {
   width: 15%;
   padding: 0.8rem;
-  background-color: #b2936f;
+  background-color: #c4c2c1;
   margin: 0 0.5rem;
   border-radius: 0.4rem;
 }
@@ -139,7 +139,7 @@
 .note-area {
   flex: 1;
   padding: 1rem;
-  background-color: #b2936f;
+  background-color: #c4c2c1;
   margin-right: 0.5rem;
   border-radius: 0.4rem;
 }
