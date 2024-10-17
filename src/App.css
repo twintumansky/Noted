@@ -5,9 +5,8 @@
   font-family: 'Urbanist', sans-serif;
   overflow-x: hidden;
   box-sizing: border-box;
-  color:#242424;
+  color:#000000;
 }
-
 
 .introduction {
   width: 100vw;
@@ -18,7 +17,7 @@
   align-items: center;
   text-align: center;
   position: relative;
-  background-color: #dcd9d7;
+  background-color: #fef6e9;
 }
 
 .typewriter {
@@ -72,30 +71,40 @@
   flex:1;
   width: 100vw;
   box-sizing: border-box;
-  height: 100vh;
+  height: 100vh;  
   text-align: center;
   background-color:#dcd9d7;
 }
 
 .sidebar {
-  width: 15%;
+  width: 5rem;
   padding: 0.8rem;
-  background-color: #c4c2c1;
-  margin: 0.5rem 0.25rem;
-  border-radius: 0.4rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 4rem;
 }
 
-.sidebar h2{
-  font-size: 400;
+.sidebar button{
+  background-color: transparent;
+  border: none;
+  transition: transform .3s ease;
+}
+
+.sidebar button:hover{
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
+  height: 100vh;
   width: 100vw;
-  margin: 0.5rem 0.25rem;
-  /* height:100vh; */
-  /* margin-bottom:0.5rem; */
+  background-color: #fef6e9;
+  padding: 1rem 00;
 }
 
 .main-content h2{
@@ -104,53 +113,61 @@
 }
 
 .navbar {
-  height: 2.75rem;
-  margin: 0 0.5rem;
-  padding: 0.8rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 0.4rem;
+  padding: 0 1rem;
+}
+
+.navbar input {
+  height: 1rem;
+  width: 15rem;
+  border: 1px solid #b7a99490;
+  border-radius: 1rem;
+  outline: none;
+  padding: 1rem;
+}
+
+.navbar-buttons{
   overflow-y: hidden;
 }
 
-.nav-items ul{
-  display: flex;
-  gap: 1rem;  
-  padding: 0;
-  margin: 0;
+.navbar-buttons  button{
+  margin: 0 2rem;
+  border:none;
+  background-color: transparent;
+  transition: transform .3s ease;
 }
 
-.nav-items button{
-  border: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.65rem 1.5rem;
-  background-color:#c4c2c1;
-  color: #333;
-  border-radius: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.nav-items button:hover {
-  background-color: #979594;
-  color: #000000;
+.navbar-buttons button:hover{
   cursor: pointer;
-}
-
-.nav-items button:focus {
-  transform: translateY(0);
-  box-shadow: none;
-  color: #000000;
-  background-color:#979594;
+  transform: scale(1.1);
 }
 
 .note-area {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex: 1;
   padding: 1rem;
-  background-color: #c4c2c1;
-  margin-right: 0.5rem;
-  border-radius: 0.4rem;
+  position: relative;
+}
+
+.add-notes-button{
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  width: 40px;          /* Equal width */
+  height: 40px;         /* Equal height */
+  border-radius: 50%;    /* Makes it circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;      /* Adjust font size */
+  cursor: pointer;       /* Pointer cursor on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow */
+  transition: background-color 0.3s ease;
 }
 
 html {
