@@ -1,6 +1,6 @@
 import Sidebar from './Sidebar'
 import NavBar from './Navbar'
-import { Plus } from "@phosphor-icons/react";
+import { Add01Icon } from 'hugeicons-react';
 import { forwardRef } from "react";
 import "../App.css";
 
@@ -14,7 +14,7 @@ const NotesSection = forwardRef((props, ref) => {
           <h2>Welcome to Noted</h2>
           <p>This is where you can add, edit, and manage your notes.</p>
           <div className='add-notes-button'>
-            <button><Plus /></button>
+            <button><Add01Icon color='blue' /></button>
           </div>
         </main>
       </div>
