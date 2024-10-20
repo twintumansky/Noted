@@ -1,20 +1,40 @@
 import Sidebar from './Sidebar'
 import NavBar from './Navbar'
 import { Add01Icon } from 'hugeicons-react';
-import { forwardRef } from "react";
+import { useState, forwardRef } from "react";
 import "../App.css";
 
 const NotesSection = forwardRef((props, ref) => {
+  const [intro, setIntro] = useState('This is where you can add, edit, and manage your notes.')
+  const [card, setCard] = useState([])
+
+  function handleClick() {
+    setIntro("");
+    setCard( prevState => [
+      ...prevState,
+      {id:Date.now(), content:'Add you note content...'}
+    ]
+    );
+  }
+
+
   return (
     <div className="notesSection-container" ref={ref}>
       <Sidebar />
       <div className="main-content">
         <NavBar />
         <main className="note-area">
-          <h2>Welcome to Noted</h2>
-          <p>This is where you can add, edit, and manage your notes.</p>
+          <p>{intro}</p>
           <div className='add-notes-button'>
-            <button><Add01Icon color='blue' /></button>
+            <button onClick={handleClick}><Add01Icon color='blue' /></button>
+          </div>
+          <div className='card-container'>
+            {card.map(card => (
+              <div key={card.id} className='card-element'>
+                {card.content}
+              </div>
+            )) 
+            }
           </div>
         </main>
       </div>

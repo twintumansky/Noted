@@ -107,11 +107,6 @@
   padding: 0.5rem 0;
 }
 
-.main-content h2{
-  font-size: 1.75rem;
-  font-weight: 400;
-}
-
 .navbar {
   height:3rem;
   padding: 0.5rem 1rem;
@@ -172,8 +167,6 @@
   right: 40px;   
   width:40px;
   height:40px;  
-  /* background-color: #000000;   */
-  
   border-radius: 50%;  
   border: none;          
   padding:5px; 
@@ -191,6 +184,27 @@
 
 .add-notes-button button:active {
   transform: scale(0.95); /* Button shrinks slightly when clicked */
+}
+
+.card-container {
+  height:75vh;
+  width: 85vw;
+  display:flex;
+  flex-flow: row wrap;
+}
+
+.card-element {
+height:10rem;
+width:10rem;
+border-radius: 2rem;
+background-color: #df9160;
+color:rgb(0, 0, 0);
+padding: 1rem;
+margin:1rem;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-flow: row wrap;
 }
 
 html {
