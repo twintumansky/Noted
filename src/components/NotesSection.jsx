@@ -4,7 +4,7 @@ import { Add01Icon } from 'hugeicons-react';
 import { useState, forwardRef } from "react";
 import "../App.css";
 
-const NotesSection = forwardRef((props, ref) => {
+const NotesSection = forwardRef((darkMode, toggleDarkMode, ref) => {
   const [intro, setIntro] = useState('This is where you can add, edit, and manage your notes.')
   const [card, setCard] = useState([])
 
@@ -19,10 +19,13 @@ const NotesSection = forwardRef((props, ref) => {
 
 
   return (
-    <div className="notesSection-container" ref={ref}>
+
+    <div className={darkMode? "notesSection-container dark": "notesSection-container"} ref={ref}>
       <Sidebar />
-      <div className="main-content">
-        <NavBar />
+      <div className={darkMode? "main-content dark": "main-content"}>
+        <NavBar 
+          buttonDarkMode={toggleDarkMode}
+        />
         <main className="note-area">
           <p>{intro}</p>
           <div className='add-notes-button'>

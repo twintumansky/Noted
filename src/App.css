@@ -5,7 +5,6 @@
   font-family: 'Urbanist', sans-serif;
   overflow-x: hidden;
   box-sizing: border-box;
-  color:#000000;
 }
 
 .introduction {
@@ -17,7 +16,21 @@
   align-items: center;
   text-align: center;
   position: relative;
-  background-color: #ecdec6;
+  /* background-color: #ecdec6; */
+  color:#000000;
+}
+
+.introduction.darkmode {
+  /* width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative; */
+  background-color: #1c1f24;
+  color: #9e9d92;
 }
 
 .typewriter {
@@ -49,7 +62,8 @@
 .arrow {
   display: inline-block;
   font-size: 2rem;
-  color: #242424;
+  /* color: #242424; */
+  color: inherit;
   cursor: pointer;
   animation: swipeDown 1.5s infinite;
 }
@@ -76,10 +90,16 @@
   background-color:#ecdec6;
 }
 
+.notesSection-container.dark {
+  background-color: #1c1f24;
+  /* color: #9e9d92; */
+}
+
 .sidebar {
-  width: 5rem;
+  width: 4.5rem;
   padding: 0.8rem;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  background-color: #c5c5c5;
   display: flex;
   flex-direction: column; 
   justify-content: center; 
@@ -107,12 +127,15 @@
   padding: 0.5rem 0;
 }
 
+.main-content.dark {
+  background-color: #1c1f24;
+}
+
 .navbar {
   height:3rem;
   padding: 0.5rem 1rem;
   position: relative;
   box-sizing: border-box;
-  /* border:1px solid black; */
 }
 
 .navbar input {
@@ -187,10 +210,12 @@
 }
 
 .card-container {
-  height:75vh;
-  width: 85vw;
+  height:auto;
+  width: 95%;
   display:flex;
   flex-flow: row wrap;
+  /* border:1px solid black; */
+  justify-content: center;
 }
 
 .card-element {
@@ -205,10 +230,43 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-flow: row wrap;
+transition: transform .3s ease;
+/* box-shadow: rgba(175, 184, 193, 0.237) 0px 2px 6px; */
+}
+
+.card-element:hover {
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  transform: scale(1.05);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    .card-element {
+    height: 8rem; /* Reduce card height */
+    width: 8rem; /* Reduce card width */
+    margin: 0.5rem; /* Reduce margin */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar input{
+    width:70%;
+    height:0.5rem;
+  }
+  .navbar {
+    flex-direction: column; /* Stack navbar items vertically */
+    align-items: center;
+  }
+
+  .navbar-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    position: static; /* Change position for smaller screens */
+    margin-top: 0.5rem; /* Add some spacing */
+  }
 }
 
 
