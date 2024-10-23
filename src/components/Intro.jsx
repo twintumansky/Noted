@@ -33,7 +33,7 @@ export default function Intro({darkMode, scrollEvent}) {
           </p>
         </div>
         {/* Slide-down Arrow Button */}
-        <div className="arrow-container" onClick={scrollEvent.scrollToMainUI}>
+        <div className="arrow-container" onClick={scrollEvent}>
           <span className="arrow">&#x25BE;</span>
         </div>
       </div>

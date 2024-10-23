@@ -11,13 +11,13 @@ function Navbar({buttonDarkMode})  {
           <button><RefreshIcon size={20}/></button>
           <button><Settings01Icon size={20}/></button>
           <button><Calendar03Icon size={20}/></button>
-          <button onClick={buttonDarkMode.toggleDarkMode}><Sun03Icon size={20}/></button>
+          <button onClick={buttonDarkMode}><Sun03Icon size={20}/></button>
         </div>
       </div>
     );
 }
 
 Navbar.propTypes = {
-  buttonDarkMode: PropTypes.object.isRequired,
+  buttonDarkMode: PropTypes.func.isRequired,
 }
 export default Navbar

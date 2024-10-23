@@ -16,19 +16,11 @@
   align-items: center;
   text-align: center;
   position: relative;
-  /* background-color: #ecdec6; */
+  background-color: #ecdec6;
   color:#000000;
 }
 
 .introduction.darkmode {
-  /* width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative; */
   background-color: #1c1f24;
   color: #9e9d92;
 }
@@ -88,23 +80,32 @@
   height: 100vh;  
   text-align: center;
   background-color:#ecdec6;
+  transition: opacity 0.3s ease-in;
+  opacity: 0;
+}
+
+.notesSection-container.visible {
+  opacity: 1;
 }
 
 .notesSection-container.dark {
   background-color: #1c1f24;
-  /* color: #9e9d92; */
+  color: #9e9d92;
 }
 
 .sidebar {
   width: 4.5rem;
   padding: 0.8rem;
-  /* background-color: #ffffff; */
-  background-color: #c5c5c5;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
   gap: 4rem;
+}
+
+.notesSection-container.dark .sidebar {
+  background-color: #9e9d92;
 }
 
 .sidebar button{
@@ -138,6 +139,18 @@
   box-sizing: border-box;
 }
 
+.main-content.dark .navbar input{
+  background-color: #9e9d92;
+}
+
+.main-content.dark .navbar .navbar-buttons button{
+  color: #9e9d92;
+}
+
+.main-content.dark .navbar input::placeholder{
+  color: #000000;
+}
+
 .navbar input {
   position: absolute;
   top: 50%;
@@ -149,7 +162,8 @@
   border-radius: 1.5rem;
   outline: none;
   padding: 1rem;
-  text-align:end;
+  text-align:center;
+  font-size: 0.9rem;
 }
 
 .navbar-buttons{
@@ -200,9 +214,19 @@
   transition: background-color 0.3s ease;
 }
 
+.main-content.dark .add-notes-button button {
+  background-color: #9e9d92;
+  color: #000000;
+}
+
 .add-notes-button button:hover {
-  background-color: #45a049; /* Button color on hover */
-  transform: scale(1.1); /* Makes the button slightly bigger on hover */
+  background-color: #1c1f24;
+  color: #9e9d92;
+}
+
+.main-content.dark .add-notes-button button:hover{
+  background-color: #ecdec6;
+  color: #000000;
 }
 
 .add-notes-button button:active {
@@ -214,14 +238,13 @@
   width: 95%;
   display:flex;
   flex-flow: row wrap;
-  /* border:1px solid black; */
   justify-content: center;
 }
 
 .card-element {
 height:10rem;
 width:10rem;
-border-radius: 2rem;
+border-radius: 2.5rem;
 background-color: #df9160;
 color:rgb(0, 0, 0);
 padding: 1rem;

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react'
 import { useRef } from 'react';
 import Intro from './components/Intro';
@@ -16,7 +15,14 @@ export default function App() {
   const notesSection = useRef(null);
   // Function to scroll to main UI
   const scrollToMainUI = () => {
-    notesSection.current.scrollIntoView({ behavior: 'smooth' });
+    if (notesSection.current) 
+      {
+        notesSection.current.scrollIntoView({ behavior: 'smooth' });
+        // Use setTimeout to ensure the scroll happens before adding the class
+        setTimeout(() => {
+            notesSection.current.classList.add('visible');
+        }, 300); // Match this duration with your CSS transition duration
+      }  
   };
 
   return (
@@ -28,9 +34,8 @@ export default function App() {
       />
       <NotesSection 
         darkMode={darkmode}
-        toggleDarkMode={toggleDarkMode}
+        clickDarkMode={toggleDarkMode}
         ref={notesSection} />
     </div>
   );
 }
- 
