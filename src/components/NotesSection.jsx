@@ -8,6 +8,31 @@ import "../App.css";
 const NotesSection = forwardRef((props, ref) => {
   const [intro, setIntro] = useState('This is where you can add, edit, and manage your notes.')
   const [card, setCard] = useState([])
+  
+  const [showPopover, setShowPopover] = useState(false);
+  const [selectedCardContent, setSelectedCardContent] = useState(null);
+
+  function Popover({ content, onClose }) {
+    return (
+      <div className="popover-overlay" onClick={onClose}>
+        <div className="popover-content" onClick={(e) => e.stopPropagation()}>
+          <p>{content}</p>
+          <button onClick={onClose}>Close</button>
+        </div>
+      </div>
+    );
+  }
+  
+  function handleCardClick(content) {
+    setSelectedCardContent(content);
+    setShowPopover(true);
+  }
+  
+  function handleClosePopover() {
+    setShowPopover(false);
+    setSelectedCardContent(null);
+  }
+  
 
   function handleClick() {
     setIntro("");
@@ -21,28 +46,57 @@ const NotesSection = forwardRef((props, ref) => {
 
   return (
 
-    <div className={props.darkMode? "notesSection-container dark": "notesSection-container"} ref={ref}>
-      <Sidebar />
-      <div className={props.darkMode? "main-content dark": "main-content"}>
-        <NavBar 
-          buttonDarkMode={props.clickDarkMode}
-        />
-        <main className="note-area">
-          <p>{intro}</p>
-          <div className='add-notes-button'>
-            <button onClick={handleClick}><Add01Icon /></button>
-          </div>
-          <div className='card-container'>
-            {card.map(card => (
-              <div key={card.id} className='card-element'>
-                {card.content}
-              </div>
-            )) 
-            }
-          </div>
-        </main>
-      </div>
+    // <div className={props.darkMode? "notesSection-container dark": "notesSection-container"} ref={ref}>
+    //   <Sidebar />
+    //   <div className={props.darkMode? "main-content dark": "main-content"}>
+    //     <NavBar 
+    //       buttonDarkMode={props.clickDarkMode}
+    //     />
+    //     <main className="note-area">
+    //       <p>{intro}</p>
+    //       <div className='add-notes-button'>
+    //         <button onClick={handleClick}><Add01Icon /></button>
+    //       </div>
+    //       <div className='card-container'>
+    //         {card.map(card => (
+    //           <div key={card.id} className='card-element'>
+    //             {card.content}
+    //           </div>
+    //         )) 
+    //         }
+    //       </div>
+    //     </main>
+    //   </div>
+    // </div>
+
+<div className={props.darkMode ? "notesSection-container dark" : "notesSection-container"} ref={ref}>
+<Sidebar />
+<div className={props.darkMode ? "main-content dark" : "main-content"}>
+  <NavBar buttonDarkMode={props.clickDarkMode} />
+  <main className="note-area">
+    <p>{intro}</p>
+    <div className="add-notes-button">
+      <button onClick={handleClick}><Add01Icon /></button>
     </div>
+    <div className="card-container">
+      {card.map((card) => (
+        <div
+          key={card.id}
+          className="card-element"
+          onClick={() => handleCardClick(card.content)}
+        >
+          {card.content}
+        </div>
+      ))}
+    </div>
+  </main>
+</div>
+
+{showPopover && (
+  <Popover content={selectedCardContent} onClose={handleClosePopover} />
+)}
+</div>
+
   );
 });
 
