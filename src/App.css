@@ -3,13 +3,24 @@
   margin: 0;
   padding: 0;
   font-family: 'Urbanist', sans-serif;
-  overflow-x: hidden;
 }
 
 *,
 *:before,
 *:after {
     box-sizing: border-box;
+}
+
+.container{
+  overflow-x: hidden;
+}
+
+/* added to prevent bg scrolling while card-overlay is active in NotesCard by 
+   replacing 'overflow-x:hidden' from * to .container and adding .no-scoll to body
+*/
+.no-scroll {
+  overflow: hidden;
+  height: 100%; 
 }
 
 .introduction {
@@ -84,13 +95,7 @@
   height: 100vh;  
   text-align: center;
   background-color:#ecdec6;
-  /* transition: opacity 0.3s ease-in;
-  opacity: 0; */
 }
-
-/* .notesSection-container.visible {
-  opacity: 1;
-} */
 
 .notesSection-container.dark {
   background-color: #1c1f24;
@@ -295,13 +300,13 @@ html {
 }
 
 /* Popover overlay that covers the entire screen and adds a blur */
-.popover-overlay {
+.card-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.3);
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
@@ -310,12 +315,30 @@ html {
 }
 
 /* Popover content styling */
-.popover-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+.notes-card {
+  border-radius: 1.5rem;
+  background-color: #df9160;
+  color:rgb(0, 0, 0);
+  padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  height: 80vh;
+  width:65vw;
   text-align: center;
+  position:relative
 }
+
+.notes-card .close-button {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform .3s ease;
+}
+
+.notes-card .close-button:hover {
+  transform: scale(1.1);
+}
+
 
