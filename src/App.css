@@ -207,6 +207,22 @@
 
 .add-notes-button button{
   position: absolute;
+  bottom: 65px;
+  right: 40px;   
+  width:40px;
+  height:40px;  
+  border-radius: 50%;  
+  border: none;          
+  padding:5px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  cursor: pointer;        
+  transition: background-color 0.3s ease;
+}
+
+.clear-all-button button {
+  position: absolute;
   bottom: 15px;
   right: 40px;   
   width:40px;
@@ -253,7 +269,7 @@ height:10rem;
 width:10rem;
 border-radius: 1.5rem;
 background-color: #df9160;
-color:rgb(0, 0, 0);
+color:#000000;
 padding: 1rem;
 margin:1rem;
 display: flex;
@@ -318,13 +334,48 @@ html {
 .notes-card {
   border-radius: 1.5rem;
   background-color: #df9160;
-  color:rgb(0, 0, 0);
   padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   height: 80vh;
   width:65vw;
-  text-align: center;
+  text-align: left;
   position:relative
+}
+
+.notes-card-content {
+  height:100%;
+}
+
+.notes-card-title > input, .notes-card-title > p{
+  width:90%;
+  padding: 0.3rem;
+  margin-bottom:1rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  color: #2b2929;
+}
+
+.notes-card-content > textarea {
+  background-color: transparent;
+  width: 100%;
+  min-height: 90%;
+  font-size: 1.2rem;
+  color: #4c4444;
+  padding: 0.3rem;
+  outline: none;
+  border: 0;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #4c4444;
+}
+
+textarea::-webkit-scrollbar {
+  width: 0rem;
 }
 
 .notes-card .close-button {
