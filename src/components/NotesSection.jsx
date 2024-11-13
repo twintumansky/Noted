@@ -22,6 +22,19 @@ const NotesSection = forwardRef((props, ref) => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
+  function handleClick() {
+    const createdAt = new Date();
+    setNotes((prevState) => [
+      ...prevState,
+      {
+        id: Date.now(),
+        title: "",
+        content: "Click to add content...",
+        createdAt,
+      },
+    ]);
+  }
+
   function handleCardClick(id, title, content) {
     setCurrentNoteId(id);
     setNotesTitle(title);
@@ -30,6 +43,7 @@ const NotesSection = forwardRef((props, ref) => {
   }
 
   function handleClosePopover() {
+    // Save the current note's content before closing
     setNotes((prevCards) =>
       prevCards.map((cards) =>
         cards.id === currentNoteId
@@ -37,28 +51,31 @@ const NotesSection = forwardRef((props, ref) => {
           : cards
       )
     );
-    setCardPopover(false);
   }
 
   function handleDeleteNote() {
     setNotes((prevCards) =>
       prevCards.filter((card) => card.id !== currentNoteId)
     );
-    setCardPopover(false); // Close the popover after deletion
   }
 
   function handleClearAll() {
     if (window.confirm("Are you sure you want to clear all notes?")) {
-      setNotes([]); // Clear all notes
-      localStorage.removeItem("notes"); // Clear localStorage as well
+      setNotes([]); 
+      localStorage.removeItem("notes");
     }
   }
 
-  function handleClick() {
-    setNotes((prevState) => [
-      ...prevState,
-      { id: Date.now(), title: "", content: "Click to add content..." },
-    ]);
+  function formatDate(date) {
+    const day = date.getDate();
+    const monthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${month}, ${day}, ${year}`;
   }
 
   return (
@@ -74,7 +91,9 @@ const NotesSection = forwardRef((props, ref) => {
       <div className={props.darkMode ? "main-content dark" : "main-content"}>
         <NavBar buttonDarkMode={props.clickDarkMode} />
         <main className="note-area">
-          {notes.length>0 || <p>This is where you can manage your notes...</p>}
+          {notes.length > 0 || (
+            <p>This is where you can manage your notes...</p>
+          )}
           <div className="add-notes-button">
             <button onClick={handleClick}>
               <Add01Icon />
@@ -95,14 +114,13 @@ const NotesSection = forwardRef((props, ref) => {
                     handleCardClick(notes.id, notes.title, notes.content)
                   }
                 >
-                  {notes.title ? (
-                    <>
-                      <div>{notes.title}</div>
-                      <div>{notes.content}</div>
-                    </>
-                  ) : (
-                    <div>{notes.content}</div>
-                  )}
+                  <div className="card-element-content">{notes.content}</div>
+                  <div className="card-element-date">
+                    {formatDate(new Date(notes.createdAt))}
+                  </div>
+                  <div className="hover-card-content">
+                    <p>{notes.content || "Click to add content..."}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -114,10 +132,16 @@ const NotesSection = forwardRef((props, ref) => {
         <NotesCard
           title={notesTitle}
           content={notesContent}
-          onClose={handleClosePopover}
+          onClose={() => {
+            handleClosePopover();
+            setCardPopover(false);
+          }}
           handleTitleClick={(e) => setNotesTitle(e.target.value)}
           handleContentClick={(e) => setNotesContent(e.target.value)}
-          onDelete={handleDeleteNote}
+          onDelete={() => {
+            handleDeleteNote();
+            setCardPopover(false);
+          }}
         />
       )}
     </div>

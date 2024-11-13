@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -32,7 +31,7 @@
   align-items: center;
   text-align: center;
   position: relative;
-  background-color: #ecdec6;
+  background-color: #f3f2f1;
   color:#000000;
 }
 
@@ -94,7 +93,7 @@
   width: 100vw;
   height: 100vh;  
   text-align: center;
-  background-color:#ecdec6;
+  background-color:#f3f2f1;
 }
 
 .notesSection-container.dark {
@@ -133,7 +132,7 @@
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background-color: #ecdec6;
+  background-color: #f3f2f1;
   padding: 0.5rem 0;
 }
 
@@ -265,25 +264,53 @@
 }
 
 .card-element {
-height:10rem;
-width:10rem;
-border-radius: 1.5rem;
-background-color: #df9160;
-color:#000000;
-padding: 1rem;
-margin:1rem;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-flow: row wrap;
-transition: transform .3s ease;
-/* box-shadow: rgba(175, 184, 193, 0.237) 0px 2px 6px; */
+  height:15rem;
+  width:15rem;
+  border-radius: 1.5rem;
+  background-color: #df9160;
+  color:#000000;
+  padding: 1.5rem;
+  margin:1rem;  
+  text-align: left;
+  position: relative; 
+  overflow: hidden;
+  transition: all 0.4s ease;
+  }
+
+.hover-card-content {
+  font-size: 1.15rem;
+  border-radius: 1.5rem;
+  position: absolute;
+  bottom: -100%;
+  left: 10px;
+  right: 10px;
+  height: 75%;
+  background-color: #2c2c2c;
+  color:#f9f1e7;
+  transition: bottom 0.4s ease;
 }
 
-.card-element:hover {
-  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
-  transform: scale(1.05);
+.card-element-date{
+  position: absolute;
+  left: 1.5rem;
+  bottom: 1rem;
+  font-size: 1rem;
+  font-weight:450;
 }
+  
+.card-element:hover .hover-card-content {
+  bottom: 10px;
+}
+
+.card-element-content{
+  font-size: 1.15rem;
+  font-weight:450;
+}
+
+.hover-card-content p {
+  margin: 1rem; 
+}
+
 
 html {
   scroll-behavior: smooth;
@@ -330,26 +357,33 @@ html {
   z-index: 1000;
 }
 
-/* Popover content styling */
 .notes-card {
   border-radius: 1.5rem;
   background-color: #df9160;
   padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   height: 80vh;
-  width:65vw;
+  width: 65vw;
   text-align: left;
-  position:relative
+  position: relative;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.notes-card-content {
-  height:100%;
+.notes-card.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
-.notes-card-title > input, .notes-card-title > p{
-  width:90%;
+.notes-card-title {
+  margin-bottom: 1rem;
+}
+
+.notes-card-title input,
+.notes-card-title p {
+  width: 90%;
   padding: 0.3rem;
-  margin-bottom:1rem;
   font-size: 1.75rem;
   font-weight: 500;
   outline: none;
@@ -358,38 +392,43 @@ html {
   color: #2b2929;
 }
 
-.notes-card-content > textarea {
-  background-color: transparent;
+.notes-card-content {
+  height: calc(100% - 4rem); /* Adjust based on your title height */
+}
+
+.notes-card-content textarea,
+.notes-card-content p {
   width: 100%;
-  min-height: 90%;
+  height: 100%;
   font-size: 1.2rem;
   color: #4c4444;
   padding: 0.3rem;
   outline: none;
-  border: 0;
+  border: none;
+  background-color: transparent;
   resize: none;
 }
 
-textarea::placeholder {
-  color: #4c4444;
-}
-
-textarea::-webkit-scrollbar {
-  width: 0rem;
-}
-
-.notes-card .close-button {
+.notes-card .close-button,
+.notes-card .delete-button {
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 
-.notes-card .close-button:hover {
+.notes-card .close-button {
+  top: 0.6rem;
+  right: 0.6rem;
+}
+
+.notes-card .delete-button {
+  bottom: 0.6rem;
+  right: 0.6rem;
+}
+
+.notes-card .close-button:hover,
+.notes-card .delete-button:hover {
   transform: scale(1.1);
 }
-
-
