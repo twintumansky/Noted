@@ -205,6 +205,8 @@
 }
 
 .add-notes-button button{
+  background-color: #515253;
+  color: #f3f2f1;
   position: absolute;
   bottom: 65px;
   right: 40px;   
@@ -221,6 +223,8 @@
 }
 
 .clear-all-button button {
+  background-color: #515253;
+  color: #f3f2f1;
   position: absolute;
   bottom: 15px;
   right: 40px;   
@@ -241,9 +245,19 @@
   color: #000000;
 }
 
+.main-content.dark .clear-all-button button {
+  background-color: #9e9d92;
+  color: #000000;
+}
+
 .add-notes-button button:hover {
   background-color: #1c1f24;
-  color: #9e9d92;
+  color: #ffffff;
+}
+
+.clear-all-button button:hover {
+  background-color: #1c1f24;
+  color: #ffffff;
 }
 
 .main-content.dark .add-notes-button button:hover{
@@ -251,7 +265,16 @@
   color: #000000;
 }
 
+.main-content.dark .clear-all-button button:hover{
+  background-color: #ecdec6;
+  color: #000000;
+}
+
 .add-notes-button button:active {
+  transform: scale(0.95); /* Button shrinks slightly when clicked */
+}
+
+.clear-all-button button:active {
   transform: scale(0.95); /* Button shrinks slightly when clicked */
 }
 
@@ -267,7 +290,6 @@
   height:15rem;
   width:15rem;
   border-radius: 1.5rem;
-  background-color: #df9160;
   color:#000000;
   padding: 1.5rem;
   margin:1rem;  
@@ -359,7 +381,6 @@ html {
 
 .notes-card {
   border-radius: 1.5rem;
-  background-color: #df9160;
   padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   height: 80vh;

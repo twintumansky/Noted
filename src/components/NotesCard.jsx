@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 const NotesCard = ({
   title,
   content,
+  bgColor,
   onClose,
   handleTitleClick,
   handleContentClick,
@@ -18,17 +19,18 @@ const NotesCard = ({
     setNotesTitleEditable(true);
   };
 
+  // const handleTitleBlur = () => {
+  //   setNotesTitleEditable(false);
+  // };
+
   const handleClickContent = () => {
     setNotesContentEditable(true);
+    // content === 'Click to add content...'?'':content;
   };
 
-  const handleTitleBlur = () => {
-    setNotesTitleEditable(false);
-  };
-
-  const handleContentBlur = () => {
-    setNotesContentEditable(false);
-  };
+  // const handleContentBlur = () => {
+  //   setNotesContentEditable(false);
+  // };
 
   // Handle animation and body scroll
   useEffect(() => {
@@ -64,15 +66,15 @@ const NotesCard = ({
       <div 
         className={`notes-card ${isActive ? 'active' : ''}`} 
         onClick={(e) => e.stopPropagation()}
+        style={{backgroundColor:bgColor}}
       >
         <div className="notes-card-title">
           {notesTitleEditable ? (
             <input
               value={title}
               onChange={handleTitleClick}
-              onBlur={handleTitleBlur}
-              autoFocus
-              placeholder="Add Title"
+              // onBlur={handleTitleBlur}
+              
             />
           ) : (
             <p onClick={handleClickTitle}>{title || "Add Title"}</p>
@@ -84,11 +86,10 @@ const NotesCard = ({
               value={content}
               onChange={handleContentClick}
               spellCheck={false}
-              onBlur={handleContentBlur}
-              placeholder="Add content..."
+              // onBlur={handleContentBlur}
             />
           ) : (
-            <p onClick={handleClickContent}>{content || "Add content..."}</p>
+            <p onClick={handleClickContent}>{content === 'Click to add content...'?'Click to add content...':content}</p>
           )}
         </div>
 
@@ -112,6 +113,7 @@ const NotesCard = ({
 NotesCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  bgColor: PropTypes.string.isRequired,
   handleTitleClick: PropTypes.func.isRequired,
   handleContentClick: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,

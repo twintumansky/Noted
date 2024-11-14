@@ -17,12 +17,24 @@ const NotesSection = forwardRef((props, ref) => {
   const [currentNoteId, setCurrentNoteId] = useState(null);
   const [notesTitle, setNotesTitle] = useState("");
   const [notesContent, setNotesContent] = useState("");
+  const [lastNoteColor, setLastNoteColor] = useState(null);  
+  const [currentNoteColor, setCurrentNoteColor] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
+  const colors = ["#b8cedc", "#f9a474", "#c9da8f", "#ffdf6e", "#c2b2e6", "#d9d9d9","#d5cec5"];
+  const getRandomColors = () => {
+    const availableColors = colors.filter( color => color !== lastNoteColor);
+    const getColor = availableColors[Math.floor(Math.random() * availableColors.length)]
+    setLastNoteColor(getColor);
+    return getColor;
+    };
+  
+
   function handleClick() {
+    const randomColor = getRandomColors();
     const createdAt = new Date();
     setNotes((prevState) => [
       ...prevState,
@@ -31,14 +43,23 @@ const NotesSection = forwardRef((props, ref) => {
         title: "",
         content: "Click to add content...",
         createdAt,
+        color: randomColor,
       },
     ]);
   }
 
-  function handleCardClick(id, title, content) {
+  function handleClearAll() {
+    if (window.confirm("Are you sure you want to clear all notes?")) {
+      setNotes([]);
+      localStorage.removeItem("notes");
+    }
+  }
+
+  function handleCardClick(id, title, content, color) {
     setCurrentNoteId(id);
     setNotesTitle(title);
     setNotesContent(content);
+    setCurrentNoteColor(color);
     setCardPopover(true);
   }
 
@@ -59,18 +80,21 @@ const NotesSection = forwardRef((props, ref) => {
     );
   }
 
-  function handleClearAll() {
-    if (window.confirm("Are you sure you want to clear all notes?")) {
-      setNotes([]); 
-      localStorage.removeItem("notes");
-    }
-  }
-
   function formatDate(date) {
     const day = date.getDate();
     const monthNames = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
     ];
     const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
@@ -91,7 +115,7 @@ const NotesSection = forwardRef((props, ref) => {
       <div className={props.darkMode ? "main-content dark" : "main-content"}>
         <NavBar buttonDarkMode={props.clickDarkMode} />
         <main className="note-area">
-          {notes.length > 0 || (
+          {notes.length > 0 ? null : (
             <p>This is where you can manage your notes...</p>
           )}
           <div className="add-notes-button">
@@ -111,8 +135,9 @@ const NotesSection = forwardRef((props, ref) => {
                   key={notes.id}
                   className="card-element"
                   onClick={() =>
-                    handleCardClick(notes.id, notes.title, notes.content)
+                    handleCardClick(notes.id, notes.title, notes.content, notes.color)
                   }
+                  style={{backgroundColor: notes.color}}
                 >
                   <div className="card-element-content">{notes.content}</div>
                   <div className="card-element-date">
@@ -132,6 +157,7 @@ const NotesSection = forwardRef((props, ref) => {
         <NotesCard
           title={notesTitle}
           content={notesContent}
+          bgColor={currentNoteColor}
           onClose={() => {
             handleClosePopover();
             setCardPopover(false);
