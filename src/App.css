@@ -14,6 +14,16 @@
   overflow-x: hidden;
 }
 
+#error-page{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+
 /* added to prevent bg scrolling while card-overlay is active in NotesCard by 
    replacing 'overflow-x:hidden' from * to .container and adding .no-scoll to body
 */

@@ -1,14 +1,15 @@
-import { useState, useRef } from 'react'
+// import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import Intro from './components/Intro';
-import NotesSection from './components/NotesSection';
+// import NotesSection from './components/NotesSection';
 import './App.css'
 
 export default function App() {
-  const [darkmode, setDarkMode] = useState(false);
+  // const [darkmode, setDarkMode] = useState(false);
 
-  function toggleDarkMode() {
-    setDarkMode(prevState => !prevState)
-  }
+  // function toggleDarkMode() {
+  //   setDarkMode(prevState => !prevState)
+  // }
 
   // Ref to the main UI section
   const notesSection = useRef(null);
@@ -20,13 +21,14 @@ export default function App() {
   return (
     <div className="container">
       <Intro 
-        darkMode={darkmode}
-        scrollEvent={scrollToMainUI}       
+        // darkMode={darkmode}
+        scrollEvent={scrollToMainUI}
+               
       />
-      <NotesSection 
+      {/* <NotesSection 
         darkMode={darkmode}
         clickDarkMode={toggleDarkMode}
-        ref={notesSection} />
+        ref={notesSection} /> */}
     </div>
   );
 }

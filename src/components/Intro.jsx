@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import TypingAnimation from './TypingAnimation';
 import '../App.css'
+import { Link } from 'react-router-dom';
 
 export default function Intro({darkMode, scrollEvent}) {
   
@@ -34,7 +35,9 @@ export default function Intro({darkMode, scrollEvent}) {
         </div>
         {/* Slide-down Arrow Button */}
         <div className="arrow-container" onClick={scrollEvent}>
-          <span className="arrow">&#x25BE;</span>
+          <span className="arrow">
+            <Link to='/main'>&#x25BE;</Link>
+          </span>
         </div>
       </div>
     </>
