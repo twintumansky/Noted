@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MultiplicationSignIcon } from "hugeicons-react";
 import PropTypes from "prop-types";
 
@@ -11,39 +11,43 @@ const NotesCard = ({
   handleContentClick,
   onDelete,
 }) => {
-  const [notesTitleEditable, setNotesTitleEditable] = useState(false);
-  const [notesContentEditable, setNotesContentEditable] = useState(false);
+  const [editMode, setEditMode] = useState({noteTitle:false, noteContent:false});
   const [isActive, setIsActive] = useState(false);
+  const animationDuration = 400;
+  const titleInputRef = useRef(null);
+  const contentInputRef = useRef(null);
 
   const handleClickTitle = () => {
-    setNotesTitleEditable(true);
+    setEditMode( prevState => ({...prevState, noteTitle:true}));
+    setTimeout(() => titleInputRef.current?.focus(), 0);
   };
-
-  // const handleTitleBlur = () => {
-  //   setNotesTitleEditable(false);
-  // };
-
   const handleClickContent = () => {
-    setNotesContentEditable(true);
-    // content === 'Click to add content...'?'':content;
+    setTimeout(() => contentInputRef.current?.focus(), 0);
+    if (content === 'Click to add content...'){
+      handleContentClick({ target: { value: "" } })
+    }
+    
+    setEditMode( prevState => ({...prevState, noteContent:true}));
   };
 
-  // const handleContentBlur = () => {
-  //   setNotesContentEditable(false);
-  // };
+  const handleTitleBlur = () => {
+    setEditMode(prevState => ({...prevState, noteTitle:false}));
+  };
+  const handleContentBlur = () => {
+    if(!content.trim()){
+      handleContentClick({ target: { value: "Click to add content..." } })
+    }
+
+    setEditMode(prevState => ({...prevState, noteContent:false}));
+  };
 
   // Handle animation and body scroll
   useEffect(() => {
     document.body.classList.add("no-scroll");
-    
-    // Add active class after a small delay to ensure initial state is rendered
-    const timer = setTimeout(() => {
-      setIsActive(true);
-    }, 10);
+    setIsActive(true);
 
     return () => {
       document.body.classList.remove("no-scroll");
-      clearTimeout(timer);
     };
   }, []);
 
@@ -56,40 +60,40 @@ const NotesCard = ({
     
     setIsActive(false);
     // Wait for animation to complete before actually closing
-    setTimeout(() => {
-      onClose();
-    }, 400); // Match this with your CSS transition duration
+    setTimeout( () => onClose(), animationDuration);
   };
 
   return (
     <div className="card-overlay" onClick={handleClose}>
       <div 
         className={`notes-card ${isActive ? 'active' : ''}`} 
-        onClick={(e) => e.stopPropagation()}
+        // Prevent overlay click from closing the card
+        onClick={(e) => e.stopPropagation()} 
         style={{backgroundColor:bgColor}}
       >
         <div className="notes-card-title">
-          {notesTitleEditable ? (
+          {editMode.noteTitle ? (
             <input
               value={title}
               onChange={handleTitleClick}
-              // onBlur={handleTitleBlur}
-              
+              ref={titleInputRef}
+              onBlur={handleTitleBlur}
             />
           ) : (
             <p onClick={handleClickTitle}>{title || "Add Title"}</p>
           )}
         </div>
         <div className="notes-card-content">
-          {notesContentEditable ? (
+          {editMode.noteContent? (
             <textarea
               value={content}
               onChange={handleContentClick}
               spellCheck={false}
-              // onBlur={handleContentBlur}
+              onBlur={handleContentBlur}
+              ref={contentInputRef}
             />
           ) : (
-            <p onClick={handleClickContent}>{content === 'Click to add content...'?'Click to add content...':content}</p>
+            <p onClick={handleClickContent}>{(content === 'Click to add content...')?('Click to add content...'):content}</p>
           )}
         </div>
 

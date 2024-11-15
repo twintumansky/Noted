@@ -17,21 +17,31 @@ const NotesSection = forwardRef((props, ref) => {
   const [currentNoteId, setCurrentNoteId] = useState(null);
   const [notesTitle, setNotesTitle] = useState("");
   const [notesContent, setNotesContent] = useState("");
-  const [lastNoteColor, setLastNoteColor] = useState(null);  
+  const [lastNoteColor, setLastNoteColor] = useState(null);
   const [currentNoteColor, setCurrentNoteColor] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
-  const colors = ["#b8cedc", "#f9a474", "#c9da8f", "#ffdf6e", "#c2b2e6", "#d9d9d9","#d5cec5"];
+  const colors = [
+    "#b8cedc",
+    "#f9a474",
+    "#c9da8f",
+    "#ffdf6e",
+    "#c2b2e6",
+    "#d9d9d9",
+    "#d5cec5",
+    "#6da39a",
+    "#7b83c1",
+  ];
   const getRandomColors = () => {
-    const availableColors = colors.filter( color => color !== lastNoteColor);
-    const getColor = availableColors[Math.floor(Math.random() * availableColors.length)]
+    const availableColors = colors.filter((color) => color !== lastNoteColor);
+    const getColor =
+      availableColors[Math.floor(Math.random() * availableColors.length)];
     setLastNoteColor(getColor);
     return getColor;
-    };
-  
+  };
 
   function handleClick() {
     const randomColor = getRandomColors();
@@ -135,9 +145,14 @@ const NotesSection = forwardRef((props, ref) => {
                   key={notes.id}
                   className="card-element"
                   onClick={() =>
-                    handleCardClick(notes.id, notes.title, notes.content, notes.color)
+                    handleCardClick(
+                      notes.id,
+                      notes.title,
+                      notes.content,
+                      notes.color
+                    )
                   }
-                  style={{backgroundColor: notes.color}}
+                  style={{ backgroundColor: notes.color }}
                 >
                   <div className="card-element-content">{notes.content}</div>
                   <div className="card-element-date">
