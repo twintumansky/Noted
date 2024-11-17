@@ -1,19 +1,19 @@
-import PropTypes from 'prop-types';
-import TypingAnimation from './TypingAnimation';
-import '../App.css'
-import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import TypingAnimation from "./TypingAnimation";
+import "../App.css";
+import { Link } from "react-router-dom";
 
-export default function Intro({darkMode, scrollEvent}) {
-  
+export default function Intro({ darkMode, scrollEvent }) {
   const mainText = "noted...";
-  const subText = ["< A TRULY MINIMAL NOTE TAKING APP >",
-                   "< CAPTURE YOUR THOUGHTS >",
-                   "< ORGANIZE YOUR IDEAS >"];
-  
-  return (
+  const subText = [
+    "< A TRULY MINIMAL NOTE TAKING APP >",
+    "< CAPTURE YOUR THOUGHTS >",
+    "< ORGANIZE YOUR IDEAS >",
+  ];
 
+  return (
     <>
-      <div className={darkMode?"introduction darkmode": "introduction"}>
+      <div className={darkMode ? "introduction darkmode" : "introduction"}>
         <div className="typewriter">
           <h1>
             <TypingAnimation
@@ -33,11 +33,11 @@ export default function Intro({darkMode, scrollEvent}) {
             />
           </p>
         </div>
-        {/* Slide-down Arrow Button */}
+        {/* Arrow Button */}
         <div className="arrow-container" onClick={scrollEvent}>
-          <span className="arrow">
-            <Link to='/main'>&#x25BE;</Link>
-          </span>
+          <Link className="arrow" to="/main">
+            &#x25BE;
+          </Link>
         </div>
       </div>
     </>
@@ -46,5 +46,5 @@ export default function Intro({darkMode, scrollEvent}) {
 
 Intro.propTypes = {
   darkMode: PropTypes.bool.isRequired,
-  scrollEvent: PropTypes.func.isRequired
+  scrollEvent: PropTypes.func.isRequired,
 };
