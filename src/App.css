@@ -10,6 +10,32 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.lenis {
+  height: 100%;
+  width: 100%;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 #error-page {
   height: 100vh;
   width: 100vw;
@@ -98,10 +124,8 @@
 
 .notesSection-container {
   display: flex;
-  /* flex:1; */
   height: 100vh;
-  /* text-align: center; */
-  background-color: #f3f2f1;
+  background-color:#dfe2e6;
   position: relative;
   overflow: hidden;
 }
@@ -153,11 +177,7 @@
   justify-content: space-between;
 }
 
-.main-content.dark .navbar input {
-  background-color: #9e9d92;
-}
-
-.main-content.dark .navbar .navbar-buttons button {
+.notesSection-container.dark .navbar .navbar-buttons button {
   color: #9e9d92;
 }
 
@@ -188,71 +208,67 @@
   margin-top: 3rem;
   margin-left: 4.5rem;
   height: calc(100vh - 3rem);
-  overflow-y: auto;
+  overflow: hidden;
   padding: 1rem;
+  position: relative;
 }
 
-.note-area{
-  text-align: center;
-}
-
-.add-notes-button button {
-  background-color: #515253;
-  color: #f3f2f1;
+.floating-buttons {
   position: absolute;
-  bottom: 65px;
-  right: 40px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  padding: 5px;
+  bottom: 2rem;
+  left: 0.8rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 100;
 }
 
+.add-notes-button button,
 .clear-all-button button {
-  background-color: #515253;
-  color: #f3f2f1;
-  position: absolute;
-  bottom: 15px;
-  right: 40px;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   border: none;
-  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #575656;
+  color: #f3f2f1;
 }
 
-.add-notes-button button:hover {
-  background-color: #1c1f24;
-  color: #ffffff;
-}
-
+.add-notes-button button:hover,
 .clear-all-button button:hover {
-  background-color: #1c1f24;
-  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.add-notes-button button:active {
-  transform: scale(0.95);
-  /* Button shrinks slightly when clicked */
-}
-
+.add-notes-button button:active,
 .clear-all-button button:active {
-  transform: scale(0.95);
-  /* Button shrinks slightly when clicked */
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .floating-buttons {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .add-notes-button button,
+  .clear-all-button button {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 
 .card-container {
+  position: relative;
+  min-height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -304,11 +320,6 @@
 
 .hover-card-content p {
   margin: 1rem;
-}
-
-
-html {
-  scroll-behavior: smooth;
 }
 
 @media (max-width: 768px) {
