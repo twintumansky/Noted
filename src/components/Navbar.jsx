@@ -7,10 +7,10 @@ function Navbar({buttonDarkMode})  {
     return (
       <div className="navbar">
         <div className='navbar-buttons'>
-          <button><RefreshIcon size={20}/></button>
-          <button><Settings01Icon size={20}/></button>
-          <button><Calendar03Icon size={20}/></button>
-          <button onClick={buttonDarkMode}><Sun03Icon size={20}/></button>
+          <button className='nav-button'><RefreshIcon size={20}/></button>
+          <button className='nav-button'><Settings01Icon size={20}/></button>
+          <button className='nav-button' ><Calendar03Icon size={20}/></button>
+          <button className='nav-button selected' onClick={buttonDarkMode}><Sun03Icon size={20}/></button>
         </div>
       </div>
     );
