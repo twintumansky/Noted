@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import Lenis from '@studio-freight/lenis';
-import { Add01Icon, Delete02Icon } from "hugeicons-react";
 import Sidebar from "./Sidebar";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
@@ -15,8 +14,8 @@ const NotesSection = () => {
   const [currentNoteId, setCurrentNoteId] = useState(null);
   const [notesTitle, setNotesTitle] = useState("");
   const [notesContent, setNotesContent] = useState("");
-  const [lastNoteColor, setLastNoteColor] = useState(null);
-  const [currentNoteColor, setCurrentNoteColor] = useState(null);
+  // const [lastNoteColor, setLastNoteColor] = useState(null);
+  // const [currentNoteColor, setCurrentNoteColor] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
   const scrollContainerRef = useRef(null);
   const [lenisInstance, setLenisInstance] = useState(null);
@@ -84,32 +83,32 @@ const NotesSection = () => {
     return () => clearTimeout(timer);
   }, [notes.length, lenisInstance]); // Only trigger on notes length change
 
-  const colors = [
-    "#b8cedc", //sky
-    "#caaf9e", //dark-beige
-    "#b2bf88", //apple-green
-    "#fed78e", //yellow
-    "#c2b2e6", //purple
-    "#b0d2c1", //cyan-green
-    "#fec18f", //orange
-  ];
-  const getRandomColors = () => {
-    const availableColors = colors.filter((color) => color !== lastNoteColor);
-    const getColor =
-      availableColors[Math.floor(Math.random() * availableColors.length)];
-    setLastNoteColor(getColor);
-    return getColor;
-  };
+  // const colors = [
+  //   "#caaf9e", //dark-beige
+  //   "#b2bf88", //apple-green
+  //   "#fed78e", //yellow
+  //   "#d3c8e9", //purple
+  //   "#fec18f", //orange
+  //   "#e4e8c8", //beige
+  //   "#cf9f95", //clay-pot
+  // ];
+  // const getRandomColors = () => {
+  //   const availableColors = colors.filter((color) => color !== lastNoteColor);
+  //   const getColor =
+  //     availableColors[Math.floor(Math.random() * availableColors.length)];
+  //   setLastNoteColor(getColor);
+  //   return getColor;
+  // };
 
   function handleClick() {
-    const randomColor = getRandomColors();
+    // const randomColor = getRandomColors();
     const createdAt = new Date();
     const newNote = {
       id: Date.now(),
       title: "",
       content: "Click to add content...",
       createdAt,
-      color: randomColor,
+      // color: randomColor,
     };
 
     // Update state using callback to ensure we have the latest state
@@ -123,11 +122,11 @@ const NotesSection = () => {
     }
   }
 
-  function handleCardClick(id, title, content, color) {
+  function handleCardClick(id, title, content, /*color*/) {
     setCurrentNoteId(id);
     setNotesTitle(title);
     setNotesContent(content);
-    setCurrentNoteColor(color);
+    // setCurrentNoteColor(color);
     setCardPopover(true);
   }
 
@@ -177,7 +176,7 @@ const NotesSection = () => {
       }
     >
       <Sidebar />
-      <div className="floating-buttons">
+      {/* <div className="floating-buttons">
         <div className="add-notes-button">
           <button onClick={handleClick}>
             <Add01Icon />
@@ -188,9 +187,9 @@ const NotesSection = () => {
             <Delete02Icon />
           </button>
         </div>
-      </div>
+      </div> */}
       <>
-        <NavBar buttonDarkMode={toggleDarkMode} />
+        <NavBar buttonDarkMode={toggleDarkMode} addButton={handleClick} deleteButton={handleClearAll}/>
         <main className="note-area" ref={scrollContainerRef}>
 
           {notes.length === 0 ? (
@@ -234,7 +233,7 @@ const NotesSection = () => {
         <NotesCard
           title={notesTitle}
           content={notesContent}
-          bgColor={currentNoteColor}
+          // bgColor={currentNoteColor}
           onClose={() => {
             handleClosePopover();
             setCardPopover(false);
