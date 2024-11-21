@@ -127,52 +127,20 @@ html, body {
   background-color:#ececed;
   position: relative;
   overflow: hidden;
-
   /* background-color:#8abea4; */
 }
-
 
 .notesSection-container.dark {
   background-color: #131313;
   color: #cac9bd;
 }
 
-.sidebar {
-  height: 100vh;
-  width: 4.5rem;
-  padding: 0.8rem;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  position: fixed;
-  z-index: 10;
-}
-
-.notesSection-container.dark .sidebar {
-  background-color: #9e9d92;
-}
-
-.sidebar button {
-  background-color: transparent;
-  border: none;
-  transition: transform .3s ease;
-}
-
-.sidebar button:hover {
-  cursor: pointer;
-  transform: scale(1.15);
-}
-
 .navbar {
   height: 3rem;
-  width: calc(100% - 4.5rem);
+  width: 100%;
   padding: 0.5rem 1rem;
   position: fixed;
   top: 0;
-  left: 4.5rem;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -220,7 +188,7 @@ html, body {
   cursor: pointer;
 }
 
-.nav-button:not(:nth-child(3)):active {
+.nav-button:nth-child(3):active, .nav-button:nth-child(5):active {
   transform: rotate(120deg);
 }
 
@@ -236,23 +204,12 @@ html, body {
 
 .note-area {
   margin-top: 3rem;
-  margin-left: 4.5rem;
   height: calc(100vh - 3rem);
-  width: calc(100% - 4.5rem);
+  width: 100%;
   overflow: hidden;
   padding: 1rem;
   position: relative;
   z-index: 1;
-}
-
-.floating-buttons {
-  position: absolute;
-  bottom: 2rem;
-  left: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  z-index: 100;
 }
 
 .add-notes-button button,
@@ -271,17 +228,6 @@ html, body {
   color: #f3f2f1;
 }
 
-.add-notes-button button:hover,
-.clear-all-button button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.add-notes-button button:active,
-.clear-all-button button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -312,27 +258,29 @@ html, body {
   height: 15rem;
   width: 15rem;
   border-radius: 1.5rem;
-  color: #ececed;
+  color: #212122;
   padding: 1.5rem;
   margin: 1rem;
   text-align: left;
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  background-color:#2d2f2f;
+  background-color:#959898;
 }
 
-.hover-card-content {
-  font-size: 1.15rem;
-  border-radius: 12px;
+.card-element.arrow-button {
   position: absolute;
-  bottom: -100%;
-  left: 12px;
-  right: 12px;
-  height: 75%;
-  background-color: #ececed;
-  color: #2d2f2f;
-  transition: bottom 0.4s ease;
+  right: 5px;
+  top: 5px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition:all 0.4s ease;
+  background-color:#000000;
+  color: #ffffff;
 }
 
 .card-element-date {
@@ -343,17 +291,9 @@ html, body {
   font-weight: 450;
 }
 
-.card-element:hover .hover-card-content {
-  bottom: 12px;
-}
-
 .card-element-content {
-  font-size: 1.15rem;
-  font-weight: 450;
-}
-
-.hover-card-content p {
-  margin: 1rem;
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
