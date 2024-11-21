@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
-// import { ArrowUpRight03Icon } from "hugeicons-react";
+import { ArrowUpRight01Icon } from "hugeicons-react";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
+import NotesTagList from "./NotesTagList";
 import "../App.css";
 
 const NotesSection = () => {
@@ -85,8 +86,8 @@ const NotesSection = () => {
     const createdAt = new Date();
     const newNote = {
       id: Date.now(),
-      title: "",
-      content: "Click to add content...",
+      title: "Create a new Note",
+      content: "Add to your note content...",
       createdAt,
     };
 
@@ -160,6 +161,7 @@ const NotesSection = () => {
           deleteButton={handleClearAll}
         />
         <main className="note-area" ref={scrollContainerRef}>
+          <NotesTagList />
           {notes.length === 0 ? (
             <p>This is where you can manage your notes...</p>
           ) : (
@@ -180,7 +182,7 @@ const NotesSection = () => {
                       }
                       style={{ backgroundColor: notes.color }}
                     >
-                      {/* <button
+                      <button
                         className="arrow-button"
                         onClick={() =>
                           handleCardClick(
@@ -191,10 +193,11 @@ const NotesSection = () => {
                           )
                         }
                       >
-                        <ArrowUpRight03Icon size={20} />
-                      </button> */}
-                      <div className="card-element-content">
-                        {notes.content}
+                        <ArrowUpRight01Icon size={30}/>
+                      </button>
+                      <div className="card-element-inner">
+                        <div className='card-element-title'>{notes.title}</div>
+                        <div className='card-element-content'>{notes.content}</div>
                       </div>
                       <div className="card-element-date">
                         {formatDate(new Date(notes.createdAt))}
