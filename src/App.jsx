@@ -1,6 +1,9 @@
+// import { useRef } from "react";
 import Intro from "./components/Intro";
 import "./App.css";
 
 export default function App() {
-  return <Intro />;
+  // const scrollTo = useRef(null);
+
+  return <Intro />
 }

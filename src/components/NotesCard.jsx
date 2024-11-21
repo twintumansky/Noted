@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const NotesCard = ({
   title,
   content,
-  // bgColor,
   onClose,
   handleTitleClick,
   handleContentClick,
@@ -69,7 +68,6 @@ const NotesCard = ({
         className={`notes-card ${isActive ? 'active' : ''}`} 
         // Prevent overlay click from closing the card
         onClick={(e) => e.stopPropagation()} 
-        // style={{backgroundColor:bgColor}}
       >
         <div className="notes-card-title">
           {editMode.noteTitle ? (

@@ -3,7 +3,7 @@ import TypingAnimation from "./TypingAnimation";
 import "../App.css";
 import { Link } from "react-router-dom";
 
-export default function Intro({ darkMode, scrollEvent }) {
+export default function Intro() {
   const mainText = "noted...";
   const subText = [
     "< A TRULY MINIMAL NOTE TAKING APP >",
@@ -13,7 +13,7 @@ export default function Intro({ darkMode, scrollEvent }) {
 
   return (
     <>
-      <div className={darkMode ? "introduction darkmode" : "introduction"}>
+      <div className="introduction">
         <div className="typewriter">
           <h1>
             <TypingAnimation
@@ -34,7 +34,7 @@ export default function Intro({ darkMode, scrollEvent }) {
           </p>
         </div>
         {/* Arrow Button */}
-        <div className="arrow-container" onClick={scrollEvent}>
+        <div className="arrow-container">
           <Link className="arrow" to="/main">
             &#x25BE;
           </Link>
