@@ -208,7 +208,6 @@ html, body {
   pointer-events: none;
 }
 
-
 .notes-tag-list button {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
@@ -224,6 +223,16 @@ html, body {
 .notes-tag-list button:hover {
   background-color: #121212;
   color: #ffffff;
+}
+
+.notesSection-container.dark .notes-tag-list button {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.notesSection-container.dark .notes-tag-list button:hover {
+  color: #121212;
+  background-color: #ffffff;
 }
 
 .note-area {
@@ -314,7 +323,7 @@ html, body {
 
 .card-element:hover {
   background-color:#999b9b;
-  color:#353434;
+  /* color:#353434; */
 }
 
 .card-element:hover .arrow-button {
