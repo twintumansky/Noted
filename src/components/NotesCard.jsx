@@ -9,6 +9,7 @@ const NotesCard = ({
   handleTitleClick,
   handleContentClick,
   onDelete,
+  onSave,
 }) => {
   const [editMode, setEditMode] = useState({noteTitle:false, noteContent:false});
   const [isActive, setIsActive] = useState(false);
@@ -98,6 +99,15 @@ const NotesCard = ({
         <button className="close-button" onClick={handleClose}>
           <MultiplicationSignIcon />
         </button>
+                <button 
+          className="save-button" 
+          onClick={(e) => {
+            e.stopPropagation();
+            onSave();
+          }}
+        >
+          Save 
+        </button>
         <button 
           className="delete-button" 
           onClick={(e) => {
@@ -120,6 +130,7 @@ NotesCard.propTypes = {
   handleContentClick: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
 
 export default NotesCard;

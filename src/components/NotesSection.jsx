@@ -15,6 +15,7 @@ const NotesSection = () => {
   const [currentNoteId, setCurrentNoteId] = useState(null);
   const [notesTitle, setNotesTitle] = useState("");
   const [notesContent, setNotesContent] = useState("");
+  const [starredNotes, setStarredNotes] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
   const scrollContainerRef = useRef(null);
   const [lenisInstance, setLenisInstance] = useState(null);
@@ -120,6 +121,13 @@ const NotesSection = () => {
     );
   }
 
+  function handleStarredNotes() {
+    setStarredNotes(
+      notes.filter((note)=>note.id == note.currentNoteId)
+    )
+    console.log(starredNotes);
+  };
+
   function handleDeleteNote() {
     setNotes((prevCards) =>
       prevCards.filter((card) => card.id !== currentNoteId)
@@ -224,6 +232,9 @@ const NotesSection = () => {
           onDelete={() => {
             handleDeleteNote();
             setCardPopover(false);
+          }}
+          onSave={() => {
+            handleStarredNotes();
           }}
         />
       )}

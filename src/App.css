@@ -411,7 +411,7 @@ html, body {
   transform: translateY(100%);
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
-  background-color:#1b1e1f;
+  background-color:#999b9b;
 }
 
 .notes-card.active {
@@ -433,7 +433,7 @@ html, body {
   outline: none;
   background-color: transparent;
   border: none;
-  color: #ececed;
+  color: #212122;
 }
 
 .notes-card-content {
@@ -446,7 +446,7 @@ html, body {
   width: 100%;
   height: 100%;
   font-size: 1.2rem;
-  color: #ececed;
+  color: #212122;
   padding: 0.3rem;
   outline: none;
   border: none;
@@ -454,13 +454,31 @@ html, body {
   resize: none;
 }
 
-.notes-card .close-button,
-.notes-card .delete-button {
+.notes-card .delete-button, 
+.notes-card .save-button {
   position: absolute;
-  background-color: transparent;
+  background-color:#212122;
   border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: #f3f2f1;
   cursor: pointer;
   transition: transform 0.3s ease;
+}
+
+.notes-card .close-button {
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  color: #f3f2f1;
+  background-color: #212122;
+  cursor: pointer;
 }
 
 .notes-card .close-button {
@@ -468,12 +486,11 @@ html, body {
   right: 0.6rem;
 }
 
+.notes-card .save-button {
+  bottom: 0.6rem;
+  right: 4.5rem;
+}
 .notes-card .delete-button {
   bottom: 0.6rem;
   right: 0.6rem;
-}
-
-.notes-card .close-button:hover,
-.notes-card .delete-button:hover {
-  transform: scale(1.1);
 }
