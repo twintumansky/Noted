@@ -16,6 +16,7 @@ const NotesSection = () => {
   const [notesTitle, setNotesTitle] = useState("");
   const [notesContent, setNotesContent] = useState("");
   const [starredNotes, setStarredNotes] = useState([]);
+  const [starred, setStarred] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const scrollContainerRef = useRef(null);
   const [lenisInstance, setLenisInstance] = useState(null);
@@ -90,6 +91,7 @@ const NotesSection = () => {
       title: "Create a new Note",
       content: "Add to your note content...",
       createdAt,
+      starred,
     };
 
     // Update state using callback to ensure we have the latest state
@@ -122,11 +124,22 @@ const NotesSection = () => {
   }
 
   function handleStarredNotes() {
-    setStarredNotes(
-      notes.filter((note)=>note.id == note.currentNoteId)
-    )
-    console.log(starredNotes);
-  };
+    setStarred(!starred);
+    setNotes((prevCards) =>
+      prevCards.map((note) =>
+        note.id === currentNoteId
+          ? { ...note, starred }
+          : note
+      )
+    );
+    
+    const currentNote = notes.find(note => note.id === currentNoteId);
+    if (currentNote) {
+      setStarredNotes((prevState) => [...prevState, currentNote]);
+    }
+  }
+
+  console.log(starredNotes);
 
   function handleDeleteNote() {
     setNotes((prevCards) =>
@@ -169,7 +182,7 @@ const NotesSection = () => {
           deleteButton={handleClearAll}
         />
         <main className="note-area" ref={scrollContainerRef}>
-          <NotesTagList />
+          <NotesTagList starredNotes={starredNotes} />
           {notes.length === 0 ? (
             <p>This is where you can manage your notes...</p>
           ) : (
@@ -181,31 +194,22 @@ const NotesSection = () => {
                       key={notes.id}
                       className="card-element"
                       onClick={() =>
-                        handleCardClick(
-                          notes.id,
-                          notes.title,
-                          notes.content,
-                          notes.color
-                        )
+                        handleCardClick(notes.id, notes.title, notes.content)
                       }
-                      style={{ backgroundColor: notes.color }}
                     >
                       <button
                         className="arrow-button"
                         onClick={() =>
-                          handleCardClick(
-                            notes.id,
-                            notes.title,
-                            notes.content,
-                            notes.color
-                          )
+                          handleCardClick(notes.id, notes.title, notes.content)
                         }
                       >
-                        <ArrowUpRight01Icon size={30}/>
+                        <ArrowUpRight01Icon size={30} />
                       </button>
                       <div className="card-element-inner">
-                        <div className='card-element-title'>{notes.title}</div>
-                        <div className='card-element-content'>{notes.content}</div>
+                        <div className="card-element-title">{notes.title}</div>
+                        <div className="card-element-content">
+                          {notes.content}
+                        </div>
                       </div>
                       <div className="card-element-date">
                         {formatDate(new Date(notes.createdAt))}
@@ -236,6 +240,7 @@ const NotesSection = () => {
           onSave={() => {
             handleStarredNotes();
           }}
+          star={notes.find(note => note.id === currentNoteId)?.starred || false}
         />
       )}
     </div>

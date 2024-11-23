@@ -10,35 +10,39 @@ const NotesCard = ({
   handleContentClick,
   onDelete,
   onSave,
+  star,
 }) => {
-  const [editMode, setEditMode] = useState({noteTitle:false, noteContent:false});
+  const [editMode, setEditMode] = useState({
+    noteTitle: false,
+    noteContent: false,
+  });
   const [isActive, setIsActive] = useState(false);
   const animationDuration = 400;
   const titleInputRef = useRef(null);
   const contentInputRef = useRef(null);
 
   const handleClickTitle = () => {
-    setEditMode( prevState => ({...prevState, noteTitle:true}));
+    setEditMode((prevState) => ({ ...prevState, noteTitle: true }));
     setTimeout(() => titleInputRef.current?.focus(), 0);
   };
   const handleClickContent = () => {
     setTimeout(() => contentInputRef.current?.focus(), 0);
-    if (content === 'Click to add content...'){
-      handleContentClick({ target: { value: "" } })
+    if (content === "Click to add content...") {
+      handleContentClick({ target: { value: "" } });
     }
-    
-    setEditMode( prevState => ({...prevState, noteContent:true}));
+
+    setEditMode((prevState) => ({ ...prevState, noteContent: true }));
   };
 
   const handleTitleBlur = () => {
-    setEditMode(prevState => ({...prevState, noteTitle:false}));
+    setEditMode((prevState) => ({ ...prevState, noteTitle: false }));
   };
   const handleContentBlur = () => {
-    if(!content.trim()){
-      handleContentClick({ target: { value: "Click to add content..." } })
+    if (!content.trim()) {
+      handleContentClick({ target: { value: "Click to add content..." } });
     }
 
-    setEditMode(prevState => ({...prevState, noteContent:false}));
+    setEditMode((prevState) => ({ ...prevState, noteContent: false }));
   };
 
   // Handle animation and body scroll
@@ -54,21 +58,21 @@ const NotesCard = ({
   // Handle closing animation
   const handleClose = (e) => {
     if (e) {
-      e.preventDefault();
-      e.stopPropagation();
+      e.preventDefault(); //lessonToLearn
+      e.stopPropagation(); //lessonToLearn
     }
-    
+
     setIsActive(false);
     // Wait for animation to complete before actually closing
-    setTimeout( () => onClose(), animationDuration);
+    setTimeout(() => onClose(), animationDuration);
   };
 
   return (
     <div className="card-overlay" onClick={handleClose}>
-      <div 
-        className={`notes-card ${isActive ? 'active' : ''}`} 
+      <div
+        className={`notes-card ${isActive ? "active" : ""}`}
         // Prevent overlay click from closing the card
-        onClick={(e) => e.stopPropagation()} 
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="notes-card-title">
           {editMode.noteTitle ? (
@@ -83,7 +87,7 @@ const NotesCard = ({
           )}
         </div>
         <div className="notes-card-content">
-          {editMode.noteContent? (
+          {editMode.noteContent ? (
             <textarea
               value={content}
               onChange={handleContentClick}
@@ -92,24 +96,28 @@ const NotesCard = ({
               ref={contentInputRef}
             />
           ) : (
-            <p onClick={handleClickContent}>{(content === 'Click to add content...')?('Click to add content...'):content}</p>
+            <p onClick={handleClickContent}>
+              {content === "Click to add content..."
+                ? "Click to add content..."
+                : content}
+            </p>
           )}
         </div>
 
         <button className="close-button" onClick={handleClose}>
           <MultiplicationSignIcon />
         </button>
-                <button 
-          className="save-button" 
+        <button
+          className="save-button"
           onClick={(e) => {
             e.stopPropagation();
             onSave();
           }}
         >
-          Save 
+          Save
         </button>
-        <button 
-          className="delete-button" 
+        <button
+          className="delete-button"
           onClick={(e) => {
             e.stopPropagation();
             onDelete();
@@ -117,6 +125,7 @@ const NotesCard = ({
         >
           Delete
         </button>
+        {star && <div className="bookmark">🔖</div>}
       </div>
     </div>
   );
@@ -125,12 +134,12 @@ const NotesCard = ({
 NotesCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  bgColor: PropTypes.string.isRequired,
   handleTitleClick: PropTypes.func.isRequired,
   handleContentClick: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
+  star: PropTypes.bool.isRequired,
 };
 
 export default NotesCard;
