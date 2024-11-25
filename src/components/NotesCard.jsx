@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { MultiplicationSignIcon } from "hugeicons-react";
+import { MultiplicationSignIcon, Bookmark02Icon } from "hugeicons-react";
 import PropTypes from "prop-types";
 
 const NotesCard = ({
@@ -125,7 +125,7 @@ const NotesCard = ({
         >
           Delete
         </button>
-        {star && <div className="bookmark">🔖</div>}
+        {star && <div className="bookmark"><Bookmark02Icon size={22}/></div>}
       </div>
     </div>
   );

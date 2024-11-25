@@ -457,10 +457,10 @@ html, body {
 .notes-card .delete-button, 
 .notes-card .save-button {
   position: absolute;
-  background-color:#212122;
+  background-color:#474749;
   border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
   color: #f3f2f1;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -488,16 +488,19 @@ html, body {
 
 .notes-card .save-button {
   bottom: 0.6rem;
-  right: 4.5rem;
+  right: 5.5rem;
 }
 .notes-card .delete-button {
   bottom: 0.6rem;
   right: 0.6rem;
 }
 .notes-card .bookmark {
-  width: 2rem;
-  height: 2rem;
   position:absolute;
   bottom: 0.6rem;
-  right: 9rem;
+  right: 11rem;
+}
+
+.notes-card .bookmark:hover {
+  cursor: pointer;
+  color: #212122;
 }
