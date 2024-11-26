@@ -109,9 +109,10 @@ const NotesCard = ({
         </button>
         <button
           className="save-button"
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={() => {
+            // e.stopPropagation();
             onSave();
+            console.log("bookmarked");
           }}
         >
           Save

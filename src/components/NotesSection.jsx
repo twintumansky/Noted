@@ -18,8 +18,9 @@ const NotesSection = () => {
   const [starredNotes, setStarredNotes] = useState([]);
   const [starred, setStarred] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const scrollContainerRef = useRef(null);
   const [lenisInstance, setLenisInstance] = useState(null);
+  
+  const scrollContainerRef = useRef(null);
 
   function toggleDarkMode() {
     setDarkMode((prevState) => !prevState);
@@ -106,9 +107,11 @@ const NotesSection = () => {
   }
 
   function handleCardClick(id, title, content) {
+    const currentNote = notes.find(note => note.id === id);
     setCurrentNoteId(id);
     setNotesTitle(title);
     setNotesContent(content);
+    setStarred(currentNote?.starred || false);
     setCardPopover(true);
   }
 
@@ -124,16 +127,18 @@ const NotesSection = () => {
   }
 
   function handleStarredNotes() {
-    setStarred(!starred);
-    setNotes((prevCards) =>
-      prevCards.map((note) =>
-        note.id === currentNoteId ? { ...note, starred } : note
+    const newStarred = !starred;
+    setStarred(newStarred);
+    
+    setNotes(prevCards =>
+      prevCards.map(note =>
+        note.id === currentNoteId ? { ...note, starred: newStarred } : note
       )
     );
 
-    const currentNote = notes.find((note) => note.id === currentNoteId);
-    if (currentNote) {
-      setStarredNotes((prevState) => [...prevState, currentNote]);
+    const currentNote = notes.find(note => note.id === currentNoteId);
+    if (currentNote && newStarred) {
+      setStarredNotes(prevState => [...prevState, { ...currentNote, starred: newStarred }]);
     }
   }
 

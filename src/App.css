@@ -417,7 +417,7 @@ html, body {
 .notes-card.active {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: 10;
+  /* transition-delay: 10; */
 }
 
 .notes-card-title {
@@ -437,8 +437,9 @@ html, body {
 }
 
 .notes-card-content {
-  height: calc(100% - 4rem);
-  /* Adjust based on your title height */
+  height: 80%;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 0.5rem;
 }
 
 .notes-card-content textarea,
