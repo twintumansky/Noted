@@ -127,19 +127,15 @@ const NotesSection = () => {
     setStarred(!starred);
     setNotes((prevCards) =>
       prevCards.map((note) =>
-        note.id === currentNoteId
-          ? { ...note, starred }
-          : note
+        note.id === currentNoteId ? { ...note, starred } : note
       )
     );
-    
-    const currentNote = notes.find(note => note.id === currentNoteId);
+
+    const currentNote = notes.find((note) => note.id === currentNoteId);
     if (currentNote) {
       setStarredNotes((prevState) => [...prevState, currentNote]);
     }
   }
-
-  console.log(starredNotes);
 
   function handleDeleteNote() {
     setNotes((prevCards) =>
@@ -240,7 +236,9 @@ const NotesSection = () => {
           onSave={() => {
             handleStarredNotes();
           }}
-          star={notes.find(note => note.id === currentNoteId)?.starred || false}
+          star={
+            notes.find((note) => note.id === currentNoteId)?.starred || false
+          }
         />
       )}
     </div>
