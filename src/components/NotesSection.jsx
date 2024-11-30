@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import Lenis from "@studio-freight/lenis";
 import { ArrowUpRight01Icon } from "hugeicons-react";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
 import NotesTagList from "./NotesTagList";
+import useSmoothScroll from "../hooks/useSmoothScroll";
 import "../App.css";
 
 const NotesSection = () => {
@@ -18,9 +18,10 @@ const NotesSection = () => {
   const [starredNotes, setStarredNotes] = useState([]);
   const [starred, setStarred] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [lenisInstance, setLenisInstance] = useState(null);
-
   const scrollContainerRef = useRef(null);
+  const lastNotesLengthRef = useRef(notes.length);
+  
+  const { scrollToNewElement } = useSmoothScroll(scrollContainerRef);
 
   function toggleDarkMode() {
     setDarkMode((prevState) => !prevState);
@@ -30,73 +31,26 @@ const NotesSection = () => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
+  // Scroll effect only when new notes are added
   useEffect(() => {
-    if (!scrollContainerRef.current) return;
-
-    const lenis = new Lenis({
-      wrapper: scrollContainerRef.current,
-      content: scrollContainerRef.current,
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: "vertical",
-      gestureDirection: "vertical",
-      smooth: true,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    setLenisInstance(lenis);
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    if (!scrollContainerRef.current || notes.length <= lastNotesLengthRef.current) {
+      lastNotesLengthRef.current = notes.length;
+      return;
     }
 
-    requestAnimationFrame(raf);
-
-    const observer = new ResizeObserver(() => {
-      lenis.resize();
-    });
-
-    observer.observe(scrollContainerRef.current);
-
-    // Cleanup
-    return () => {
-      lenis.destroy();
-      observer.disconnect();
-      setLenisInstance(null);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!lenisInstance || !scrollContainerRef.current) return;
-
-    // Only scroll when notes array changes (new note added)
     const timer = setTimeout(() => {
       const container = scrollContainerRef.current;
       const cards = container.querySelectorAll('.card-element');
       if (cards.length > 0) {
         const lastCard = cards[cards.length - 1];
         const containerRect = container.getBoundingClientRect();
-        const cardRect = lastCard.getBoundingClientRect();
-
-        // Check if the last card is below the viewport
-        const isCardBelowViewport = cardRect.top > (containerRect.top + containerRect.height);
-
-        if (isCardBelowViewport) {
-          lenisInstance.resize();
-          lenisInstance.scrollTo(lastCard, {
-            immediate: false,
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          });
-        }
+        scrollToNewElement(lastCard, containerRect);
       }
-    }, 150); // Slightly longer timeout to ensure DOM update
+    }, 150);
 
+    lastNotesLengthRef.current = notes.length;
     return () => clearTimeout(timer);
-  }, [notes.length, lenisInstance]); // Only trigger on notes length change
+  }, [notes.length, scrollToNewElement]);
 
   function handleClick() {
     const createdAt = new Date();
@@ -230,6 +184,7 @@ const NotesSection = () => {
                       </div>
                     </div>
                   ))}
+                  <div className="bottom-spacer"></div>
                 </div>
               )}
             </>
