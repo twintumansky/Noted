@@ -19,7 +19,7 @@ const NotesSection = () => {
   const [starred, setStarred] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [lenisInstance, setLenisInstance] = useState(null);
-  
+
   const scrollContainerRef = useRef(null);
 
   function toggleDarkMode() {
@@ -74,12 +74,25 @@ const NotesSection = () => {
 
     // Only scroll when notes array changes (new note added)
     const timer = setTimeout(() => {
-      lenisInstance.resize();
-      lenisInstance.scrollTo("bottom", {
-        immediate: false,
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
+      const container = scrollContainerRef.current;
+      const cards = container.querySelectorAll('.card-element');
+      if (cards.length > 0) {
+        const lastCard = cards[cards.length - 1];
+        const containerRect = container.getBoundingClientRect();
+        const cardRect = lastCard.getBoundingClientRect();
+
+        // Check if the last card is below the viewport
+        const isCardBelowViewport = cardRect.top > (containerRect.top + containerRect.height);
+
+        if (isCardBelowViewport) {
+          lenisInstance.resize();
+          lenisInstance.scrollTo(lastCard, {
+            immediate: false,
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          });
+        }
+      }
     }, 150); // Slightly longer timeout to ensure DOM update
 
     return () => clearTimeout(timer);
@@ -129,7 +142,7 @@ const NotesSection = () => {
   function handleStarredNotes() {
     const newStarred = !starred;
     setStarred(newStarred);
-    
+
     setNotes(prevCards =>
       prevCards.map(note =>
         note.id === currentNoteId ? { ...note, starred: newStarred } : note
