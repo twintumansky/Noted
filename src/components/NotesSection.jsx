@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowUpRight01Icon } from "hugeicons-react";
+// import { ArrowUpRight01Icon } from "hugeicons-react";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
 import NotesTagList from "./NotesTagList";
 import useSmoothScroll from "../hooks/useSmoothScroll";
+import Notes from "./Notes";
 import "../App.css";
 
 const NotesSection = () => {
@@ -20,7 +21,7 @@ const NotesSection = () => {
   const [darkMode, setDarkMode] = useState(false);
   const scrollContainerRef = useRef(null);
   const lastNotesLengthRef = useRef(notes.length);
-  
+
   const { scrollToNewElement } = useSmoothScroll(scrollContainerRef);
 
   function toggleDarkMode() {
@@ -33,14 +34,17 @@ const NotesSection = () => {
 
   // Scroll effect only when new notes are added
   useEffect(() => {
-    if (!scrollContainerRef.current || notes.length <= lastNotesLengthRef.current) {
+    if (
+      !scrollContainerRef.current ||
+      notes.length <= lastNotesLengthRef.current
+    ) {
       lastNotesLengthRef.current = notes.length;
       return;
     }
 
     const timer = setTimeout(() => {
       const container = scrollContainerRef.current;
-      const cards = container.querySelectorAll('.card-element');
+      const cards = container.querySelectorAll(".card-element");
       if (cards.length > 0) {
         const lastCard = cards[cards.length - 1];
         const containerRect = container.getBoundingClientRect();
@@ -74,7 +78,7 @@ const NotesSection = () => {
   }
 
   function handleCardClick(id, title, content) {
-    const currentNote = notes.find(note => note.id === id);
+    const currentNote = notes.find((note) => note.id === id);
     setCurrentNoteId(id);
     setNotesTitle(title);
     setNotesContent(content);
@@ -97,15 +101,18 @@ const NotesSection = () => {
     const newStarred = !starred;
     setStarred(newStarred);
 
-    setNotes(prevCards =>
-      prevCards.map(note =>
+    setNotes((prevCards) =>
+      prevCards.map((note) =>
         note.id === currentNoteId ? { ...note, starred: newStarred } : note
       )
     );
 
-    const currentNote = notes.find(note => note.id === currentNoteId);
+    const currentNote = notes.find((note) => note.id === currentNoteId);
     if (currentNote && newStarred) {
-      setStarredNotes(prevState => [...prevState, { ...currentNote, starred: newStarred }]);
+      setStarredNotes((prevState) => [
+        ...prevState,
+        { ...currentNote, starred: newStarred },
+      ]);
     }
   }
 
@@ -115,27 +122,27 @@ const NotesSection = () => {
     );
   }
 
-  function formatDate(date) {
-    const day = date.getDate();
-    const monthNames = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const month = monthNames[date.getMonth()];
-    const year = date.getFullYear();
+  // function formatDate(date) {
+  //   const day = date.getDate().toString().padStart(2, "0");
+  //   const monthNames = [
+  //     "Jan",
+  //     "Feb",
+  //     "Mar",
+  //     "Apr",
+  //     "May",
+  //     "Jun",
+  //     "Jul",
+  //     "Aug",
+  //     "Sep",
+  //     "Oct",
+  //     "Nov",
+  //     "Dec",
+  //   ];
+  //   const month = monthNames[date.getMonth()];
+  //   const year = date.getFullYear();
 
-    return `${month}, ${day}, ${year}`;
-  }
+  //   return `${day} ${month} ${year}`;
+  // }
 
   return (
     <div
@@ -155,43 +162,22 @@ const NotesSection = () => {
             <p>This is where you can manage your notes...</p>
           ) : (
             <>
-              {notes.length > 0 && (
-                <div className="card-container">
-                  {notes.map((notes) => (
-                    <div
-                      key={notes.id}
-                      className="card-element"
-                      onClick={() =>
-                        handleCardClick(notes.id, notes.title, notes.content)
-                      }
-                    >
-                      <button
-                        className="arrow-button"
-                        onClick={() =>
-                          handleCardClick(notes.id, notes.title, notes.content)
-                        }
-                      >
-                        <ArrowUpRight01Icon size={30} />
-                      </button>
-                      <div className="card-element-inner">
-                        <div className="card-element-title">{notes.title}</div>
-                        <div className="card-element-content">
-                          {notes.content}
-                        </div>
-                      </div>
-                      <div className="card-element-date">
-                        {formatDate(new Date(notes.createdAt))}
-                      </div>
-                    </div>
-                  ))}
-                  <div className="bottom-spacer"></div>
-                </div>
-              )}
+              <div className="card-container">
+                {notes.map((notes) => (
+                  <Notes
+                    key={notes.id}
+                    notes={notes}
+                    onCardClick={(id, title, content) =>
+                      handleCardClick(id, title, content)
+                    }
+                  />
+                ))}
+                <div className="bottom-spacer"></div>
+              </div>
             </>
           )}
         </main>
       </>
-
       {cardPopover && (
         <NotesCard
           title={notesTitle}
