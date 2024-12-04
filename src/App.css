@@ -10,30 +10,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
 html, body {
   height: 100%;
-  overflow: hidden;
-}
-
-.lenis {
-  height: 100%;
-  width: 100%;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #error-page {
@@ -66,8 +51,8 @@ html, body {
 }
 
 .introduction.darkmode {
-  background-color: #0d0a0b;
-  color: #9e9d92;
+  background-color: #0d1117;
+  color: #cac9bd;
 }
 
 .typewriter {
@@ -130,7 +115,7 @@ html, body {
 }
 
 .notesSection-container.dark {
-  background-color: #131313;
+  background-color: #0d1117;
   color: #cac9bd;
 }
 
@@ -150,7 +135,7 @@ html, body {
 }
 
 .notesSection-container.dark .navbar {
-  background: rgba(28, 31, 36, 0.2);
+  background: #0d1117;
 }
 
 .notesSection-container.dark .nav-button {
@@ -209,10 +194,10 @@ html, body {
 }
 
 .notes-tag-list button {
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  border: 1px solid #444444;
+  margin: 1rem;
+  padding: 0.5rem 1.3rem;
+  border-radius: 1.1rem;
+  border: 1.2px solid #444444;
   background-color: transparent;
   color: #1f1f1f;
   cursor: pointer;
@@ -226,42 +211,37 @@ html, body {
 }
 
 .notesSection-container.dark .notes-tag-list button {
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  border: 1.2px solid #cac9bd;
+  color: #cac9bd;
 }
 
 .notesSection-container.dark .notes-tag-list button:hover {
   color: #121212;
-  background-color: #ffffff;
+  background-color: #cac9bd;
 }
 
 .note-area {
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 3rem;
+  margin-top: 3rem;
   height: calc(100vh - 3rem);
   width: 100%;
-  overflow: hidden;
-  padding: 1rem;
   position: relative;
   z-index: 1;
+  overflow-y: auto;
 }
 
 .card-container {
   position: relative;
-  min-height: 100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0 rem;
+  gap: 1rem;
   z-index: 1;
-}
-
-.bottom-spacer {
-  width: 100%;
-  height: 1rem;
-  flex-basis: 100%;
+  padding: 1.5rem;
+  min-height: min-content;
 }
 
 .card-element {
@@ -291,7 +271,7 @@ html, body {
   background-color: transparent;
   color: #434343;
   opacity: 0;
-  transform: translate(0, 0);
+  transform: translate(0, -4px);
   transition: all 0.4s ease;
 }
 
@@ -478,4 +458,39 @@ html, body {
 .notes-card .bookmark:hover {
   cursor: pointer;
   color: #212122;
+}
+
+.scroll-top-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #999b9b;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.scroll-top-button:hover {
+  background-color: #858787;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.notesSection-container.dark .scroll-top-button {
+  background-color: #353535;
+  color: #ffffff;
+}
+
+.notesSection-container.dark .scroll-top-button:hover {
+  background-color: #454545;
 }

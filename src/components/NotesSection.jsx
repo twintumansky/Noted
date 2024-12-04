@@ -1,28 +1,26 @@
 import { useState, useEffect, useRef } from "react";
-// import { ArrowUpRight01Icon } from "hugeicons-react";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
 import NotesTagList from "./NotesTagList";
-import useSmoothScroll from "../hooks/useSmoothScroll";
 import Notes from "./Notes";
-import "../App.css";
 
-const NotesSection = () => {
+function NotesSection() {
   const [notes, setNotes] = useState(() => {
     const savedNotes = localStorage.getItem("notes");
     return savedNotes ? JSON.parse(savedNotes) : [];
   });
-  const [cardPopover, setCardPopover] = useState(false);
-  const [currentNoteId, setCurrentNoteId] = useState(null);
   const [notesTitle, setNotesTitle] = useState("");
   const [notesContent, setNotesContent] = useState("");
+  const [currentNoteId, setCurrentNoteId] = useState(null);
+  const [cardPopover, setCardPopover] = useState(false);
   const [starredNotes, setStarredNotes] = useState([]);
   const [starred, setStarred] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-  const scrollContainerRef = useRef(null);
+  const [darkMode, setDarkMode] = useState(() => {
+    const mode = localStorage.getItem("mode");
+    return mode ? JSON.parse(mode) : false;
+  });
+  const noteAreaRef = useRef(null);
   const lastNotesLengthRef = useRef(notes.length);
-
-  const { scrollToNewElement } = useSmoothScroll(scrollContainerRef);
 
   function toggleDarkMode() {
     setDarkMode((prevState) => !prevState);
@@ -32,57 +30,55 @@ const NotesSection = () => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
+  useEffect(() => {
+    localStorage.setItem("mode", JSON.stringify(darkMode));
+  }, [darkMode]);
+
   // Scroll effect only when new notes are added
   useEffect(() => {
-    if (
-      !scrollContainerRef.current ||
-      notes.length <= lastNotesLengthRef.current
-    ) {
-      lastNotesLengthRef.current = notes.length;
-      return;
+    if (notes.length > lastNotesLengthRef.current) {
+      const timer = setTimeout(() => {
+        const noteArea = noteAreaRef.current;
+        const lastCard = noteArea?.querySelector(".card-container > *:last-child");
+        if (noteArea && lastCard) {
+          const containerHeight = noteArea.clientHeight;
+          const lastCardBottom = lastCard.offsetTop + lastCard.offsetHeight;
+          const scrollOffset = lastCardBottom - containerHeight + 100; // Add padding at bottom
+          
+          noteArea.scrollTo({
+            top: scrollOffset,
+            behavior: "smooth"
+          });
+        }
+      }, 50);
+      return () => clearTimeout(timer);
     }
-
-    const timer = setTimeout(() => {
-      const container = scrollContainerRef.current;
-      const cards = container.querySelectorAll(".card-element");
-      if (cards.length > 0) {
-        const lastCard = cards[cards.length - 1];
-        const containerRect = container.getBoundingClientRect();
-        scrollToNewElement(lastCard, containerRect);
-      }
-    }, 150);
-
     lastNotesLengthRef.current = notes.length;
-    return () => clearTimeout(timer);
-  }, [notes.length, scrollToNewElement]);
+  }, [notes]);
 
   function handleClick() {
     const createdAt = new Date();
     const newNote = {
       id: Date.now(),
-      title: "Create a new Note",
-      content: "Add to your note content...",
-      createdAt,
-      starred,
+      title: "Add title",
+      content: "Add content",
+      createdAt: createdAt,
+      starred: false,
     };
-
-    // Update state using callback to ensure we have the latest state
     setNotes((prevNotes) => [...prevNotes, newNote]);
   }
 
   function handleClearAll() {
     if (window.confirm("Are you sure you want to clear all notes?")) {
       setNotes([]);
-      localStorage.removeItem("notes");
+      // localStorage.removeItem("notes");
     }
   }
 
   function handleCardClick(id, title, content) {
-    const currentNote = notes.find((note) => note.id === id);
     setCurrentNoteId(id);
     setNotesTitle(title);
     setNotesContent(content);
-    setStarred(currentNote?.starred || false);
     setCardPopover(true);
   }
 
@@ -122,28 +118,6 @@ const NotesSection = () => {
     );
   }
 
-  // function formatDate(date) {
-  //   const day = date.getDate().toString().padStart(2, "0");
-  //   const monthNames = [
-  //     "Jan",
-  //     "Feb",
-  //     "Mar",
-  //     "Apr",
-  //     "May",
-  //     "Jun",
-  //     "Jul",
-  //     "Aug",
-  //     "Sep",
-  //     "Oct",
-  //     "Nov",
-  //     "Dec",
-  //   ];
-  //   const month = monthNames[date.getMonth()];
-  //   const year = date.getFullYear();
-
-  //   return `${day} ${month} ${year}`;
-  // }
-
   return (
     <div
       className={
@@ -156,7 +130,7 @@ const NotesSection = () => {
           addButton={handleClick}
           deleteButton={handleClearAll}
         />
-        <main className="note-area" ref={scrollContainerRef}>
+        <div ref={noteAreaRef} className="note-area">
           <NotesTagList starredNotes={starredNotes} />
           {notes.length === 0 ? (
             <p>This is where you can manage your notes...</p>
@@ -172,11 +146,10 @@ const NotesSection = () => {
                     }
                   />
                 ))}
-                <div className="bottom-spacer"></div>
               </div>
             </>
           )}
-        </main>
+        </div>
       </>
       {cardPopover && (
         <NotesCard
@@ -202,7 +175,6 @@ const NotesSection = () => {
       )}
     </div>
   );
-};
+}
 
-NotesSection.displayName = "NotesSection";
 export default NotesSection;
