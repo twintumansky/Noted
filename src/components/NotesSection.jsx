@@ -107,12 +107,12 @@ function NotesSection() {
       )
     );
 
-    const currentNote = notes.find((note) => note.id === currentNoteId);
-    if (currentNote && newStarred) {
-      setStarredNotes((prevState) => [
-        ...prevState,
-        { ...currentNote, starred: newStarred },
-      ]);
+    if (newStarred) {
+      setStarredNotes((prevState) => [...prevState, currentNoteId]);
+    } else {
+      setStarredNotes((prevState) =>
+        prevState.filter((id) => id !== currentNoteId)
+      );
     }
   }
 
@@ -128,9 +128,13 @@ function NotesSection() {
     if (path === "/main/starred") {
       return notes.filter((note) => starredNotes.includes(note.id));
     }
-    // Add more route conditions here if needed
+    if (path === "/main/deleted") {
+      return [];
+    }
     return notes;
   };
+
+  const displayedNotes = getDisplayedNotes();
 
   return (
     <div
@@ -146,15 +150,15 @@ function NotesSection() {
         />
         <div ref={noteAreaRef} className="note-area">
           <NotesTagList starredNotes={starredNotes} />
-          {notes.length === 0 ? (
-            <p>This is where you can manage your notes...</p>
+          {displayedNotes.length === 0 ? (
+            <p>No notes to display in this section...</p>
           ) : (
             <>
               <div className="card-container">
-                {getDisplayedNotes().map((notes) => (
+                {displayedNotes.map((note) => (
                   <Notes
-                    key={notes.id}
-                    notes={notes}
+                    key={note.id}
+                    notes={note}
                     onCardClick={(id, title, content) =>
                       handleCardClick(id, title, content)
                     }

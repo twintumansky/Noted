@@ -1,17 +1,33 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NotesTagList = () => {
   return (
     <div className="notes-tag-list">
       <ul>
         <li>
-          <Link to="/main">All</Link>
+          <NavLink 
+            to="/main"
+            className={({ isActive }) => isActive ? "active" : ""}
+            end
+          >
+            All
+          </NavLink>
         </li>
         <li>
-          <Link to="/main/starred">Starred</Link>
+          <NavLink 
+            to="/main/starred"
+            className={({ isActive }) => isActive ? "active" : ""}
+          >
+            Starred
+          </NavLink>
         </li>
         <li>
-          <Link to="/main/Deleted">Deleted</Link>
+          <NavLink 
+            to="/main/deleted"
+            className={({ isActive }) => isActive ? "active" : ""}
+          >
+            Deleted
+          </NavLink>
         </li>
       </ul>
     </div>
