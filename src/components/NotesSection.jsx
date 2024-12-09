@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
 import NotesTagList from "./NotesTagList";
@@ -21,6 +22,7 @@ function NotesSection() {
   });
   const noteAreaRef = useRef(null);
   const lastNotesLengthRef = useRef(notes.length);
+  const location = useLocation();
 
   function toggleDarkMode() {
     setDarkMode((prevState) => !prevState);
@@ -39,15 +41,17 @@ function NotesSection() {
     if (notes.length > lastNotesLengthRef.current) {
       const timer = setTimeout(() => {
         const noteArea = noteAreaRef.current;
-        const lastCard = noteArea?.querySelector(".card-container > *:last-child");
+        const lastCard = noteArea?.querySelector(
+          ".card-container > *:last-child"
+        );
         if (noteArea && lastCard) {
           const containerHeight = noteArea.clientHeight;
           const lastCardBottom = lastCard.offsetTop + lastCard.offsetHeight;
           const scrollOffset = lastCardBottom - containerHeight + 100; // Add padding at bottom
-          
+
           noteArea.scrollTo({
             top: scrollOffset,
-            behavior: "smooth"
+            behavior: "smooth",
           });
         }
       }, 50);
@@ -97,8 +101,8 @@ function NotesSection() {
     const newStarred = !starred;
     setStarred(newStarred);
 
-    setNotes((prevCards) =>
-      prevCards.map((note) =>
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
         note.id === currentNoteId ? { ...note, starred: newStarred } : note
       )
     );
@@ -117,6 +121,16 @@ function NotesSection() {
       prevCards.filter((card) => card.id !== currentNoteId)
     );
   }
+
+  // Function to determine which notes to show based on current route
+  const getDisplayedNotes = () => {
+    const path = location.pathname;
+    if (path === "/main/starred") {
+      return notes.filter((note) => starredNotes.includes(note.id));
+    }
+    // Add more route conditions here if needed
+    return notes;
+  };
 
   return (
     <div
@@ -137,7 +151,7 @@ function NotesSection() {
           ) : (
             <>
               <div className="card-container">
-                {notes.map((notes) => (
+                {getDisplayedNotes().map((notes) => (
                   <Notes
                     key={notes.id}
                     notes={notes}

@@ -193,7 +193,11 @@ html, body {
   pointer-events: none;
 }
 
-.notes-tag-list button {
+.notes-tag-list ul{
+  display: flex;
+}
+
+.notes-tag-list ul>li {
   margin: 1rem;
   padding: 0.5rem 1.3rem;
   border-radius: 1.1rem;
@@ -203,19 +207,20 @@ html, body {
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
+  list-style:none;
 }
 
-.notes-tag-list button:hover {
+.notes-tag-list ul>li:hover {
   background-color: #121212;
   color: #ffffff;
 }
 
-.notesSection-container.dark .notes-tag-list button {
+.notesSection-container.dark .notes-tag-list ul>li {
   border: 1.2px solid #cac9bd;
   color: #cac9bd;
 }
 
-.notesSection-container.dark .notes-tag-list button:hover {
+.notesSection-container.dark .notes-tag-list ul>li:hover {
   color: #121212;
   background-color: #cac9bd;
 }
@@ -256,6 +261,7 @@ html, body {
   overflow: hidden;
   transition: all 0.4s ease;
   background-color:#c3c5c5;
+  transform: translate3d(0, 0, 0);
 }
 
 .arrow-button {
@@ -271,18 +277,16 @@ html, body {
   background-color: transparent;
   color: #434343;
   opacity: 0;
-  transform: translate(0, -4px);
   transition: all 0.4s ease;
 }
 
 .card-element:hover {
   background-color:#b7baba;
-  /* color:#353434; */
 }
 
 .card-element:hover .arrow-button {
   opacity: 1;
-  transform: translate(5px, -5px);
+  transform: translate3d(4px, -6px, 0);
 }
 
 .card-element-date {
@@ -460,37 +464,3 @@ html, body {
   color: #212122;
 }
 
-.scroll-top-button {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: #999b9b;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  z-index: 100;
-}
-
-.scroll-top-button:hover {
-  background-color: #858787;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.notesSection-container.dark .scroll-top-button {
-  background-color: #353535;
-  color: #ffffff;
-}
-
-.notesSection-container.dark .scroll-top-button:hover {
-  background-color: #454545;
-}
