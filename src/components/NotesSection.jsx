@@ -83,6 +83,9 @@ function NotesSection() {
     setCurrentNoteId(id);
     setNotesTitle(title);
     setNotesContent(content);
+    // Find the note and set its starred status
+    const note = notes.find(note => note.id === id);
+    setStarred(note?.starred || false);
     setCardPopover(true);
   }
 
