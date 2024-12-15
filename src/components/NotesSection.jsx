@@ -36,6 +36,12 @@ function NotesSection() {
     localStorage.setItem("mode", JSON.stringify(darkMode));
   }, [darkMode]);
 
+  useEffect(() => {
+    //notes->filter out all the notes with star property and place them in the setStarredNotes
+    const starNote = notes.filter((note) => note.starred);
+    setStarredNotes(starNote);
+  }, [notes]);
+
   // Scroll effect only when new notes are added
   useEffect(() => {
     if (notes.length > lastNotesLengthRef.current) {
@@ -61,12 +67,11 @@ function NotesSection() {
   }, [notes]);
 
   function handleClick() {
-    const createdAt = new Date();
     const newNote = {
       id: Date.now(),
       title: "Add title",
       content: "Add content",
-      createdAt: createdAt,
+      createdAt: new Date(),
       starred: false,
     };
     setNotes((prevNotes) => [...prevNotes, newNote]);
@@ -84,7 +89,7 @@ function NotesSection() {
     setNotesTitle(title);
     setNotesContent(content);
     // Find the note and set its starred status
-    const note = notes.find(note => note.id === id);
+    const note = notes.find((note) => note.id === id);
     setStarred(note?.starred || false);
     setCardPopover(true);
   }
@@ -129,7 +134,7 @@ function NotesSection() {
   const getDisplayedNotes = () => {
     const path = location.pathname;
     if (path === "/main/starred") {
-      return notes.filter((note) => starredNotes.includes(note.id));
+      return starredNotes;
     }
     if (path === "/main/deleted") {
       return [];
@@ -138,6 +143,7 @@ function NotesSection() {
   };
 
   const displayedNotes = getDisplayedNotes();
+  console.log(starredNotes);
 
   return (
     <div

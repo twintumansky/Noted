@@ -49,6 +49,6 @@ const Notes = ({ notes, onCardClick }) => {
 
 export default Notes;
 Notes.propTypes = {
-  notes: PropTypes.array.isRequired,
+  notes: PropTypes.object.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };

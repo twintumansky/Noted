@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import TypingAnimation from "./TypingAnimation";
 import "../App.css";
 import { Link } from "react-router-dom";
@@ -43,8 +42,3 @@ export default function Intro() {
     </>
   );
 }
-
-Intro.propTypes = {
-  darkMode: PropTypes.bool.isRequired,
-  scrollEvent: PropTypes.func.isRequired,
-};
