@@ -37,7 +37,6 @@ function NotesSection() {
   }, [darkMode]);
 
   useEffect(() => {
-    //notes->filter out all the notes with star property and place them in the setStarredNotes
     const starNote = notes.filter((note) => note.starred);
     setStarredNotes(starNote);
   }, [notes]);
@@ -143,7 +142,6 @@ function NotesSection() {
   };
 
   const displayedNotes = getDisplayedNotes();
-  console.log(starredNotes);
 
   return (
     <div

@@ -21,25 +21,32 @@ const NotesCard = ({
   const titleInputRef = useRef(null);
   const contentInputRef = useRef(null);
 
+  // Toggling edit mode
   const handleClickTitle = () => {
-    setEditMode((prevState) => ({ ...prevState, noteTitle: true }));
+    setEditMode( prevState => ({ ...prevState, noteTitle: true }));
     setTimeout(() => titleInputRef.current?.focus(), 0);
+    if (title === "Add title") {
+      handleTitleClick({ target: { value: "" } });
+    }
   };
   const handleClickContent = () => {
+    setEditMode( prevState => ({ ...prevState, noteContent: true }));
     setTimeout(() => contentInputRef.current?.focus(), 0);
-    if (content === "Click to add content...") {
+    if (content === "Add content") {
       handleContentClick({ target: { value: "" } });
     }
-
-    setEditMode((prevState) => ({ ...prevState, noteContent: true }));
   };
-
+  
+  // Handle out of focus inputs
   const handleTitleBlur = () => {
+    if (!title.trim()) {
+      handleTitleClick({ target: { value: "Add title" } });
+    }
     setEditMode((prevState) => ({ ...prevState, noteTitle: false }));
   };
   const handleContentBlur = () => {
     if (!content.trim()) {
-      handleContentClick({ target: { value: "Click to add content..." } });
+      handleContentClick({ target: { value: "Add content" } });
     }
 
     setEditMode((prevState) => ({ ...prevState, noteContent: false }));

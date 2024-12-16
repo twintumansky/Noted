@@ -51,7 +51,7 @@ html, body {
 }
 
 .introduction.darkmode {
-  background-color: #0d1117;
+  background-color: #111216;
   color: #cac9bd;
 }
 
@@ -115,7 +115,7 @@ html, body {
 }
 
 .notesSection-container.dark {
-  background-color: #0d1117;
+  background-color: #111216;
   color: #cac9bd;
 }
 
@@ -135,7 +135,7 @@ html, body {
 }
 
 .notesSection-container.dark .navbar {
-  background: #0d1117;
+  background: #111216;
 }
 
 .notesSection-container.dark .nav-button {
@@ -261,20 +261,25 @@ html, body {
   height: 15rem;
   width: 15rem;
   border-radius: 1.5rem;
-  color: #212122;
+  color: #111112;
   padding: 1.5rem;
   margin: 1rem;
   text-align: left;
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  background-color:#c3c5c5;
+  background-color:#c2cbd0;
   transform: translate3d(0, 0, 0);
 }
 
+.card-element.dark {
+  color: #cfcfe9;
+  background-color:#1e1e2b;
+}
+
 .arrow-button {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   position: absolute;
   right: 1rem;
   top: 1rem;
@@ -289,7 +294,7 @@ html, body {
 }
 
 .card-element:hover {
-  background-color:#b7baba;
+  background-color:#a1adb4;
 }
 
 .card-element:hover .arrow-button {
@@ -316,38 +321,25 @@ html, body {
   margin-bottom: 0.3rem;
 }
 
-
 @media (max-width: 768px) {
   .card-element {
     height: 8rem;
-    /* Reduce card height */
     width: 8rem;
-    /* Reduce card width */
     margin: 0.5rem;
-    /* Reduce margin */
   }
 }
 
 @media (max-width: 480px) {
-  .navbar input {
-    width: 70%;
-    height: 0.5rem;
+  .card-element {
+    height: 10rem;
+    width: 10rem;
   }
-
-  .navbar {
-    flex-direction: column;
-    /* Stack navbar items vertically */
-    align-items: center;
+  .card-container {
+    padding: 0.5rem;
   }
-
-  .navbar-buttons {
-    flex-direction: column;
-    /* Stack buttons vertically */
-    align-items: center;
-    position: static;
-    /* Change position for smaller screens */
-    margin-top: 0.5rem;
-    /* Add some spacing */
+  .card-overlay.notes-card {
+    width: 320px !important;
+    height: 960px !important;
   }
 }
 
@@ -377,13 +369,12 @@ html, body {
   transform: translateY(100%); /*understand how this animation works*/
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
-  background-color:#999b9b;
+  background-color:#cac9bd;
 }
 
 .notes-card.active {
   transform: translateY(0);
   opacity: 1;
-  /* transition-delay: 10; */
 }
 
 .notes-card-title {
@@ -428,7 +419,7 @@ html, body {
   border: none;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  color: #f3f2f1;
+  color: #e7e7e7;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -465,9 +456,34 @@ html, body {
   position:absolute;
   bottom: 0.6rem;
   right: 11rem;
+  color: #1c1c1c;
 }
 
 .notes-card .bookmark:hover {
   cursor: pointer;
-  color: #212122;
+  }
+
+@media (max-width: 768px) {
+  .card-element {
+    height: 8rem;
+    width: 8rem;
+    margin: 0.5rem;
+    }
+}
+  
+@media (max-width: 480px) {
+  .card-element {
+    height: 10rem;
+    width: 10rem;
+  }
+  .card-container {
+    padding: 0.5rem;
+  }
+  .card-overlay {
+    padding: 0.5rem;
+  }
+  .card-overlay.notes-card active{
+    width: 90vw !important;
+    height: 80pvh;
+  }
 }
