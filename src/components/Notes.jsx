@@ -1,7 +1,7 @@
 import { ArrowUpRight01Icon } from "hugeicons-react";
 import PropTypes from "prop-types";
 
-const Notes = ({ notes, onCardClick }) => {
+const Notes = ({ notes, onCardClick, mode }) => {
   function formatDate(date) {
     const day = date.getDate().toString().padStart(2, "0");
     const monthNames = [
@@ -26,7 +26,9 @@ const Notes = ({ notes, onCardClick }) => {
   return (
     <>
       <div
-        className="card-element"
+        className={
+          mode ? "card-element dark" : "card-element"
+        }
         onClick={() => onCardClick(notes.id, notes.title, notes.content)}
       >
         <button
@@ -49,6 +51,7 @@ const Notes = ({ notes, onCardClick }) => {
 
 export default Notes;
 Notes.propTypes = {
+  mode: PropTypes.bool.isRequired,
   notes: PropTypes.object.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };

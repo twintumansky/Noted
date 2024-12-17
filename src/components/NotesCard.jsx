@@ -48,7 +48,6 @@ const NotesCard = ({
     if (!content.trim()) {
       handleContentClick({ target: { value: "Add content" } });
     }
-
     setEditMode((prevState) => ({ ...prevState, noteContent: false }));
   };
 

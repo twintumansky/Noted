@@ -79,7 +79,6 @@ function NotesSection() {
   function handleClearAll() {
     if (window.confirm("Are you sure you want to clear all notes?")) {
       setNotes([]);
-      // localStorage.removeItem("notes");
     }
   }
 
@@ -87,14 +86,12 @@ function NotesSection() {
     setCurrentNoteId(id);
     setNotesTitle(title);
     setNotesContent(content);
-    // Find the note and set its starred status
     const note = notes.find((note) => note.id === id);
     setStarred(note?.starred || false);
     setCardPopover(true);
   }
 
   function handleClosePopover() {
-    // Save the current note's content before closing
     setNotes((prevCards) =>
       prevCards.map((cards) =>
         cards.id === currentNoteId
@@ -129,7 +126,6 @@ function NotesSection() {
     );
   }
 
-  // Function to determine which notes to show based on current route
   const getDisplayedNotes = () => {
     const path = location.pathname;
     if (path === "/main/starred") {
@@ -140,7 +136,6 @@ function NotesSection() {
     }
     return notes;
   };
-
   const displayedNotes = getDisplayedNotes();
 
   return (
@@ -165,6 +160,7 @@ function NotesSection() {
                 {displayedNotes.map((note) => (
                   <Notes
                     key={note.id}
+                    mode={darkMode}s
                     notes={note}
                     onCardClick={(id, title, content) =>
                       handleCardClick(id, title, content)
