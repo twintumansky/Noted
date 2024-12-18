@@ -160,7 +160,7 @@ function NotesSection() {
                 {displayedNotes.map((note) => (
                   <Notes
                     key={note.id}
-                    mode={darkMode}s
+                    mode={darkMode}
                     notes={note}
                     onCardClick={(id, title, content) =>
                       handleCardClick(id, title, content)

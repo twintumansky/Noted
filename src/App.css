@@ -109,7 +109,7 @@ html, body {
 .notesSection-container {
   display: flex;
   height: 100vh;
-  background-color:#ececed;
+  background-color:#dddddd;
   position: relative;
   overflow: hidden;
 }
@@ -267,7 +267,7 @@ html, body {
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  background-color:#c2cbd0;
+  background-color:#71777a;
   transform: translate3d(0, 0, 0);
 }
 
@@ -293,7 +293,7 @@ html, body {
 }
 
 .card-element:hover {
-  background-color:#a1adb4;
+  background-color:#868d91;
 }
 
 .card-element.dark:hover {
