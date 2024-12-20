@@ -45,7 +45,7 @@ html, body {
   align-items: center;
   text-align: center;
   position: relative;
-  background-color: #ececed;
+  background-color: #cac0c1;
   color: #000000;
   overflow-x: hidden;
 }
@@ -109,7 +109,7 @@ html, body {
 .notesSection-container {
   display: flex;
   height: 100vh;
-  background-color:#dddddd;
+  background-color:#cac0c1;
   position: relative;
   overflow: hidden;
 }
@@ -129,7 +129,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ececed;
+  background-color: #cac0c1;
   border-bottom: 0.5px solid#8a8787;
 }
 
@@ -260,14 +260,14 @@ html, body {
   height: 15rem;
   width: 15rem;
   border-radius: 1.5rem;
-  color: #111112;
+  color: #cac0c1;
   padding: 1.5rem;
   margin: 1rem;
   text-align: left;
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  background-color:#71777a;
+  background-color:#20232b;
   transform: translate3d(0, 0, 0);
 }
 
@@ -372,7 +372,7 @@ html, body {
   transform: translateY(100%); /*understand how this animation works*/
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
-  background-color:#cac9bd;
+  background-color:#71777a;
 }
 
 .notes-card.active {
