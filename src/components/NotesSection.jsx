@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { ThemeContext } from "./context/ThemeContext";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
 import NotesTagList from "./NotesTagList";
 import Notes from "./Notes";
+
 
 function NotesSection() {
   const [notes, setNotes] = useState(() => {
@@ -16,18 +18,10 @@ function NotesSection() {
   const [cardPopover, setCardPopover] = useState(false);
   const [starredNotes, setStarredNotes] = useState([]);
   const [starred, setStarred] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => {
-    const mode = localStorage.getItem("mode");
-    return mode ? JSON.parse(mode) : false;
-  });
+  const { darkMode } = useContext(ThemeContext);
   const noteAreaRef = useRef(null);
   const lastNotesLengthRef = useRef(notes.length);
   const location = useLocation();
-
-  function toggleDarkMode() {
-    setDarkMode((prevState) => !prevState);
-  }
-
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
@@ -146,7 +140,6 @@ function NotesSection() {
     >
       <>
         <NavBar
-          buttonDarkMode={toggleDarkMode}
           addButton={handleClick}
           deleteButton={handleClearAll}
         />

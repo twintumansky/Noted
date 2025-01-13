@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import TypingAnimation from "./TypingAnimation";
-import "../App.css";
+import { ThemeContext } from "./context/ThemeContext";
 import { Link } from "react-router-dom";
+import "../App.css";
+
 
 export default function Intro() {
+  const {darkMode} = useContext(ThemeContext);
   const mainText = "noted...";
   const subText = [
     "< A TRULY MINIMAL NOTE TAKING APP >",
@@ -12,7 +16,7 @@ export default function Intro() {
 
   return (
     <>
-      <div className="introduction">
+      <div className={darkMode? "introduction dark": "introduction"}>
         <div className="typewriter">
           <h1>
             <TypingAnimation
