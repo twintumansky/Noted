@@ -6,7 +6,7 @@ import "../App.css";
 
 
 export default function Intro() {
-  const {darkMode} = useContext(ThemeContext);
+  const { darkMode } = useContext(ThemeContext);
   const mainText = "noted...";
   const subText = [
     "< A TRULY MINIMAL NOTE TAKING APP >",
@@ -16,7 +16,7 @@ export default function Intro() {
 
   return (
     <>
-      <div className={darkMode? "introduction dark": "introduction"}>
+      <div className={darkMode ? "introduction dark" : "introduction"}>
         <div className="typewriter">
           <h1>
             <TypingAnimation
@@ -38,7 +38,7 @@ export default function Intro() {
         </div>
         {/* Arrow Button */}
         <div className="arrow-container">
-          <Link className="arrow" to="/main">
+          <Link className={darkMode ? "arrow dark" : "arrow"} to="/main">
             &#x25BE;
           </Link>
         </div>

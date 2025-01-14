@@ -45,14 +45,14 @@ html, body {
   align-items: center;
   text-align: center;
   position: relative;
-  background-color: #cac0c1;
-  color: #000000;
+  background-color: #b4b4b4;
+  color: #0c0c0c;
   overflow-x: hidden;
 }
 
 .introduction.dark {
-  background-color: #0d1f23;
-  color: #cac9bd;
+  background-color: #121212;
+  color: #b4b4b4;
 }
 
 .typewriter {
@@ -83,10 +83,13 @@ html, body {
 .arrow {
   display: inline-block;
   font-size: 2rem;
-  color: #000000;
+  color: #0c0c0c;
   cursor: pointer;
   animation: swipeDown 1.5s infinite;
   text-decoration: none;
+}
+.arrow.dark {
+  color: #b4b4b4;
 }
 
 @keyframes swipeDown {
@@ -109,13 +112,13 @@ html, body {
 .notesSection-container {
   display: flex;
   height: 100vh;
-  background-color:#ececec;
+  background-color:#b4b4b4;
   position: relative;
   overflow: hidden;
 }
 
 .notesSection-container.dark {
-  background-color: #1b1b1f;
+  background-color: #121212;
   color: #b0bec0;
 }
 
@@ -129,12 +132,12 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ececec;
-  border-bottom: 0.5px solid #9a9996;
+  background-color: #b4b4b4;
+  border-bottom: 0.5px solid #6d6c6a;
 }
 
 .notesSection-container.dark .navbar {
-  background-color: #1b1b1f;
+  background-color: #121212;
   border-bottom: 0.5px solid #343435;
 }
 
@@ -261,20 +264,20 @@ html, body {
   height: 15rem;
   width: 15rem;
   border-radius: 1.5rem;
-  color: #000000; 
+  color: #0c0c0c; 
   padding: 1.5rem;
   margin: 1rem;
   text-align: left;
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  background-color:#797b80;
+  background-color:#787878;
   transform: translate3d(0, 0, 0);
 }
 
 .card-element.dark {
-  color: #d3d1d1;
-  background-color:#313134;
+  color: #b4b4b4;
+  background-color:#1f1f1f;
 }
 
 .arrow-button {
@@ -294,11 +297,11 @@ html, body {
 }
 
 .card-element:hover {
-  background-color:#868d91;
+  background-color:#8d8d8d;
 }
 
 .card-element.dark:hover {
-  background-color:#3c3c3e;
+  background-color:#262626;
 }
 
 .card-element:hover .arrow-button {
@@ -337,13 +340,24 @@ html, body {
   .card-element {
     height: 10rem;
     width: 10rem;
+    position: relative;
+    margin: 0.25rem;
+    padding: 1rem;  /* Slightly reduced padding */
   }
   .card-container {
     padding: 0.5rem;
+    gap: 0.5rem;  /* Reduce gap for mobile */
+  }
+  .card-element-title {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;  /* Adjusted from your 2rem */
   }
   .card-overlay.notes-card {
     width: 320px !important;
     height: 960px !important;
+  }
+  .card-element .card-element-title {
+    margin-top:2rem;
   }
 }
 
@@ -373,7 +387,11 @@ html, body {
   transform: translateY(100%); /*understand how this animation works*/
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
-  background-color:#71777a;
+  background-color:#787878;
+}
+
+.notes-card.dark {
+  background-color:#1f1f1f;
 }
 
 .notes-card.active {
@@ -414,6 +432,12 @@ html, body {
   border: none;
   background-color: transparent;
   resize: none;
+}
+
+.notes-card-title.dark input,
+.notes-card-title.dark p, .notes-card-content.dark textarea,
+.notes-card-content.dark p {
+  color: #b4b4b4;
 }
 
 .notes-card .delete-button, 

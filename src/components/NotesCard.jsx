@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { MultiplicationSignIcon, Bookmark02Icon } from "hugeicons-react";
+import { ThemeContext } from "./context/ThemeContext";
 import PropTypes from "prop-types";
 
 const NotesCard = ({
@@ -17,6 +18,7 @@ const NotesCard = ({
     noteContent: false,
   });
   const [isActive, setIsActive] = useState(false);
+  const { darkMode } = useContext(ThemeContext);
   const animationDuration = 400;
   const titleInputRef = useRef(null);
   const contentInputRef = useRef(null);
@@ -76,11 +78,11 @@ const NotesCard = ({
   return (
     <div className="card-overlay" onClick={handleClose}>
       <div
-        className={`notes-card ${isActive ? "active" : ""}`}
+        className={darkMode? `notes-card dark ${isActive ? "active" : ""}` : `notes-card ${isActive ? "active" : ""}`}
         // Prevent overlay click from closing the card
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="notes-card-title">
+        <div className={darkMode? "notes-card-title dark":"notes-card-title"}>
           {editMode.noteTitle ? (
             <input
               value={title}
@@ -92,7 +94,7 @@ const NotesCard = ({
             <p onClick={handleClickTitle}>{title || "Add Title"}</p>
           )}
         </div>
-        <div className="notes-card-content">
+        <div className={darkMode? "notes-card-content dark" :"notes-card-content"}>
           {editMode.noteContent ? (
             <textarea
               value={content}
