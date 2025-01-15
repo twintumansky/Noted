@@ -45,7 +45,7 @@ html, body {
   align-items: center;
   text-align: center;
   position: relative;
-  background-color: #b4b4b4;
+  background-image: url('./assets/background_image.png');
   color: #0c0c0c;
   overflow-x: hidden;
 }
@@ -112,13 +112,14 @@ html, body {
 .notesSection-container {
   display: flex;
   height: 100vh;
-  background-color:#b4b4b4;
+  /* background-color:#b4b4b4; */
+  background-image: url('./assets/background_image.png');
   position: relative;
   overflow: hidden;
 }
 
 .notesSection-container.dark {
-  background-color: #121212;
+  background-color: #161616;
   color: #b0bec0;
 }
 
@@ -132,8 +133,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #b4b4b4;
-  border-bottom: 0.5px solid #6d6c6a;
+  background-color: transparent;
+  border-bottom: 0.5px solid #cbcaca;
 }
 
 .notesSection-container.dark .navbar {
@@ -209,7 +210,7 @@ html, body {
 .notes-tag-list a {
   padding: 0.5rem 1.3rem;
   border-radius: 1.1rem;
-  border: 1.2px solid #121212;
+  border: 0.8px solid #696969;
   background: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -226,8 +227,8 @@ html, body {
 }
 
 .notesSection-container.dark .notes-tag-list a {
-  border: 1.2px solid #cac9bd;
-  color: #cac9bd;
+  border: 0.5px solid #696967;
+  color: #a1a19e;
 }
 
 .notesSection-container.dark .notes-tag-list a:hover,
@@ -271,13 +272,13 @@ html, body {
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  background-color:#787878;
+  background-color:#8e8e8e;
   transform: translate3d(0, 0, 0);
 }
 
 .card-element.dark {
   color: #b4b4b4;
-  background-color:#1f1f1f;
+  background-color:#313131;
 }
 
 .arrow-button {
@@ -301,7 +302,7 @@ html, body {
 }
 
 .card-element.dark:hover {
-  background-color:#262626;
+  background-color:#3c3c3c;
 }
 
 .card-element:hover .arrow-button {
