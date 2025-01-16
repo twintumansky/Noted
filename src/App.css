@@ -45,13 +45,14 @@ html, body {
   align-items: center;
   text-align: center;
   position: relative;
-  background-image: url('./assets/background_image.png');
+  background-image: url('./assets/background_image_light.png');
   color: #0c0c0c;
   overflow-x: hidden;
 }
 
 .introduction.dark {
   background-color: #121212;
+  background-image: url('./assets/background_image_dark.png');
   color: #b4b4b4;
 }
 
@@ -272,7 +273,7 @@ html, body {
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  background-color:#8e8e8e;
+  background-color:rgb(165, 165, 165, 0.8);
   transform: translate3d(0, 0, 0);
 }
 
