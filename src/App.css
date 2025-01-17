@@ -45,14 +45,13 @@ html, body {
   align-items: center;
   text-align: center;
   position: relative;
-  background-image: url('./assets/background_image_light.png');
+  background-color: #dfdede;
   color: #0c0c0c;
   overflow-x: hidden;
 }
 
 .introduction.dark {
-  background-color: #121212;
-  background-image: url('./assets/background_image_dark.png');
+  background-color: #222222;
   color: #b4b4b4;
 }
 
@@ -113,14 +112,13 @@ html, body {
 .notesSection-container {
   display: flex;
   height: 100vh;
-  /* background-color:#b4b4b4; */
-  background-image: url('./assets/background_image.png');
+  background-color: #dfdede;
   position: relative;
   overflow: hidden;
 }
 
 .notesSection-container.dark {
-  background-color: #161616;
+  background-color: #222222;
   color: #b0bec0;
 }
 
@@ -139,7 +137,7 @@ html, body {
 }
 
 .notesSection-container.dark .navbar {
-  background-color: #121212;
+  background-color: #222222;
   border-bottom: 0.5px solid #343435;
 }
 
@@ -378,6 +376,10 @@ html, body {
   z-index: 1000;
 }
 
+.notesSection-container.dark .card-overlay {
+  background: rgba(158, 158, 158, 0.450);
+}
+
 .notes-card {
   border-radius: 1.5rem;
   padding: 1rem;
@@ -393,7 +395,7 @@ html, body {
 }
 
 .notes-card.dark {
-  background-color:#1f1f1f;
+  background-color:#353535;
 }
 
 .notes-card.active {
@@ -421,6 +423,10 @@ html, body {
   height: 80%;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 0.5rem;
+}
+
+.notes-card.dark .notes-card-content {
+  border: 0.5px solid rgb(101, 101, 101);
 }
 
 .notes-card-content textarea,
