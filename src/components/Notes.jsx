@@ -23,6 +23,12 @@ const Notes = ({ notes, onCardClick, mode }) => {
 
     return `${day} ${month} ${year}`;
   }
+
+  // Truncate content to show only first 100 characters
+  const truncateContent = (text) => {
+    return text.length > 100 ? `${text.substring(0, 100)}...` : text;
+  };
+  
   return (
     <>
       <div

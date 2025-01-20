@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { ThemeContext } from "./context/ThemeContext";
+import useFetchNotes from "../hooks/useFetchNotes";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
 import NotesTagList from "./NotesTagList";
@@ -8,10 +9,8 @@ import Notes from "./Notes";
 
 
 function NotesSection() {
-  const [notes, setNotes] = useState(() => {
-    const savedNotes = localStorage.getItem("notes");
-    return savedNotes ? JSON.parse(savedNotes) : [];
-  });
+  const savedNotes = useFetchNotes();
+  const [notes, setNotes] = useState(savedNotes);
   const [notesTitle, setNotesTitle] = useState("");
   const [notesContent, setNotesContent] = useState("");
   const [currentNoteId, setCurrentNoteId] = useState(null);
@@ -25,7 +24,7 @@ function NotesSection() {
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
-
+  
   useEffect(() => {
     localStorage.setItem("mode", JSON.stringify(darkMode));
   }, [darkMode]);

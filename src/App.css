@@ -1,7 +1,14 @@
+
+.roboto-mono-base {
+  font-family: 'Roboto Mono', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Urbanist', sans-serif;
+  font-family:'Roboto Mono', sans-serif;
 }
 
 *,
@@ -45,13 +52,13 @@ html, body {
   align-items: center;
   text-align: center;
   position: relative;
-  background-color: #dfdede;
+  background-color: #dbdcd5;
   color: #0c0c0c;
   overflow-x: hidden;
 }
 
 .introduction.dark {
-  background-color: #222222;
+  background-color: #1e1e1e;
   color: #b4b4b4;
 }
 
@@ -60,9 +67,11 @@ html, body {
 }
 
 .typewriter h1 {
+  font:'Roboto Mono', sans-serif;
   font-size: 4rem;
   font-weight: 300;
   overflow-y: hidden;
+  letter-spacing: -0.07em;
 }
 
 .typewriter p {
@@ -112,13 +121,13 @@ html, body {
 .notesSection-container {
   display: flex;
   height: 100vh;
-  background-color: #dfdede;
+  background-color: #dbdcd5;
   position: relative;
   overflow: hidden;
 }
 
 .notesSection-container.dark {
-  background-color: #222222;
+  background-color: #1e1e1e;
   color: #b0bec0;
 }
 
@@ -260,19 +269,36 @@ html, body {
   min-height: min-content;
 }
 
-.card-element {
+/* .card-element {
   height: 15rem;
   width: 15rem;
   border-radius: 1.5rem;
-  color: #0c0c0c; 
+  color: #232323; 
   padding: 1.5rem;
   margin: 1rem;
   text-align: left;
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  background-color:rgb(165, 165, 165, 0.8);
+  background-color: #8b8b87;
   transform: translate3d(0, 0, 0);
+} */
+
+.card-element {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 1.5rem;
+  color: #232323;
+  padding: 1.5rem;
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #8b8b87;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-element.dark {
@@ -280,7 +306,7 @@ html, body {
   background-color:#313131;
 }
 
-.arrow-button {
+/* .arrow-button {
   width: 1.5rem;
   height: 1.5rem;
   position: absolute;
@@ -294,14 +320,39 @@ html, body {
   color: #434343;
   opacity: 0;
   transition: all 0.4s ease;
+} */
+.arrow-button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #454545;
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
+/* .card-element:hover {
+  background-color:#969692;
+} */
 .card-element:hover {
-  background-color:#8d8d8d;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.card-element.dark:hover {
+/* .card-element.dark:hover {
   background-color:#3c3c3c;
+} */
+.card-element:hover .arrow-button {
+  opacity: 1;
+  transform: translate(4px, -4px);
 }
 
 .card-element:hover .arrow-button {
@@ -309,23 +360,77 @@ html, body {
   transform: translate3d(4px, -6px, 0);
 }
 
-.card-element-date {
+/* .card-element-date {
   position: absolute;
   left: 1.5rem;
   bottom: 1rem;
   font-size: 1rem;
   font-weight: 450;
-}
-  
-.card-element-inner {
-  position: absolute;
-  top: 5rem;
+} */
+.card-element-date {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #454545;
+  margin-top: auto;
 }
 
-.card-element-title {
-  font-size: 1.4rem;
-  font-weight: 550;
+.card-element.dark .card-element-date {
+  color: #5a5a5a;
+}
+  
+/* .card-element-inner {
+  position: absolute;
+  top: 5rem;
+} */
+.card-element-inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.60rem;
+}
+
+/* .card-element-title {
+  font:'Roboto Mono', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
   margin-bottom: 0.3rem;
+  margin-right: 1.5rem;
+  color:#0c0c0c;
+} */
+.card-element-title {
+  font: 'Roboto Mono';
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #0c0c0c;
+  margin-top: 1rem;
+  letter-spacing: -0.03em;
+  /* line-height: 1.1; */
+  /* Ensure title doesn't overflow */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-element.dark .card-element-title {
+  color: #c9c9c9;
+}
+
+.card-element-content {
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #333333;
+  margin: 0;
+  /* Show 3 lines of content */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} /* newly added class*/
+
+.card-element.dark .card-element-content {
+  color: #abaaaa;
 }
 
 @media (max-width: 768px) {
@@ -336,21 +441,21 @@ html, body {
   }
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .card-element {
     height: 10rem;
     width: 10rem;
     position: relative;
     margin: 0.25rem;
-    padding: 1rem;  /* Slightly reduced padding */
+    padding: 1rem;  
   }
   .card-container {
     padding: 0.5rem;
-    gap: 0.5rem;  /* Reduce gap for mobile */
+    gap: 0.5rem;  
   }
   .card-element-title {
     font-size: 1.1rem;
-    margin-top: 1.5rem;  /* Adjusted from your 2rem */
+    margin-top: 1.5rem;  
   }
   .card-overlay.notes-card {
     width: 320px !important;
@@ -358,6 +463,24 @@ html, body {
   }
   .card-element .card-element-title {
     margin-top:2rem;
+  }
+} */
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .card-element {
+    height: 12rem;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .card-element-title {
+    font-size: 1.25rem;
+  }
+
+  .card-element-content {
+    font-size: 0.875rem;
+    -webkit-line-clamp: 2;
   }
 }
 
@@ -391,7 +514,7 @@ html, body {
   transform: translateY(100%); /*understand how this animation works*/
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.4s ease;
-  background-color:#787878;
+  background-color:#8b8b87;
 }
 
 .notes-card.dark {
@@ -409,14 +532,15 @@ html, body {
 
 .notes-card-title input,
 .notes-card-title p {
+  font: 'Roboto Mono', sans-serif;
   width: 90%;
   padding: 0.3rem;
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: 400;
   outline: none;
   background-color: transparent;
   border: none;
-  color: #212122;
+  color: #272626;
 }
 
 .notes-card-content {
@@ -426,11 +550,12 @@ html, body {
 }
 
 .notes-card.dark .notes-card-content {
-  border: 0.5px solid rgb(101, 101, 101);
+  border: 0.5px solid #4d4b4b;
 }
 
 .notes-card-content textarea,
 .notes-card-content p {
+  font: 'Roboto Mono', sans-serif;
   width: 100%;
   height: 100%;
   font-size: 1.2rem;
@@ -482,7 +607,7 @@ html, body {
 
 .notes-card .save-button {
   bottom: 0.6rem;
-  right: 5.5rem;
+  right: 6rem;
 }
 .notes-card .delete-button {
   bottom: 0.6rem;
