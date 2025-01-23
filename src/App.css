@@ -58,7 +58,7 @@ html, body {
 }
 
 .introduction.dark {
-  background-color: #1e1e1e;
+  background-color: #131517;
   color: #b4b4b4;
 }
 
@@ -69,7 +69,7 @@ html, body {
 .typewriter h1 {
   font:'Roboto Mono', sans-serif;
   font-size: 4rem;
-  font-weight: 300;
+  font-weight: 200;
   overflow-y: hidden;
   letter-spacing: -0.07em;
 }
@@ -127,7 +127,7 @@ html, body {
 }
 
 .notesSection-container.dark {
-  background-color: #1e1e1e;
+  background-color: #131517;
   color: #b0bec0;
 }
 
@@ -146,7 +146,7 @@ html, body {
 }
 
 .notesSection-container.dark .navbar {
-  background-color: #222222;
+  background-color: #131517;
   border-bottom: 0.5px solid #343435;
 }
 
@@ -230,8 +230,8 @@ html, body {
 
 .notes-tag-list a:hover,
 .notes-tag-list a.active {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #2e2e2e;
+  color: #ededed;
 }
 
 .notesSection-container.dark .notes-tag-list a {
@@ -242,7 +242,7 @@ html, body {
 .notesSection-container.dark .notes-tag-list a:hover,
 .notesSection-container.dark .notes-tag-list a.active {
   color: #121212;
-  background-color: #cac9bd;
+  background-color: #a4a3a0;
 }
 
 .note-area {
@@ -404,6 +404,7 @@ html, body {
   color: #0c0c0c;
   margin-top: 1rem;
   letter-spacing: -0.03em;
+  line-height: 1.1;
   /* line-height: 1.1; */
   /* Ensure title doesn't overflow */
   display: -webkit-box;
