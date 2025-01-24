@@ -6,6 +6,7 @@ import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";
 import NotesTagList from "./NotesTagList";
 import Notes from "./Notes";
+import OnlineStatus from '../utils/OnlineStatus';
 
 
 function NotesSection() {
@@ -186,6 +187,7 @@ function NotesSection() {
           }
         />
       )}
+      <OnlineStatus />
     </div>
   );
 }
