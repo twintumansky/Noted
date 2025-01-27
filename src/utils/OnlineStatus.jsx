@@ -6,13 +6,13 @@ const PopupContainer = styled.div`
   bottom: ${props => props.show ? '20px' : '-100px'};
   left: 50%;
   transform: translateX(-50%);
-  background-color: #ff4444;
+  background-color: #5876b7bb;
   color: white;
   padding: 12px 24px;
   border-radius: 8px;
   transition: bottom 0.3s ease-in-out;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
 `;
 
 const OnlineStatus = () => {

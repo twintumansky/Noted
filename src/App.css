@@ -360,6 +360,10 @@ html, body {
   transform: translate3d(4px, -6px, 0);
 }
 
+.card-element.dark:hover .arrow-button {
+  color: #848383;
+}
+
 /* .card-element-date {
   position: absolute;
   left: 1.5rem;
@@ -402,7 +406,7 @@ html, body {
   font-size: 1.5rem;
   font-weight: 400;
   color: #0c0c0c;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   letter-spacing: -0.03em;
   line-height: 1.1;
   /* line-height: 1.1; */
