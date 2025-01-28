@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "../App.css";
 
 
-export default function Intro() {
+export default function Intro({ onArrowClick }) {
   const { darkMode } = useContext(ThemeContext);
   const mainText = "noted...";
   const subText = [
@@ -13,6 +13,16 @@ export default function Intro() {
     "< CAPTURE YOUR THOUGHTS >",
     "< ORGANIZE YOUR IDEAS >",
   ];
+  
+  //added handleArrowClick function for animation
+  const handleArrowClick = (e) => {
+    e.preventDefault(); // Prevent default Link behavior
+    onArrowClick();
+    // Navigate programmatically after animation
+    setTimeout(() => {
+      window.location.href = '/main';
+    }, 600); // Match this with your transition duration
+  };
 
   return (
     <>
@@ -38,7 +48,11 @@ export default function Intro() {
         </div>
         {/* Arrow Button */}
         <div className="arrow-container">
-          <Link className={darkMode ? "arrow dark" : "arrow"} to="/main">
+          <Link 
+            className={darkMode ? "arrow dark" : "arrow"} 
+            to="/main"
+            onClick={handleArrowClick} //added eventlistener to handle arrow click
+          >
             &#x25BE;
           </Link>
         </div>
