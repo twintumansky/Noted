@@ -718,3 +718,39 @@ html, body {
 .notesSection-container.dark .note-area::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
+
+/* animation for theme toggle */
+.theme-transition-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.theme-circle {
+  position: absolute;
+  top: 1.5rem;  /* Adjust based on your navbar height */
+  right: 2rem;  /* Adjust based on your button position */
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-circle.dark {
+  background-color: #131517;
+}
+
+.theme-circle.light {
+  background-color: #dbdcd5;
+}
+
+.theme-circle.expanding {
+  width: 300vw;
+  height: 300vw;
+}
+
