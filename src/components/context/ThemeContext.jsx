@@ -22,6 +22,7 @@
 
 //This includes the ThemeTransition event
 import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 import ThemeTransition from "../ThemeTransition";
 
 export const ThemeContext = createContext();
@@ -48,3 +49,6 @@ export default function ThemeProvider({ children }) {
   );
 }
 
+ThemeProvider.propTypes = {
+  children: PropTypes.node,
+};

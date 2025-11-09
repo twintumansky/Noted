@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import PropTypes from "prop-types";
 import TypingAnimation from "./TypingAnimation";
 import { ThemeContext } from "./context/ThemeContext";
 import { Link } from "react-router-dom";
@@ -60,3 +61,7 @@ export default function Intro({ onArrowClick }) {
     </>
   );
 }
+
+Intro.propTypes = {
+  onArrowClick: PropTypes.func.isRequired, // Can be anything renderable by React (strings, numbers, elements, arrays, fragments)
+};
