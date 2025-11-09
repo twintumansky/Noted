@@ -550,7 +550,8 @@ html, body {
 
 .notes-card-content {
   height: 80%;
-  border: 1px solid rgb(221, 221, 221);
+  padding: 0.25rem;
+  border: 1px solid #817f7f;
   border-radius: 0.5rem;
 }
 
@@ -565,7 +566,7 @@ html, body {
   width: 100%;
   height: 100%;
   font-size: 1.2rem;
-  color: #212122;
+  color: #454545;
   padding: 0.3rem;
   outline: none;
   border: none;
