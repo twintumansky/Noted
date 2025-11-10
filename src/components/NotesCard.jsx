@@ -66,8 +66,8 @@ const NotesCard = ({
   // Handle closing animation
   const handleClose = (e) => {
     if (e) {
-      e.preventDefault(); //lessonToLearn
-      e.stopPropagation(); //lessonToLearn
+      e.preventDefault();
+      e.stopPropagation(); 
     }
 
     setIsActive(false);

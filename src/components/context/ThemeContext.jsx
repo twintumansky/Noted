@@ -33,8 +33,12 @@ export default function ThemeProvider({ children }) {
 
   const toggleDarkMode = () => {
     setIsTransitioning(true);
-    setDarkMode(!darkMode);
-    
+
+    // Ensure the overlay is mounted before flipping the theme
+    requestAnimationFrame(() => {
+      setDarkMode((prev) => !prev);
+    });
+
     // Reset transition state after animation
     setTimeout(() => {
       setIsTransitioning(false);
@@ -42,7 +46,7 @@ export default function ThemeProvider({ children }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
+    <ThemeContext.Provider value={{ darkMode, toggleDarkMode, isTransitioning }}>
       {isTransitioning && <ThemeTransition isDark={darkMode} />}
       {children}
     </ThemeContext.Provider>
