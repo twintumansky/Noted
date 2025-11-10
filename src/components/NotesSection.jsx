@@ -146,7 +146,11 @@ function NotesSection() {
         <div ref={noteAreaRef} className="note-area">
           <NotesTagList starredNotes={starredNotes} />
           {displayedNotes.length === 0 ? (
-            <p>No notes to display in this section...</p>
+            <div>
+              <img src="../assets/images/empty_state.svg" />
+              <p>Your starred notes will appear here...</p>
+            </div>
+            
           ) : (
             <>
               <div className="card-container">
