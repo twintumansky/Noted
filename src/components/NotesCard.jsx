@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import { MultiplicationSignIcon, Bookmark02Icon } from "hugeicons-react";
+import { MultiplicationSignIcon, Bookmark02Icon, Undo03Icon } from "hugeicons-react";
 import { ThemeContext } from "./context/ThemeContext";
 import PropTypes from "prop-types";
 
@@ -121,17 +121,15 @@ const NotesCard = ({
           <button
             onClick={onRestore}
             className="restore-button"
-          >
-            Restore
+          >            
+            <Undo03Icon size={22} />
           </button>
         ) : (
           <>
             <button
               className="save-button"
               onClick={() => {
-                // e.stopPropagation();
                 onSave();
-                console.log("bookmarked");
               }}
             >
               Save
