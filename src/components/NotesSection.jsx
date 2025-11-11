@@ -7,6 +7,7 @@ import NotesCard from "./NotesCard";
 import NotesTagList from "./NotesTagList";
 import Notes from "./Notes";
 import OnlineStatus from '../utils/OnlineStatus';
+import empty_state from "../assets/images/empty_state.svg";
 
 
 function NotesSection() {
@@ -17,6 +18,7 @@ function NotesSection() {
   const [currentNoteId, setCurrentNoteId] = useState(null);
   const [cardPopover, setCardPopover] = useState(false);
   const [starredNotes, setStarredNotes] = useState([]);
+  const [deletedNotes, setDeletedNotes] = useState([]);
   const [starred, setStarred] = useState(false);
   const { darkMode } = useContext(ThemeContext);
   const noteAreaRef = useRef(null);
@@ -31,8 +33,11 @@ function NotesSection() {
   }, [darkMode]);
 
   useEffect(() => {
-    const starNote = notes.filter((note) => note.starred);
+    const starNote = notes.filter((note) => note.starred && !note.deleted);
     setStarredNotes(starNote);
+
+    const delNote = notes.filter((note) => note.deleted);
+    setDeletedNotes(delNote);
   }, [notes]);
 
   // Scroll effect only when new notes are added
@@ -66,6 +71,7 @@ function NotesSection() {
       content: "Add content",
       createdAt: new Date(),
       starred: false,
+      deleted: false,
     };
     setNotes((prevNotes) => [...prevNotes, newNote]);
   }
@@ -115,8 +121,10 @@ function NotesSection() {
   }
 
   function handleDeleteNote() {
-    setNotes((prevCards) =>
-      prevCards.filter((card) => card.id !== currentNoteId)
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === currentNoteId ? { ...note, deleted: true } : note
+      )
     );
   }
 
@@ -126,11 +134,22 @@ function NotesSection() {
       return starredNotes;
     }
     if (path === "/main/deleted") {
-      return [];
+      return deletedNotes;
     }
-    return notes;
+    return notes.filter((note) => !note.deleted);
   };
   const displayedNotes = getDisplayedNotes();
+
+  const getEmptyStateMessage = () => {
+    const path = location.pathname;
+    if (path === "/main/starred") {
+      return "Your starred notes will appear here...";
+    }
+    if (path === "/main/deleted") {
+      return "Your deleted notes will appear here...";
+    }
+    return "No notes found. Click '+' to add one!";
+  };
 
   return (
     <div
@@ -147,8 +166,8 @@ function NotesSection() {
           <NotesTagList starredNotes={starredNotes} />
           {displayedNotes.length === 0 ? (
             <div>
-              <img src="../assets/images/empty_state.svg" />
-              <p>Your starred notes will appear here...</p>
+              <img src={empty_state} />
+              <p>{getEmptyStateMessage()}</p>
             </div>
             
           ) : (
