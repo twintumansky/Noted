@@ -12,6 +12,8 @@ const NotesCard = ({
   onDelete,
   onSave,
   star,
+  onRestore,
+  isDeleted
 }) => {
   const [editMode, setEditMode] = useState({
     noteTitle: false,
@@ -25,20 +27,20 @@ const NotesCard = ({
 
   // Toggling edit mode
   const handleClickTitle = () => {
-    setEditMode( prevState => ({ ...prevState, noteTitle: true }));
+    setEditMode(prevState => ({ ...prevState, noteTitle: true }));
     setTimeout(() => titleInputRef.current?.focus(), 0);
     if (title === "Add title") {
       handleTitleClick({ target: { value: "" } });
     }
   };
   const handleClickContent = () => {
-    setEditMode( prevState => ({ ...prevState, noteContent: true }));
+    setEditMode(prevState => ({ ...prevState, noteContent: true }));
     setTimeout(() => contentInputRef.current?.focus(), 0);
     if (content === "Add content") {
       handleContentClick({ target: { value: "" } });
     }
   };
-  
+
   // Handle out of focus inputs
   const handleTitleBlur = () => {
     if (!title.trim()) {
@@ -67,7 +69,7 @@ const NotesCard = ({
   const handleClose = (e) => {
     if (e) {
       e.preventDefault();
-      e.stopPropagation(); 
+      e.stopPropagation();
     }
 
     setIsActive(false);
@@ -78,11 +80,11 @@ const NotesCard = ({
   return (
     <div className="card-overlay" onClick={handleClose}>
       <div
-        className={darkMode? `notes-card dark ${isActive ? "active" : ""}` : `notes-card ${isActive ? "active" : ""}`}
+        className={darkMode ? `notes-card dark ${isActive ? "active" : ""}` : `notes-card ${isActive ? "active" : ""}`}
         // Prevent overlay click from closing the card
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={darkMode? "notes-card-title dark":"notes-card-title"}>
+        <div className={darkMode ? "notes-card-title dark" : "notes-card-title"}>
           {editMode.noteTitle ? (
             <input
               value={title}
@@ -94,7 +96,7 @@ const NotesCard = ({
             <p onClick={handleClickTitle}>{title || "Add Title"}</p>
           )}
         </div>
-        <div className={darkMode? "notes-card-content dark" :"notes-card-content"}>
+        <div className={darkMode ? "notes-card-content dark" : "notes-card-content"}>
           {editMode.noteContent ? (
             <textarea
               value={content}
@@ -115,26 +117,38 @@ const NotesCard = ({
         <button className="close-button" onClick={handleClose}>
           <MultiplicationSignIcon />
         </button>
-        <button
-          className="save-button"
-          onClick={() => {
-            // e.stopPropagation();
-            onSave();
-            console.log("bookmarked");
-          }}
-        >
-          Save
-        </button>
-        <button
-          className="delete-button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onDelete();
-          }}
-        >
-          Delete
-        </button>
-        {star && <div className="bookmark"><Bookmark02Icon size={22}/></div>}
+        {isDeleted ? (
+          <button
+            onClick={onRestore}
+            className="restore-btn"
+          >
+            Restore
+          </button>
+        ) : (
+          <>
+            <button
+              className="save-button"
+              onClick={() => {
+                // e.stopPropagation();
+                onSave();
+                console.log("bookmarked");
+              }}
+            >
+              Save
+            </button>
+            <button
+              className="delete-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete();
+              }}
+            >
+              Delete
+            </button>
+            {star && <div className="bookmark"><Bookmark02Icon size={22} /></div>}
+          </>
+        )
+        }
       </div>
     </div>
   );
@@ -149,6 +163,8 @@ NotesCard.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   star: PropTypes.bool.isRequired,
+  onRestore: PropTypes.func.isRequired,
+  isDeleted: PropTypes.bool.isRequired,
 };
 
 export default NotesCard;

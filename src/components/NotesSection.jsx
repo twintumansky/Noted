@@ -128,6 +128,15 @@ function NotesSection() {
     );
   }
 
+  function handleRestoreNote() {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === currentNoteId ? { ...note, deleted: false } : note
+      )
+    );
+    setCardPopover(false);
+  }
+
   const getDisplayedNotes = () => {
     const path = location.pathname;
     if (path === "/main/starred") {
@@ -207,6 +216,10 @@ function NotesSection() {
           }}
           star={
             notes.find((note) => note.id === currentNoteId)?.starred || false
+          }
+          onRestore={handleRestoreNote}
+          isDeleted={
+            notes.find((note) => note.id === currentNoteId)?.deleted || false
           }
         />
       )}
