@@ -120,7 +120,7 @@ const NotesCard = ({
         {isDeleted ? (
           <button
             onClick={onRestore}
-            className="restore-btn"
+            className="restore-button"
           >
             Restore
           </button>
