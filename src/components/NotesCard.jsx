@@ -119,7 +119,6 @@ const NotesCard = ({
           <HugeiconsIcon
             icon={MultiplicationSignIcon}
             size={22}
-            color="#4f4f4f"
             strokeWidth={2}
           />
         </button>
@@ -153,7 +152,6 @@ const NotesCard = ({
               <HugeiconsIcon
                 icon={Bookmark02Icon}
                 size={22}
-                color="#4f4f4f"
                 strokeWidth={2}
               />
             </div>}

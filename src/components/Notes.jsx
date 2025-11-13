@@ -45,7 +45,6 @@ const Notes = ({ notes, onCardClick, mode }) => {
           <HugeiconsIcon
               icon={ArrowUpRight01Icon}
               size={30}
-              color="#4f4f4f"
               strokeWidth={2}
             />
         </button>

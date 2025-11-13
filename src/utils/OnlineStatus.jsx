@@ -67,7 +67,6 @@ const OnlineStatus = () => {
               className='link-icon'
               icon={Link01Icon}
               size={17}
-              color="#4f4f4f"
               strokeWidth={2}
             />
         </IconWrapper>      

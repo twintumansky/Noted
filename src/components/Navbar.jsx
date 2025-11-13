@@ -15,7 +15,6 @@ function Navbar({addButton, deleteButton})  {
             <HugeiconsIcon
               icon={Add01Icon}
               size={20}
-              color="#4f4f4f"
               strokeWidth={2}
             />
           </button>
@@ -23,7 +22,6 @@ function Navbar({addButton, deleteButton})  {
           <HugeiconsIcon
               icon={Delete02Icon}
               size={20}
-              color="#4f4f4f"
               strokeWidth={2}
             />
           </button>
@@ -31,7 +29,6 @@ function Navbar({addButton, deleteButton})  {
           <HugeiconsIcon
               icon={Settings01Icon}
               size={20}
-              color="#4f4f4f"
               strokeWidth={2}
             />
           </button>
@@ -39,7 +36,6 @@ function Navbar({addButton, deleteButton})  {
           <HugeiconsIcon
               icon={Calendar03Icon}
               size={20}
-              color="#4f4f4f"
               strokeWidth={2}
             />
           </button>
@@ -47,7 +43,6 @@ function Navbar({addButton, deleteButton})  {
           <HugeiconsIcon
               icon={Sun03Icon}
               size={20}
-              color="#4f4f4f"
               strokeWidth={2}
             />
           </button>
