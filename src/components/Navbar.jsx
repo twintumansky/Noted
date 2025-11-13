@@ -15,35 +15,35 @@ function Navbar({addButton, deleteButton})  {
             <HugeiconsIcon
               icon={Add01Icon}
               size={20}
-              strokeWidth={2}
+              strokeWidth={1.5}
             />
           </button>
           <button className='nav-button' onClick={deleteButton}>
           <HugeiconsIcon
               icon={Delete02Icon}
               size={20}
-              strokeWidth={2}
+              strokeWidth={1.5}
             />
           </button>
           <button className='nav-button'>
           <HugeiconsIcon
               icon={Settings01Icon}
               size={20}
-              strokeWidth={2}
+              strokeWidth={1.5}
             />
           </button>
           <button className='nav-button' >
           <HugeiconsIcon
               icon={Calendar03Icon}
               size={20}
-              strokeWidth={2}
+              strokeWidth={1.5}
             />
           </button>
           <button className='nav-button' onClick={toggleDarkMode}>
           <HugeiconsIcon
               icon={Sun03Icon}
               size={20}
-              strokeWidth={2}
+              strokeWidth={1.5}
             />
           </button>
         </div>

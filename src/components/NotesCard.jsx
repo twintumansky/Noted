@@ -137,7 +137,7 @@ const NotesCard = ({
                 onSave();
               }}
             >
-              Save
+              Bookmark
             </button>
             <button
               className="delete-button"
