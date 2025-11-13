@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.25.6",
+    "@hugeicons/core-free-icons": "^1.2.1",
+    "@hugeicons/react": "^1.1.1",
     "babel-runtime": "^6.26.0",
-    "hugeicons-react": "^0.3.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link01Icon, Link04Icon } from 'hugeicons-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Link01Icon } from '@hugeicons/core-free-icons';
 import styled from 'styled-components';
 
 const PopupContainer = styled.div`
@@ -62,7 +63,13 @@ const OnlineStatus = () => {
     <PopupContainer show={showPopup}>
       <div>
         <IconWrapper>
-          <Link01Icon classNmae='link-icon' size={17} />
+          <HugeiconsIcon
+              className='link-icon'
+              icon={Link01Icon}
+              size={17}
+              color="#4f4f4f"
+              strokeWidth={2}
+            />
         </IconWrapper>      
         <span>&nbsp;You are currently offline !!</span>
       </div>

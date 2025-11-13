@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import { MultiplicationSignIcon, Bookmark02Icon, Undo03Icon } from "hugeicons-react";
+import { HugeiconsIcon } from '@hugeicons/react';
+import { MultiplicationSignIcon, Bookmark02Icon } from '@hugeicons/core-free-icons';
 import { ThemeContext } from "./context/ThemeContext";
 import PropTypes from "prop-types";
 
@@ -115,14 +116,19 @@ const NotesCard = ({
         </div>
 
         <button className="close-button" onClick={handleClose}>
-          <MultiplicationSignIcon />
+          <HugeiconsIcon
+            icon={MultiplicationSignIcon}
+            size={22}
+            color="#4f4f4f"
+            strokeWidth={2}
+          />
         </button>
         {isDeleted ? (
           <button
             onClick={onRestore}
             className="restore-button"
-          >            
-            <Undo03Icon size={22} />
+          >
+            Restore
           </button>
         ) : (
           <>
@@ -143,7 +149,14 @@ const NotesCard = ({
             >
               Delete
             </button>
-            {star && <div className="bookmark"><Bookmark02Icon size={22} /></div>}
+            {star && <div className="bookmark">
+              <HugeiconsIcon
+                icon={Bookmark02Icon}
+                size={22}
+                color="#4f4f4f"
+                strokeWidth={2}
+              />
+            </div>}
           </>
         )
         }

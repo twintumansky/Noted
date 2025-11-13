@@ -1,4 +1,5 @@
-import { ArrowUpRight01Icon } from "hugeicons-react";
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
 import PropTypes from "prop-types";
 
 const Notes = ({ notes, onCardClick, mode }) => {
@@ -41,7 +42,12 @@ const Notes = ({ notes, onCardClick, mode }) => {
           className="arrow-button"
           onClick={() => onCardClick(notes.id, notes.title, notes.content)}
         >
-          <ArrowUpRight01Icon size={30} />
+          <HugeiconsIcon
+              icon={ArrowUpRight01Icon}
+              size={30}
+              color="#4f4f4f"
+              strokeWidth={2}
+            />
         </button>
         <div className="card-element-inner">
           <div className="card-element-title">{notes.title}</div>
