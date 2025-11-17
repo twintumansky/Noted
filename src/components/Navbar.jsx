@@ -11,35 +11,58 @@ function Navbar({addButton, deleteButton})  {
     return (
       <div className="navbar">
         <div className='navbar-buttons'>
-          <button className='nav-button' onClick={addButton}>
+          <button 
+            className='nav-button' 
+            onClick={addButton} 
+            data-tooltip="Create a new note" 
+            aria-label="Create a new note"
+          >
             <HugeiconsIcon
               icon={Add01Icon}
               size={20}
               strokeWidth={1.5}
             />
           </button>
-          <button className='nav-button' onClick={deleteButton}>
+          <button 
+            className='nav-button' 
+            onClick={deleteButton}
+            data-tooltip="Delete all notes" 
+            aria-label="Delete all notes"
+          >
           <HugeiconsIcon
               icon={Delete02Icon}
               size={20}
               strokeWidth={1.5}
             />
           </button>
-          <button className='nav-button'>
+          <button 
+            className='nav-button'
+            data-tooltip="Settings" 
+            aria-label="Settings"
+          >
           <HugeiconsIcon
               icon={Settings01Icon}
               size={20}
               strokeWidth={1.5}
             />
           </button>
-          <button className='nav-button' >
+          <button 
+            className='nav-button'
+            data-tooltip="Calendar"
+            aria-label="Calendar" 
+          >
           <HugeiconsIcon
               icon={Calendar03Icon}
               size={20}
               strokeWidth={1.5}
             />
           </button>
-          <button className='nav-button' onClick={toggleDarkMode}>
+          <button 
+            className='nav-button' 
+            onClick={toggleDarkMode}
+            data-tooltip="Toggle theme"
+            aria-label="Toggle theme"
+          >
           <HugeiconsIcon
               icon={Sun03Icon}
               size={20}

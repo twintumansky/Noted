@@ -158,8 +158,8 @@ html, body {
 }
 
 .notesSection-container .nav-button:hover {
-  transform: scale(1.1);
-  color: #000000;
+  transform: scale(1.05);
+  color: #3f3f3f;
 }
 
 .navbar-buttons {
@@ -183,11 +183,33 @@ html, body {
   position: relative;
   transform-origin: center center;
   transition: transform 0.3s ease;
-  color: #353434;
+  color: #575757;
 }
 
 .nav-button:hover {
   cursor: pointer;
+}
+
+.nav-button:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%); 
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 100; 
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeIn 0.2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 .nav-button:nth-child(3):active, .nav-button:nth-child(5):active {
@@ -628,8 +650,8 @@ html, body {
 .notes-card .bookmark {
   position:absolute;
   bottom: 0.6rem;
-  right: 11rem;
-  color: #1c1c1c;
+  right: 12.5rem;
+  color: #5c5c5c;
 }
 
 .notes-card .bookmark:hover {
