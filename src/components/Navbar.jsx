@@ -60,8 +60,8 @@ function Navbar({addButton, deleteButton})  {
           <button 
             className='nav-button' 
             onClick={toggleDarkMode}
-            data-tooltip="Toggle theme"
-            aria-label="Toggle theme"
+            data-tooltip="Theme"
+            aria-label="Theme"
           >
           <HugeiconsIcon
               icon={Sun03Icon}
