@@ -155,11 +155,12 @@ html, body {
 
 .notesSection-container.dark .nav-button:hover {
   color: #cac9bd;
+  background-color: #2d2b2b;
 }
 
 .notesSection-container .nav-button:hover {
-  transform: scale(1.05);
-  color: #3f3f3f;
+  background-color: #c4c4c4;
+  border-radius: 50%;
 }
 
 .navbar-buttons {
@@ -181,9 +182,12 @@ html, body {
   height: 2rem;
   padding: 0;
   position: relative;
-  transform-origin: center center;
-  transition: transform 0.3s ease;
+  /* transform-origin: center center;
+  transition: transform 0.3s ease; */
   color: #575757;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-button:hover {
@@ -196,7 +200,7 @@ html, body {
   bottom: -35px;
   left: 50%;
   transform: translateX(-50%); 
-  background-color: #505050;
+  background-color: #4e4d4d;
   color: #e7e7e7;
   padding: 5px 10px;
   border-radius: 6px;
@@ -212,18 +216,19 @@ html, body {
   to { opacity: 1; }
 }
 
-.nav-button:nth-child(3):active, .nav-button:nth-child(5):active {
+.nav-button:nth-child(3):active svg, .nav-button:nth-child(5):active svg{
   transform: rotate(120deg);
 }
 
 .nav-button svg {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   width: 20px;
   height: 20px;
   pointer-events: none;
+  transition: transform 0.3s ease;  
 }
 
 .notes-tag-list ul {
