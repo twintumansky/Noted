@@ -1,6 +1,11 @@
 import { useEditor, EditorContent } from '@tiptap/react'
-import { FloatingMenu, BubbleMenu } from '@tiptap/react/menus'
+import { BubbleMenu } from '@tiptap/react/menus'
+import TaskList from '@tiptap/extension-task-list';
+import TaskItem from '@tiptap/extension-task-item';
+import Placeholder from '@tiptap/extension-placeholder';
 import StarterKit from '@tiptap/starter-kit'
+import MenuBar from './MenuBar';
+import './NoteEditor.css';
 
 const NoteEditor = ({ content, onUpdate }) => {
     const editor = useEditor({
@@ -20,7 +25,6 @@ const NoteEditor = ({ content, onUpdate }) => {
   
     return (
       <div className="editor-container">
-        <FloatingMenu editor={editor}>This is the floating menu</FloatingMenu>
         <BubbleMenu editor={editor}>This is the bubble menu</BubbleMenu>
         <EditorContent editor={editor} className="tiptap-content" />
       </div>
