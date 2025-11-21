@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { HugeiconsIcon } from '@hugeicons/react';
 import { MultiplicationSignIcon, Bookmark02Icon } from '@hugeicons/core-free-icons';
 import { ThemeContext } from "./context/ThemeContext";
+import NoteEditor from './NoteEditor';
 import PropTypes from "prop-types";
 
 const NotesCard = ({
@@ -99,13 +100,21 @@ const NotesCard = ({
         </div>
         <div className={darkMode ? "notes-card-content dark" : "notes-card-content"}>
           {editMode.noteContent ? (
-            <textarea
-              value={content}
-              onChange={handleContentClick}
-              spellCheck={false}
-              onBlur={handleContentBlur}
-              ref={contentInputRef}
-            />
+            // <textarea
+            //   value={content}
+            //   onChange={handleContentClick}
+            //   spellCheck={false}
+            //   onBlur={handleContentBlur}
+            //   ref={contentInputRef}
+            // />
+            <div className="content-area">
+           <NoteEditor 
+             content={content} 
+             onUpdate={(newHtml) => {
+                handleContentClick({ target: { value: newHtml } }) 
+             }} 
+           />
+        </div>
           ) : (
             <p onClick={handleClickContent}>
               {content === "Click to add content..."
