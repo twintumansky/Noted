@@ -17,7 +17,7 @@ const NoteEditor = ({ content, onUpdate, onBlur }) => {
         nested: true,
         }),
         Placeholder.configure({
-        placeholder: 'Start typing...',
+        placeholder: 'Add content...',
         }),
       ],
       content: content,

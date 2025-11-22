@@ -54,6 +54,8 @@ const NotesCard = ({
     if (!content.trim()) {
       handleContentClick({ target: { value: "Add content" } });
     }
+  //   if (!content || content === "<p></p>") {
+  // }
     setEditMode((prevState) => ({ ...prevState, noteContent: false }));
   };
 
@@ -113,14 +115,24 @@ const NotesCard = ({
              onUpdate={(newHtml) => {
                 handleContentClick({ target: { value: newHtml } }) 
              }} 
+             onBlur={handleContentBlur}
            />
         </div>
           ) : (
-            <p onClick={handleClickContent}>
-              {content === "Click to add content..."
-                ? "Click to add content..."
-                : content}
-            </p>
+            // <p onClick={handleClickContent}>
+            //   {content === "Click to add content..."
+            //     ? "Click to add content..."
+            //     : content}
+            // </p>
+            <div 
+            className="note-view-mode"
+            onClick={handleClickContent}
+            dangerouslySetInnerHTML={{ 
+                __html: content === "Add content" || content === "<p></p>" 
+                ? "Click to add content..." 
+                : content 
+            }}
+        />
           )}
         </div>
 
