@@ -671,6 +671,34 @@ html, body {
   right: 0.6rem;
 }
 
+/* Ensure the view mode looks like the editor content */
+.note-view-mode {
+  min-height: 60px;
+  cursor: text;
+  /* Preserve whitespace and wrap text */
+  white-space: pre-wrap; 
+}
+
+.note-view-mode ul, .note-view-mode ol {
+  padding-left: 1.5rem;
+}
+
+/* Style the checklist in View Mode (so it looks like a list even when not editing) */
+.note-view-mode ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+}
+
+.note-view-mode li[data-type="taskItem"] {
+  display: flex;
+  align-items: center;
+}
+
+.note-view-mode li[data-type="taskItem"] input[type="checkbox"] {
+  margin-right: 0.5rem;
+  pointer-events: none; /* Prevent checking boxes in View Mode */
+}
+
 @media (max-width: 768px) {
   .card-element {
     height: 8rem;

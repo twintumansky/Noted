@@ -1,5 +1,5 @@
-import { BubbleMenu } from '@tiptap/react';
-import './MenuBar.css';
+// import { BubbleMenu } from '@tiptap/react';
+import '../App.css'
 import PropTypes from "prop-types";
 
 const MenuBar = ({ editor }) => {
@@ -11,7 +11,7 @@ const MenuBar = ({ editor }) => {
 
   return (
     <>
-      {editor && (
+      {/* {editor && (
         <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
           <button
             onClick={() => editor.chain().focus().toggleBold().run()}
@@ -32,7 +32,7 @@ const MenuBar = ({ editor }) => {
             Strike
           </button>
         </BubbleMenu>
-      )}
+      )} */}
 
       <div className="menu-bar">
         <div className="menu-group">
