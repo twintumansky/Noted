@@ -60,6 +60,38 @@ const Notes = ({ notes, onCardClick, mode }) => {
   );
 };
 
+//for previewing content on Notes
+const getPreviewContent = (htmlContent) => {
+  if (!htmlContent) return 'No content...';
+  
+  // Create a temporary element to safely parse the HTML string
+  const doc = new DOMParser().parseFromString(htmlContent, 'text/html');
+  
+  // Find the content inside the first block element (like <p>, <ul>, etc.)
+  const firstBlock = doc.body.children[0];
+  
+  // Return the inner HTML of the first block, limited to 150 chars
+  if (firstBlock) {
+      let html = firstBlock.outerHTML;
+      if (html.length > 150) {
+          // A rough cut-off, but ensures we don't display the entire note
+          html = html.substring(0, 150) + '...'; 
+      }
+      return html;
+  }
+  return 'No content...';
+}
+
+// ... inside the Notes component ...
+
+const previewHtml = getPreviewContent(notes.content);
+
+// ... in the return block ...
+<div 
+  className="note-card-preview"
+  dangerouslySetInnerHTML={{ __html: previewHtml }}
+/>
+
 export default Notes;
 Notes.propTypes = {
   mode: PropTypes.bool.isRequired,
