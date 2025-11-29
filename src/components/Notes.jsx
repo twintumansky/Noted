@@ -60,7 +60,7 @@ const Notes = ({ notes, onCardClick, mode }) => {
   );
 };
 
-//for previewing content on Notes
+//for previewing content on Notes -------------------------------
 const getPreviewContent = (htmlContent) => {
   if (!htmlContent) return 'No content...';
   
@@ -91,6 +91,7 @@ const previewHtml = getPreviewContent(notes.content);
   className="note-card-preview"
   dangerouslySetInnerHTML={{ __html: previewHtml }}
 />
+//---------------------------------------------------
 
 export default Notes;
 Notes.propTypes = {

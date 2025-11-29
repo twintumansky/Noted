@@ -802,6 +802,26 @@ li[data-type="taskItem"][data-checked="true"] > div {
   color: #fff;
 }
 
+/*styling for notes previous*/
+.note-card-preview {
+  /* Set a fixed height or max height for uniformity */
+  min-height: 60px;
+  max-height: 100px; 
+  overflow: hidden; /* Crucial: Hides content that exceeds the height */
+  /* Ensures line breaks and basic formatting are respected */
+  white-space: normal; 
+  word-break: break-word;
+  color: #c0c0c0; /* Adjust text color for dark mode */
+}
+
+/* Ensure headings/lists inside the preview don't mess up spacing */
+.note-card-preview p, 
+.note-card-preview ul,
+.note-card-preview ol {
+  margin-top: 0;
+  margin-bottom: 5px; /* Tighter spacing for preview */
+}
+
 @media (max-width: 768px) {
   .card-element {
     height: 8rem;
