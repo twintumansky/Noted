@@ -802,7 +802,7 @@ li[data-type="taskItem"][data-checked="true"] > div {
   color: #fff;
 }
 
-/*styling for notes previous*/
+/*styling for notes previous* ---------------------------------------------------*/
 .note-card-preview {
   /* Set a fixed height or max height for uniformity */
   min-height: 60px;
@@ -821,6 +821,7 @@ li[data-type="taskItem"][data-checked="true"] > div {
   margin-top: 0;
   margin-bottom: 5px; /* Tighter spacing for preview */
 }
+/* ---------------------------------------------------*/
 
 @media (max-width: 768px) {
   .card-element {
