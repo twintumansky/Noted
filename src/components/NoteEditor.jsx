@@ -9,49 +9,49 @@ import "../App.css";
 import PropTypes from "prop-types";
 
 const NoteEditor = ({ content, onUpdate, onBlur }) => {
-    const editor = useEditor({
-      extensions: [
-        StarterKit, // Handles bold, italic, history, bullet lists
-        TaskList,
-        TaskItem.configure({
+  const editor = useEditor({
+    extensions: [
+      StarterKit, // Handles bold, italic, history, bullet lists
+      TaskList,
+      TaskItem.configure({
         nested: true,
-        }),
-        Placeholder.configure({
+      }),
+      Placeholder.configure({
         placeholder: 'Add content...',
-        }),
-      ],
-      content: content,
-      autofocus: 'end',
-      onUpdate: ({ editor }) => {
-        const html = editor.getHTML();
-        onUpdate(html);
-      },
-      onBlur: () => {
-        onBlur();
-      }
-    })
-  
-    if (!editor) {
-      return null
+      }),
+    ],
+    content: content,
+    autofocus: 'end',
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+      onUpdate(html);
+    },
+    onBlur: () => {
+      onBlur();
     }
-  
-    return (
-      <div className="editor-container">
-        <MenuBar editor={editor} />
-        <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }} className="bubble-menu">
-          <button onClick={() => editor.chain().focus().toggleBold().run()} className={editor.isActive('bold') ? 'is-active' : ''}>Bold</button>
-          <button onClick={() => editor.chain().focus().toggleItalic().run()} className={editor.isActive('italic') ? 'is-active' : ''}>Italic</button>
-          <button onClick={() => editor.chain().focus().toggleStrike().run()} className={editor.isActive('strike') ? 'is-active' : ''}>Strike</button>
-        </BubbleMenu>
-        <EditorContent editor={editor} className="tiptap-content" />
-      </div>
-    )
+  })
+
+  if (!editor) {
+    return null
   }
 
-  NoteEditor.propTypes = {
-    content: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired,
-    onBlur: PropTypes.func.isRequired,
-  };
-  
-  export default NoteEditor;
+  return (
+    <div className="editor-container">
+      <MenuBar editor={editor} />
+      <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }} className="bubble-menu">
+        <button onClick={() => editor.chain().focus().toggleBold().run()} className={editor.isActive('bold') ? 'is-active' : ''}>Bold</button>
+        <button onClick={() => editor.chain().focus().toggleItalic().run()} className={editor.isActive('italic') ? 'is-active' : ''}>Italic</button>
+        <button onClick={() => editor.chain().focus().toggleStrike().run()} className={editor.isActive('strike') ? 'is-active' : ''}>Strike</button>
+      </BubbleMenu>
+      <EditorContent editor={editor} className="tiptap-content" />
+    </div>
+  )
+}
+
+NoteEditor.propTypes = {
+  content: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+};
+
+export default NoteEditor;

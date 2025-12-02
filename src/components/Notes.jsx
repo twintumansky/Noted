@@ -29,7 +29,7 @@ const Notes = ({ notes, onCardClick, mode }) => {
   // const truncateContent = (text) => {
   //   return text.length > 100 ? `${text.substring(0, 100)}...` : text;
   // };
-  
+
   return (
     <>
       <div
@@ -43,10 +43,10 @@ const Notes = ({ notes, onCardClick, mode }) => {
           onClick={() => onCardClick(notes.id, notes.title, notes.content)}
         >
           <HugeiconsIcon
-              icon={ArrowUpRight01Icon}
-              size={30}
-              strokeWidth={2}
-            />
+            icon={ArrowUpRight01Icon}
+            size={30}
+            strokeWidth={2}
+          />
         </button>
         <div className="card-element-inner">
           <div className="card-element-title">{notes.title}</div>
@@ -89,13 +89,13 @@ const Notes = ({ notes, onCardClick, mode }) => {
 //for previewing content on Notes -------------------------------
 // const getPreviewContent = (htmlContent) => {
 //   if (!htmlContent) return 'No content...';
-  
+
 //   // Create a temporary element to safely parse the HTML string
 //   const doc = new DOMParser().parseFromString(htmlContent, 'text/html');
-  
+
 //   // Find the content inside the first block element (like <p>, <ul>, etc.)
 //   const firstBlock = doc.body.children[0];
-  
+
 //   // Return the inner HTML of the first block, limited to 150 chars
 //   if (firstBlock) {
 //       let html = firstBlock.outerHTML;
