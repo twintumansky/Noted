@@ -2,10 +2,10 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeContext";
 import useFetchNotes from "../hooks/useFetchNotes";
-import NavBar from "./Navbar";
-import NotesCard from "./NotesCard";
-import NotesTagList from "./NotesTagList";
-import Notes from "./Notes";
+import Navbar from '../components/Navbar';
+import NotesCard from '../components/notes/NotesCard'
+import NotesTagList from '../components/notes/NotesTagList';
+import Notes from '../components/notes/Notes';
 import OnlineStatus from '../utils/OnlineStatus';
 import empty_state from "../assets/images/empty_state.svg";
 
@@ -167,7 +167,7 @@ function NotesSection() {
       }
     >
       <>
-        <NavBar
+        <Navbar
           addButton={handleClick}
           deleteButton={handleClearAll}
         />

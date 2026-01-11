@@ -5,10 +5,10 @@ import PageTransition from "./components/animations/PageTransition";
 import Error from "./components/Error";
 
 const RootLayout = () => {
-    // This wrapper stays mounted during transitions
+    
     return (
-      <div className="min-h-screen bg-white dark:bg-neutral-950 transition-colors">
-        <Outlet /> {/* This is where Intro or NotesSection will render */}
+      <div className="min-h-screen bg-white dark:bg-neutral-950 transition-colors duration-500">
+        <Outlet /> 
       </div>
     );
   };
@@ -16,21 +16,18 @@ const RootLayout = () => {
 const router = createBrowserRouter([
     {
         path: '/',
-        element: (
-            <PageTransition>
-                <Intro />
-            </PageTransition>
-        ),
+        element: <RootLayout />,
         errorElement: <Error />,
-    },
-    {
-        path: '/main',
-        element: (
-            <PageTransition>
-                <NotesSection />
-            </PageTransition>
-        ),
-        errorElement: <Error />,
+        children: [
+            {
+                index: true,
+                element: <PageTransition ><Intro /></PageTransition>,
+            },
+            {
+                path: 'main',
+                element: <PageTransition><NotesSection /></PageTransition>,
+            },
+        ],
     },
 ]);
 

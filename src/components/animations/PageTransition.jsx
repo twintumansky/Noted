@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Intro from './Intro';
-import NotesSection from './NotesSection';
+import Intro from '../../pages/Intro';
+import NotesSection from '../../pages/NotesSection';
 
 function PageTransition() {
   const [isTransitioning, setIsTransitioning] = useState(false);

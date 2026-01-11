@@ -5,7 +5,7 @@ import TaskItem from '@tiptap/extension-task-item';
 import Placeholder from '@tiptap/extension-placeholder';
 import StarterKit from '@tiptap/starter-kit'
 import MenuBar from './MenuBar';
-import "../App.css";
+import '../../App.css';
 import PropTypes from "prop-types";
 
 const NoteEditor = ({ content, onUpdate, onBlur }) => {
