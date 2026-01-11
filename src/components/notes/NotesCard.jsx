@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { HugeiconsIcon } from '@hugeicons/react';
 import { MultiplicationSignIcon, Bookmark02Icon } from '@hugeicons/core-free-icons';
-import { ThemeContext } from "./context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import NoteEditor from './NoteEditor';
 import PropTypes from "prop-types";
 

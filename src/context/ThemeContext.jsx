@@ -23,7 +23,7 @@
 //This includes the ThemeTransition event
 import { createContext, useState } from "react";
 import PropTypes from "prop-types";
-import ThemeTransition from "../ThemeTransition";
+import ThemeTransition from "../components/ThemeTransition";
 
 export const ThemeContext = createContext();
 

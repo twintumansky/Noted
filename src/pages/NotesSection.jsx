@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { ThemeContext } from "./context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import useFetchNotes from "../hooks/useFetchNotes";
 import NavBar from "./Navbar";
 import NotesCard from "./NotesCard";

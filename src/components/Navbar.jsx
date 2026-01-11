@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from './context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 import PropTypes from 'prop-types';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Add01Icon, Delete02Icon, Settings01Icon, Calendar03Icon, Sun03Icon } from '@hugeicons/core-free-icons';

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 import TypingAnimation from "./TypingAnimation";
-import { ThemeContext } from "./context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
 import "../App.css";
 
