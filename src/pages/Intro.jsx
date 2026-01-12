@@ -2,7 +2,7 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import TypingAnimation from "../components/animations/TypingAnimation";
 import { ThemeContext } from "../context/ThemeContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 
 
@@ -14,15 +14,17 @@ export default function Intro({ onArrowClick }) {
     "< CAPTURE YOUR THOUGHTS >",
     "< ORGANIZE YOUR IDEAS >",
   ];
+  const navigate = useNavigate();
   
-  //added handleArrowClick function for animation
+  
   const handleArrowClick = (e) => {
-    e.preventDefault(); // Prevent default Link behavior
+    e.preventDefault(); 
     onArrowClick();
-    // Navigate programmatically after animation
-    setTimeout(() => {
-      window.location.href = '/main';
-    }, 600); // Match this with your transition duration
+    
+    // setTimeout(() => {
+    //   window.location.href = '/main';
+    // }, 600); 
+    navigate('/main');
   };
 
   return (
@@ -47,12 +49,12 @@ export default function Intro({ onArrowClick }) {
             />
           </p>
         </div>
-        {/* Arrow Button */}
+        
         <div className="arrow-container">
           <Link 
             className={darkMode ? "arrow dark" : "arrow"} 
             to="/main"
-            onClick={handleArrowClick} //added eventlistener to handle arrow click
+            onClick={handleArrowClick} 
           >
             &#x25BE;
           </Link>

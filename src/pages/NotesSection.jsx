@@ -24,10 +24,11 @@ function NotesSection() {
   const noteAreaRef = useRef(null);
   const lastNotesLengthRef = useRef(notes.length);
   const location = useLocation();
+
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
-  
+
   useEffect(() => {
     localStorage.setItem("mode", JSON.stringify(darkMode));
   }, [darkMode]);
@@ -178,7 +179,7 @@ function NotesSection() {
               <img src={empty_state} />
               <p>{getEmptyStateMessage()}</p>
             </div>
-            
+
           ) : (
             <>
               <div className="card-container">
