@@ -65,5 +65,5 @@ export default function Intro({ onArrowClick }) {
 }
 
 Intro.propTypes = {
-  onArrowClick: PropTypes.func.isRequired, // Can be anything renderable by React (strings, numbers, elements, arrays, fragments)
+  onArrowClick: PropTypes.func.isRequired,
 };
