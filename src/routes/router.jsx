@@ -1,9 +1,9 @@
 import { createBrowserRouter} from "react-router-dom";
 import RootLayout from "../App";
-import Intro from "./pages/Intro";
-import NotesSection from "./pages/NotesSection";
-import PageTransition from "./components/animations/PageTransition";
-import Error from "./components/Error";
+import Intro from "../pages/Intro";
+import NotesSection from '../pages/NotesSection'
+import PageTransition from '../components/animations/PageTransition'
+import Error from "../components/Error";
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
                     <PageTransition >
                         <Intro />
                     </PageTransition>
-                ),
+                    )
             },
             {
                 path: 'main',
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
                     <PageTransition>
                         <NotesSection />
                     </PageTransition>
-                ),
+                    ),
                 children: [
                     { path: "starred", element: <NotesSection /> },
                     { path: "deleted", element: <NotesSection /> },

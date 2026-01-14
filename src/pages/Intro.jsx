@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 
 
-export default function Intro({ onArrowClick }) {
+function Intro({ onArrowClick }) {
   const { darkMode } = useContext(ThemeContext);
   const mainText = "noted...";
   const subText = [
@@ -20,10 +20,6 @@ export default function Intro({ onArrowClick }) {
   const handleArrowClick = (e) => {
     e.preventDefault(); 
     onArrowClick();
-    
-    // setTimeout(() => {
-    //   window.location.href = '/main';
-    // }, 600); 
     navigate('/main');
   };
 
@@ -67,3 +63,5 @@ export default function Intro({ onArrowClick }) {
 Intro.propTypes = {
   onArrowClick: PropTypes.func.isRequired,
 };
+
+export default Intro;
