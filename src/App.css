@@ -186,6 +186,10 @@ html, body {
   justify-content: center;
 }
 
+/* .nav-button{
+  @apply h-8 w-8 p-0 m-0 relative flex items-center justify-center text-[#3f3c3c] bg-transparent border-none;
+} */
+
 .nav-button:hover {
   cursor: pointer;
 }
