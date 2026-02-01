@@ -9,8 +9,8 @@ function Navbar({addButton, deleteButton})  {
   const { toggleDarkMode }  = useContext(ThemeContext);
 
     return (
-      <div className="navbar">
-        <div className='navbar-buttons'>
+      <div className="h-12 w-full fixed top-0 z-10 flex items-center justify-between bg-transparent px-4 py-2 border-b-[0.5px] border-b-[#cbcaca] border-solid">
+        <div className="absolute top-1/2 right-8 translate-x-0 -translate-y-1/2 flex justify-even gap-y-0 gap-x-8 transition-transform duration-[0.3s] ease-[ease]">
           <button 
             className='nav-button' 
             onClick={addButton} 
