@@ -1,36 +1,25 @@
 import { createBrowserRouter} from "react-router-dom";
-import RootLayout from "../App";
+import LayoutShell from "@/components/layout/LayoutShell";
 import Intro from "../pages/Intro";
-import NotesSection from '../pages/NotesSection'
+import Board from "@/components/canvas/Board";
 import PageTransition from '../components/animations/PageTransition'
 import Error from "../components/Error";
 
 export const router = createBrowserRouter([
     {
-        path: '/',
-        element: <RootLayout />,
-        errorElement: <Error />,
+        path: "/",
+        element: <PageTransition ><Intro /></PageTransition>, // The landing page remains clean/no sidebar
+        error: <Error />
+      },
+      {
+        path: "/main",
+        element: <LayoutShell />, // The Shell provides the Sidebar and Navbar
         children: [
-            {
-                index: true,
-                element: (
-                    <PageTransition >
-                        <Intro />
-                    </PageTransition>
-                    )
-            },
-            {
-                path: 'main',
-                element: (
-                    <PageTransition>
-                        <NotesSection />
-                    </PageTransition>
-                    ),
-                children: [
-                    { path: "starred", element: <NotesSection /> },
-                    { path: "deleted", element: <NotesSection /> },
-                  ],
-            },
+          {
+            index: true,
+            element: <Board />, // This is where the Canvas lives
+          }
         ],
-    },
+        error: <Error />
+      }
 ]);
