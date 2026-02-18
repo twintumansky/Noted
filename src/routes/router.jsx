@@ -8,16 +8,16 @@ import Error from "../components/Error";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <PageTransition ><Intro /></PageTransition>, // The landing page remains clean/no sidebar
+        element: <PageTransition ><Intro /></PageTransition>,
         error: <Error />
       },
       {
         path: "/main",
-        element: <LayoutShell />, // The Shell provides the Sidebar and Navbar
+        element: <LayoutShell />,
         children: [
           {
             index: true,
-            element: <Board />, // This is where the Canvas lives
+            element: <Board />,
           }
         ],
         error: <Error />
