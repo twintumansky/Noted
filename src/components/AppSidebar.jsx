@@ -9,9 +9,9 @@ import {
     SidebarMenuButton,
   } from "@/components/ui/sidebar"
   import { HugeiconsIcon } from "@hugeicons/react"
-  import { Folder01Icon, Note01Icon } from "@hugeicons/core-free-icons"
+  import { Folder01Icon, Note01Icon, Notebook02Icon } from "@hugeicons/core-free-icons"
   
-  const data = [
+  const dummy_data = [
     {
       id: "1",
       title: "Project Alpha",
@@ -26,14 +26,17 @@ import {
   export function AppSidebar() {
     return (
       <Sidebar variant="floating" collapsible="icon">
-        <SidebarHeader className="border-b h-14 flex items-center px-4">
-          <span className="font-bold text-xl tracking-tight">NOTED</span>
+        <SidebarHeader className="border-b h-14 flex items-center justify-center px-4">
+          <div className="gap-2 flex item-center justify-center">
+            <HugeiconsIcon icon={Notebook02Icon} />
+            <span className="font-mediumtext-xl tracking-tight pl-4">Noted</span>
+          </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Your Board</SidebarGroupLabel>
             <SidebarMenu>
-              {data.map((item) => (
+              {dummy_data.map((item) => (
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton tooltip={item.title}>
                     {item.type === 'folder' ? <HugeiconsIcon icon={Folder01Icon} /> : <HugeiconsIcon icon={Note01Icon} />}

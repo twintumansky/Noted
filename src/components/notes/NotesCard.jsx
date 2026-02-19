@@ -197,4 +197,4 @@ NotesCard.propTypes = {
   isDeleted: PropTypes.bool.isRequired,
 };
 
-export default NotesCard;
+// export default NotesCard;

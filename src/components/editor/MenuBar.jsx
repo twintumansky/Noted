@@ -1,5 +1,5 @@
 // import { BubbleMenu } from '@tiptap/react';
-import '../../App.css'
+// import '../../App.css'
 import PropTypes from "prop-types";
 
 const MenuBar = ({ editor }) => {
@@ -92,4 +92,4 @@ MenuBar.propTypes = {
   editor: PropTypes.func.isRequired,
 }
 
-export default MenuBar;
+// export default MenuBar;

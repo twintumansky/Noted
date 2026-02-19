@@ -119,7 +119,7 @@ const Notes = ({ notes, onCardClick, mode }) => {
 // />
 //---------------------------------------------------
 
-export default Notes;
+// export default Notes;
 Notes.propTypes = {
   mode: PropTypes.bool.isRequired,
   notes: PropTypes.object.isRequired,

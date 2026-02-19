@@ -1,24 +1,24 @@
-import { useState } from 'react';
-import Intro from '../../pages/Intro';
-import NotesSection from '../../pages/NotesSection';
+// import { useState } from 'react';
+// import Intro from '../../pages/Intro';
+// import NotesSection from '../../pages/NotesSection';
 
-function PageTransition() {
-  const [isTransitioning, setIsTransitioning] = useState(false);
+// function PageTransition() {
+//   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const handleTransition = () => {
-    setIsTransitioning(true);
-  };
+//   const handleTransition = () => {
+//     setIsTransitioning(true);
+//   };
 
-  return (
-    <div className="page-container">
-      <div className={`page intro ${isTransitioning ? 'slide-up' : ''}`}>
-        <Intro onArrowClick={handleTransition} />
-      </div>
-      <div className={`page notes ${isTransitioning ? 'slide-up' : ''}`}>
-        <NotesSection />
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div className="page-container">
+//       <div className={`page intro ${isTransitioning ? 'slide-up' : ''}`}>
+//         <Intro onArrowClick={handleTransition} />
+//       </div>
+//       <div className={`page notes ${isTransitioning ? 'slide-up' : ''}`}>
+//         <NotesSection />
+//       </div>
+//     </div>
+//   );
+// }
 
-export default PageTransition; 
+// export default PageTransition; 
