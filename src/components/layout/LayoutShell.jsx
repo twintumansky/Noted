@@ -3,8 +3,6 @@ import { AppSidebar } from "@/components/AppSidebar"
 // import TopNavbar from "@/components/TopNavbar"
 import Board from "@/components/canvas/Board"
 import { TooltipProvider } from "../ui/tooltip"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { PanelLeftIcon} from "@hugeicons/core-free-icons"
 
 export default function LayoutShell() {
   
@@ -13,9 +11,8 @@ export default function LayoutShell() {
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset className="flex flex-col h-screen overflow-hidden">
-          <header className="flex h-14 shrink-0 items-center gap-2 bg-[#f4f4f2] px-4 z-10">
+          <header className="flex h-14 shrink-0 items-center gap-2 bg-[#f4f4f2] z-10">
             <SidebarTrigger>
-              <HugeiconsIcon icon={PanelLeftIcon} />
             </SidebarTrigger>
           </header>
 

@@ -29,14 +29,6 @@ import {
     const { state } = useSidebar();
     return (
       <Sidebar variant="floating" collapsible="icon">
-        {/* <SidebarHeader className="border-b h-14 flex items-center justify-center px-4">
-          <div className="gap-2 p-2 flex justify-center items-center">
-            <HugeiconsIcon icon={Notebook02Icon} />
-            <div className="flex flex-col gap-0.5 leading-none group-data-[collapsible=icon]:hidden">
-              <span className="font-medium text-xl tracking-tight">Noted</span>
-            </div>
-          </div>        
-        </SidebarHeader> */}
         <SidebarHeader className="flex tems-center justify-center gap-1">        
           <div className="flex aspect-square items-center justify-center">
             <HugeiconsIcon icon={Notebook02Icon} size={24}/>
