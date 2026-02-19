@@ -21,8 +21,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { SidebarLeftIcon } from "@hugeicons/core-free-icons"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -231,14 +229,12 @@ function SidebarTrigger({
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
       variant="ghost"
-      size="icon-sm"
       className={cn(className)}
       onClick={(event) => {
         onClick?.(event)
         toggleSidebar()
       }}
       {...props}>
-      <HugeiconsIcon icon={SidebarLeftIcon} strokeWidth={2} />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
@@ -308,7 +304,8 @@ function SidebarHeader({
       data-slot="sidebar-header"
       data-sidebar="header"
       className={cn("gap-2 p-2 flex justify-center", className)}
-      {...props} />
+      {...props}       
+    />
   );
 }
 

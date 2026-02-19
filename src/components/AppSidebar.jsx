@@ -7,9 +7,10 @@ import {
     SidebarMenu,
     SidebarMenuItem,
     SidebarMenuButton,
+    useSidebar
   } from "@/components/ui/sidebar"
   import { HugeiconsIcon } from "@hugeicons/react"
-  import { Folder01Icon, Note01Icon, Notebook02Icon } from "@hugeicons/core-free-icons"
+  import { Folder01Icon, Note01Icon, Notebook02Icon} from "@hugeicons/core-free-icons"
   
   const dummy_data = [
     {
@@ -24,12 +25,24 @@ import {
   ]
   
   export function AppSidebar() {
+
+    const { state } = useSidebar();
     return (
       <Sidebar variant="floating" collapsible="icon">
-        <SidebarHeader className="border-b h-14 flex items-center justify-center px-4">
-          <div className="gap-2 flex item-center justify-center">
+        {/* <SidebarHeader className="border-b h-14 flex items-center justify-center px-4">
+          <div className="gap-2 p-2 flex justify-center items-center">
             <HugeiconsIcon icon={Notebook02Icon} />
-            <span className="font-mediumtext-xl tracking-tight pl-4">Noted</span>
+            <div className="flex flex-col gap-0.5 leading-none group-data-[collapsible=icon]:hidden">
+              <span className="font-medium text-xl tracking-tight">Noted</span>
+            </div>
+          </div>        
+        </SidebarHeader> */}
+        <SidebarHeader className="flex tems-center justify-center gap-1">        
+          <div className="flex aspect-square items-center justify-center">
+            <HugeiconsIcon icon={Notebook02Icon} size={24}/>
+          </div>
+          <div className={`flex items-center leading-none ${state === "collapsed" ? "hidden" : "block"}`}>
+            <span className="font-medium text-x1 tracking-tight">Noted</span>
           </div>
         </SidebarHeader>
         <SidebarContent>

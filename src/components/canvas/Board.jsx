@@ -1,11 +1,10 @@
-import { Tldraw } from 'tldraw'
+// import { Tldraw } from 'tldraw'
 
 export default function Board() {
   return (
     <div className="fixed inset-0">
-      <Tldraw 
-
-      />
+      {/* <Tldraw 
+      /> */}
     </div>
   )
 }
