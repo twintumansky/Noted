@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import LayoutShell from "@/components/layout/LayoutShell";
-// import Intro from "../pages/Intro";
+import Intro from "../pages/Intro";
 // import Board from "@/components/canvas/Board";
 // import PageTransition from '../components/animations/PageTransition'
 import Error from "../components/Error";
@@ -8,7 +8,13 @@ import Error from "../components/Error";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <LayoutShell />,
+    element: <Intro />,
+    children: [
+      {
+        path: "main",
+        element: <LayoutShell />
+      }
+    ],
     error: <Error />
   }
 ]);

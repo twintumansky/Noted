@@ -10,7 +10,7 @@ const Error = () => {
       <p className="text-lg text-gray-600 dark:text-gray-400">
         {error.statusText || error.message || "Something went wrong."}
       </p>
-      <button 
+      <button
         onClick={() => window.location.href = "/"}
         className="mt-6 px-6 py-2 bg-neutral-800 text-white rounded-lg hover:bg-black transition-colors"
       >
