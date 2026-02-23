@@ -1,10 +1,14 @@
-// import { Tldraw } from 'tldraw'
+import { Tldraw } from 'tldraw'
 
 export default function Board() {
   return (
-    <div className="fixed inset-0">
-      {/* <Tldraw 
-      /> */}
+    <div className="absolute inset-0">
+      <Tldraw
+        hideUi={false}
+        onMount={(editor) => {
+          console.log('Canvas Mounted', editor);
+        }} 
+      />
     </div>
   )
 }

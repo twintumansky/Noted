@@ -58,7 +58,7 @@ export function AppSidebar() {
               <Collapsible key={item.id} asChild defaultOpen className="group/collapsible">
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
-                    <SidebarMenuButton tooltip={item.title} isActive>
+                    <SidebarMenuButton tooltip={item.title} >
                       {item.type === 'folder' ? <HugeiconsIcon icon={Folder01Icon} /> : <HugeiconsIcon icon={Note01Icon} />}
                       <span>{item.title}</span>
                       <HugeiconsIcon
