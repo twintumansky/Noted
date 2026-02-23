@@ -32,4 +32,6 @@
 
 4. Open the app in your browser
    http://localhost:5173
+
+-- Enjoy using the app --   
  
