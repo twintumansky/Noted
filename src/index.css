@@ -127,3 +127,7 @@
     @apply font-sans;
     }
 }
+
+.tl-watermark {
+  display: none !important;
+}
