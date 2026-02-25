@@ -14,7 +14,7 @@ import {
   useSidebar
 } from "@/components/ui/sidebar"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { PlusIcon, Folder01Icon, Note01Icon, Notebook02Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons"
+import { Add01Icon, Folder01Icon, Note01Icon, Notebook02Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
 
 const dummy_data = [
@@ -58,12 +58,14 @@ export function AppSidebar() {
 
   return (
     <Sidebar variant="floating" collapsible="icon">
-      <SidebarHeader className="flex tems-center justify-center gap-1">
+      <SidebarHeader>
+        <div className="flex tems-center justify-center gap-1">
         <div className="flex aspect-square items-center justify-center">
           <HugeiconsIcon icon={Notebook02Icon} size={24} />
         </div>
         <div className={`flex items-center leading-none ${state === "collapsed" ? "hidden" : "block"}`}>
           <span className="font-medium text-x1 tracking-tight">Noted</span>
+        </div>
         </div>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -71,7 +73,7 @@ export function AppSidebar() {
               onClick={handleCreateNote}
               className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90 mt-2"
             >
-              <HugeiconsIcon icon={PlusIcon} />
+              <HugeiconsIcon icon={Add01Icon} />
               <span className={state === "collapsed" ? "hidden" : "block"}>Create Note</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
