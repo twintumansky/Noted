@@ -1,3 +1,4 @@
+import { useCanvas } from "@/context/CanvasContext"
 import {
   Sidebar,
   SidebarContent,
@@ -13,7 +14,7 @@ import {
   useSidebar
 } from "@/components/ui/sidebar"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { Folder01Icon, Note01Icon, Notebook02Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons"
+import { PlusIcon, Folder01Icon, Note01Icon, Notebook02Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
 
 const dummy_data = [
@@ -40,6 +41,21 @@ const dummy_data = [
 export function AppSidebar() {
 
   const { state } = useSidebar();
+  const { editor } = useCanvas();
+
+  const handleCreateNote = () => {
+    if (!editor) return
+
+    const center = editor.getViewportScreenCenter();
+
+    editor.createShape({
+      type: 'text',
+      x: center.x - 100,
+      y: center.y - 50,
+      props: { text: 'New Note' },
+    })
+  };
+
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader className="flex tems-center justify-center gap-1">
@@ -49,7 +65,19 @@ export function AppSidebar() {
         <div className={`flex items-center leading-none ${state === "collapsed" ? "hidden" : "block"}`}>
           <span className="font-medium text-x1 tracking-tight">Noted</span>
         </div>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              onClick={handleCreateNote}
+              className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90 mt-2"
+            >
+              <HugeiconsIcon icon={PlusIcon} />
+              <span className={state === "collapsed" ? "hidden" : "block"}>Create Note</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Your Board</SidebarGroupLabel>
@@ -67,7 +95,6 @@ export function AppSidebar() {
                       />
                     </SidebarMenuButton>
                   </CollapsibleTrigger>
-
                   <CollapsibleContent>
                     <SidebarMenuSub>
                       {item.children?.map((child) => (
@@ -90,4 +117,4 @@ export function AppSidebar() {
       </SidebarContent>
     </Sidebar>
   )
-}
+};
