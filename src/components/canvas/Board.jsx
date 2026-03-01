@@ -1,7 +1,9 @@
-import { Tldraw, toRichText } from 'tldraw'
-import { useCanvas } from '@/context/CanvasContext'
-import 'tldraw/tldraw.css'
+import { Tldraw, toRichText } from 'tldraw';
+import { NoteShapeUtil } from './NoteShape';
+import { useCanvas } from '@/context/CanvasContext';
+import 'tldraw/tldraw.css';
 
+const customShapes = [NoteShapeUtil]
 export default function Board() {
 
   const { setEditor } = useCanvas();
@@ -30,6 +32,7 @@ export default function Board() {
       <Tldraw
         hideUi={true}
         inferDarkMode={false}
+        shapeUtils={customShapes}
         onMount={handleMount}
       />
       <div className="absolute bottom-4 right-4 z-20 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-slate-200 text-xs font-medium text-slate-500 shadow-sm">

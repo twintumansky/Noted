@@ -1,4 +1,4 @@
-import { useCanvas } from "@/context/CanvasContext"
+import { useCanvas } from "@/context/CanvasContext";
 import {
   Sidebar,
   SidebarContent,
@@ -12,10 +12,10 @@ import {
   SidebarMenuSubItem,
   SidebarMenuSubButton,
   useSidebar
-} from "@/components/ui/sidebar"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { Add01Icon, Folder01Icon, Note01Icon, Notebook02Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons"
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
+} from "@/components/ui/sidebar";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Add01Icon, Folder01Icon, Note01Icon, Notebook02Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 
 const dummy_data = [
   {
@@ -49,10 +49,12 @@ export function AppSidebar() {
     const center = editor.getViewportScreenCenter();
 
     editor.createShape({
-      type: 'text',
-      x: center.x - 100,
-      y: center.y - 50,
-      props: { text: 'New Note' },
+      x: center.x - 150,
+      y: center.y - 125,
+      props: {
+        title: 'Note from Sidebar',
+        content: 'This is our custom high-fidelity note shape!',
+      },
     })
   };
 
