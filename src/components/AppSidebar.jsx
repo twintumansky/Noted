@@ -60,12 +60,12 @@ export function AppSidebar() {
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader>
         <div className="flex tems-center justify-center gap-1">
-        <div className="flex aspect-square items-center justify-center">
-          <HugeiconsIcon icon={Notebook02Icon} size={24} />
-        </div>
-        <div className={`flex items-center leading-none ${state === "collapsed" ? "hidden" : "block"}`}>
-          <span className="font-medium text-x1 tracking-tight">Noted</span>
-        </div>
+          <div className="flex aspect-square items-center justify-center">
+            <HugeiconsIcon icon={Notebook02Icon} size={24} />
+          </div>
+          <div className={`flex items-center leading-none ${state === "collapsed" ? "hidden" : "block"}`}>
+            <span className="font-medium text-x1 tracking-tight">Noted</span>
+          </div>
         </div>
         <SidebarMenu>
           <SidebarMenuItem>
