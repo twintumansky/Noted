@@ -3,6 +3,7 @@ import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/s
 import { AppSidebar } from "@/components/AppSidebar"
 // import TopNavbar from "@/components/TopNavbar"
 import Board from "@/components/canvas/Board"
+import Toolbar from "../canvas/Toolbar"
 import { TooltipProvider } from "../ui/tooltip"
 
 export default function LayoutShell() {
@@ -19,6 +20,7 @@ export default function LayoutShell() {
             </header>
             <main className="flex-1 relative bg-[#dbdcd5]">
               <Board />
+              <Toolbar />
             </main>
           </SidebarInset>
         </SidebarProvider>
