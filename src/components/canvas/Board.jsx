@@ -1,9 +1,9 @@
 import { Tldraw, toRichText } from 'tldraw';
-import { NoteShapeUtil } from './NoteShape';
+// import { NoteShapeUtil } from './NoteShape';
 import { useCanvas } from '@/context/CanvasContext';
 import 'tldraw/tldraw.css';
 
-const customShapes = [NoteShapeUtil]
+// const customShapes = [NoteShapeUtil]
 export default function Board() {
 
   const { setEditor } = useCanvas();
@@ -12,19 +12,25 @@ export default function Board() {
     setEditor(editor);
     editor.updateInstanceState({ isGridMode: true });
 		editor.createShape({
-			type: 'text',
-			x: 200,
-			y: 200,
-			props: {
-				richText: toRichText('Hello world!'),
-			},
-		})
+      type: 'note',
+      x: 100,
+      y: 100,
+      props: {
+        color: 'yellow',
+        labelColor: 'black',
+        richText: toRichText('My note'),
+        size: 'm',
+        font: 'draw',
+        align: 'middle',
+        verticalAlign: 'middle',
+      },
+    })
 
-		editor.selectAll()
+		// editor.selectAll()
 
-		editor.zoomToSelection({
-			animation: { duration: 5000 },
-		})
+		// editor.zoomToSelection({
+		// 	animation: { duration: 5000 },
+		// })
 	}
 
   return (
@@ -32,7 +38,7 @@ export default function Board() {
       <Tldraw
         hideUi={true}
         inferDarkMode={false}
-        shapeUtils={customShapes}
+        // shapeUtils={customShapes}
         onMount={handleMount}
       />
       <div className="absolute bottom-4 right-4 z-20 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-slate-200 text-xs font-medium text-slate-500 shadow-sm">
