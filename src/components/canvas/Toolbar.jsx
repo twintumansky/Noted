@@ -1,15 +1,19 @@
+import { useValue } from 'tldraw';
 import { useCanvas } from '@/context/CanvasContext';
-import { 
-  PencilIcon, 
+import {
+  PencilIcon,
   SquareIcon,
-  ArrowUpRight01Icon, 
+  ArrowUpRight01Icon,
   EraserIcon,
-  Cursor02Icon
+  Cursor02Icon,
+  Hold03Icon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
 export default function Toolbar() {
   const { editor } = useCanvas();
+
+  const currentToolId = useValue('current tool id', () => editor?.getCurrentToolId(), [editor]);
 
   const setTool = (tool) => {
     if (editor) editor.setCurrentTool(tool);
@@ -17,6 +21,7 @@ export default function Toolbar() {
 
   const tools = [
     { id: 'select', icon: Cursor02Icon, label: 'Select' },
+    { id: 'hand', icon: Hold03Icon, label: 'Hand' },
     { id: 'draw', icon: PencilIcon, label: 'Draw' },
     { id: 'geo', icon: SquareIcon, label: 'Shape' },
     { id: 'arrow', icon: ArrowUpRight01Icon, label: 'Arrow' },
@@ -25,16 +30,22 @@ export default function Toolbar() {
 
   return (
     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1 bg-white/80 backdrop-blur-md border border-slate-200 rounded-2xl shadow-sm">
-      {tools.map((tool) => (
-        <button
-          key={tool.id}
-          onClick={() => setTool(tool.id)}
-          className="p-2 hover:bg-slate-100 rounded-xl transition-colors text-slate-600 hover:text-slate-900"
-          title={tool.label}
-        >
-          <HugeiconsIcon icon={tool.icon} size={20} />
-        </button>
-      ))}
+      {tools.map((tool) => {
+        const isActive = currentToolId === tool.id;
+        return (
+          <button
+            key={tool.id}
+            onClick={() => setTool(tool.id)}
+            className={`p-2 rounded-xl transition-all ${isActive
+                ? "bg-slate-900 text-white shadow-inner"
+                : "text-slate-600 hover:bg-slate-100"
+              }`}
+            title={tool.label}
+          >
+            <HugeiconsIcon icon={tool.icon} size={20} />
+          </button>
+        )
+      })}
     </div>
   );
 }
