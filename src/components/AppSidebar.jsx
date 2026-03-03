@@ -1,3 +1,4 @@
+import { toRichText } from 'tldraw';
 import { useCanvas } from "@/context/CanvasContext";
 import {
   Sidebar,
@@ -49,11 +50,17 @@ export function AppSidebar() {
     const center = editor.getViewportScreenCenter();
 
     editor.createShape({
+      type: 'note',
       x: center.x - 150,
       y: center.y - 125,
       props: {
-        title: 'Note from Sidebar',
-        content: 'This is our custom high-fidelity note shape!',
+        color: 'yellow',
+        labelColor: 'black',
+        richText: toRichText('Note from Sidebar'),
+        size: 'm',
+        font: 'draw',
+        align: 'middle',
+        verticalAlign: 'middle',
       },
     })
   };
