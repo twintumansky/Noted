@@ -37,7 +37,7 @@ export default function Toolbar() {
             key={tool.id}
             onClick={() => setTool(tool.id)}
             className={`p-2 rounded-xl transition-all ${isActive
-                ? "bg-slate-900 text-white shadow-inner"
+                ? "bg-popover text-popover-foreground shadow-inner"
                 : "text-slate-600 hover:bg-slate-100"
               }`}
             title={tool.label}
