@@ -80,7 +80,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton
               onClick={handleCreateNote}
-              className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90 mt-2"
+              className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-accent mt-2"
             >
               <HugeiconsIcon icon={Add01Icon} />
               <span className={state === "collapsed" ? "hidden" : "block"}>Create Note</span>
