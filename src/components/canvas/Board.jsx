@@ -9,7 +9,7 @@ export default function Board() {
 
   const handleMount = useCallback((editor) => {
     setEditor(editor);
-    editor.updateInstanceState({ isGridMode: true });
+    // editor.updateInstanceState({ isGridMode: true });
     const currentShapes = editor.getCurrentPageShapes();
     if (currentShapes == 0) {
       editor.createShape({
@@ -30,7 +30,7 @@ export default function Board() {
   }, [setEditor]);
 
 return (
-  <div className="absolute inset-0 overflow-hidden bg-[#fbfbfb]">
+  <div className="absolute inset-0 overflow-hidden bg-[#92c3c5]">
     <Tldraw
       hideUi={true}
       inferDarkMode={false}

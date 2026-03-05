@@ -18,7 +18,7 @@ export default function LayoutShell() {
               <SidebarTrigger>
               </SidebarTrigger>
             </header>
-            <main className="flex-1 relative bg-[#dbdcd5]">
+            <main className="flex-1 relative">
               <Board />
               <Toolbar />
             </main>
