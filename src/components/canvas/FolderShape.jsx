@@ -1,7 +1,15 @@
 import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
 
 export class FolderShapeUtil extends BaseBoxShapeUtil {
+
   static type = "folder";
+  onDoubleClick = (shape) => {
+    this.editor.updateShape({
+      id: shape.id,
+      type: 'folder',
+      props: { isExpanded: !shape.props.isExpanded },
+    })
+  }
 
   getDefaultProps() {
     return {
@@ -15,8 +23,10 @@ export class FolderShapeUtil extends BaseBoxShapeUtil {
 
   component(shape) {
     const { isExpanded, title } = shape.props;
+
     return (
-      <HTMLContainer className="pointer-events-auto select-none">
+      <HTMLContainer
+        className="pointer-events-auto select-none">
         <div
           className={`flex flex-col h-full rounded-2xl border-2 transition-all duration-300 shadow-sm
                                ${isExpanded ? "bg-white border-slate-300 scale-105" : "bg-slate-50 border-slate-200 hover:border-slate-300"}
