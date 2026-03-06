@@ -1,10 +1,10 @@
-import { Tldraw, toRichText } from 'tldraw';
+import { Tldraw } from 'tldraw';
 import { useCanvas } from '@/context/CanvasContext';
 import { useCallback } from 'react';
 import { FolderShapeUtil } from './FolderShape';
 import 'tldraw/tldraw.css';
 
-const customShapes = [FolderShapeUtil]
+const customShapes = [FolderShapeUtil];
 
 export default function Board() {
 
@@ -15,19 +15,28 @@ export default function Board() {
     // editor.updateInstanceState({ isGridMode: true });
     const currentShapes = editor.getCurrentPageShapes();
     if (currentShapes == 0) {
+
+      //NOTE SHAPE
+      // editor.createShape({
+      //   type: 'note',
+      //   x: 100,
+      //   y: 100,
+      //   props: {
+      //     color: 'yellow',
+      //     labelColor: 'black',
+      //     richText: toRichText('Welcome to Noted...'),
+      //     size: 'm',
+      //     font: 'draw',
+      //     align: 'middle',
+      //     verticalAlign: 'middle',
+      //   },
+      // });
+
+      //FOLDER SHAPE
       editor.createShape({
-        type: 'note',
-        x: 100,
-        y: 100,
-        props: {
-          color: 'yellow',
-          labelColor: 'black',
-          richText: toRichText('Welcome to Noted...'),
-          size: 'm',
-          font: 'draw',
-          align: 'middle',
-          verticalAlign: 'middle',
-        },
+        type: 'folder',
+        x: 200,
+        y: 300,
       });
     }
   }, [setEditor]);
