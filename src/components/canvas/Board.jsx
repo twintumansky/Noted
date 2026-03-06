@@ -42,7 +42,7 @@ export default function Board() {
   }, [setEditor]);
 
 return (
-  <div className="absolute inset-0 overflow-hidden bg-[#92c3c5]">
+  <div className="absolute inset-0 overflow-hidden">
     <Tldraw
       hideUi={true}
       inferDarkMode={false}

@@ -175,6 +175,10 @@
     }
 }
 
+.tl-container.tl-theme__light {
+  --tl-color-background: hsl(210deg 40.67% 84.85%) !important;
+}
+
 .tl-watermark_SEE-LICENSE{
   display: none !important;
 }

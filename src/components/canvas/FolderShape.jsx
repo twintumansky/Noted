@@ -19,7 +19,7 @@ export class FolderShapeUtil extends BaseBoxShapeUtil {
       <HTMLContainer className="pointer-events-auto select-none">
         <div
           className={`flex flex-col h-full rounded-2xl border-2 transition-all duration-300 shadow-sm
-                               ${isExpanded ? "bg-white border-slate-300 scale-105" : "bg-slate-50 border-slate-200 hover:border-slate-400"}
+                               ${isExpanded ? "bg-white border-slate-300 scale-105" : "bg-slate-50 border-slate-200 hover:border-slate-300"}
                                `}
           style={{ width: shape.props.w, height: shape.props.h }}
         >
