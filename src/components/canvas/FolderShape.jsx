@@ -73,17 +73,23 @@ export class FolderShapeUtil extends BaseBoxShapeUtil {
         ) : (
           <div className="group relative flex flex-col items-center gap-2 animate-in zoom-in-90 duration-300">
             <svg
-              width="64"
-              height="64"
-              viewBox="0 0 24 24"
+              width="200"
+              height="180"
+              viewBox="0 0 641 486"
               fill="none"
-              className="drop-shadow-md transition-transform group-hover:scale-110"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M2 7C2 5.89543 2.89543 5 4 5H9L11 7H20C21.1046 7 22 7.89543 22 9V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V7Z"
-                fill="#cbd5e1"
-                stroke="#94a3b8"
-                strokeWidth="1.5"
+                d="M578.038 26.478H204.596L205.74 29.359L233.643 98.737L574.171 99.012C574.171 99.012 586.508 99.708 593.362 101.254L592.651 101V41.073C592.651 33.002 586.108 26.478 578.038 26.478Z"
+                fill="#AAD4C8"
+              />
+              <path
+                d="M574.171 99.012L233.643 98.737L205.74 29.359L193.941 0H30.953C13.844 0 0 13.85 0 30.96V454.232C0 471.32 13.844 485.188 30.953 485.188H609.327C626.434 485.188 640.299 471.32 640.299 454.232V162.994C640.299 133.59 620.378 108.849 593.362 101.254C586.508 99.708 574.171 99.012 574.171 99.012ZM633.426 416.031V439.132H6.92V416.031H633.426Z"
+                fill="#616E7D"
+              />
+              <path
+                d="M6.92004 416.031H633.426V439.132H6.92004V416.031Z"
+                fill="#82BFAB"
               />
             </svg>
             <span className="text-[10px] font-bold text-slate-600 bg-white/80 px-2 py-0.5 rounded-full border border-slate-200 shadow-sm">
@@ -100,6 +106,12 @@ export class FolderShapeUtil extends BaseBoxShapeUtil {
   // }
 
   indicator(shape) {
-    return <rect width={shape.props.w} height={shape.props.h} rx={shape.props.isOpen ? 24 : 12} />;
+    return (
+      <rect
+        width={shape.props.w}
+        height={shape.props.h}
+        rx={shape.props.isOpen ? 24 : 12}
+      />
+    );
   }
 }
