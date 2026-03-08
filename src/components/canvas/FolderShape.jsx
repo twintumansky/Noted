@@ -71,28 +71,27 @@ export class FolderShapeUtil extends BaseBoxShapeUtil {
             </div>
           </div>
         ) : (
-          <div className="group relative flex flex-col items-center gap-2 animate-in zoom-in-90 duration-300">
+          <div className="group relative flex flex-col items-center gap-1 animate-in zoom-in-90 duration-300">
             <svg
-              width="200"
-              height="180"
-              viewBox="0 0 641 486"
+              width="109"
+              height="156"
+              viewBox="0 0 109 156"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <path fill="#b2ccc4" d="M96.579 36.668h6.011v83.555h-6.011z" />
               <path
-                d="M578.038 26.478H204.596L205.74 29.359L233.643 98.737L574.171 99.012C574.171 99.012 586.508 99.708 593.362 101.254L592.651 101V41.073C592.651 33.002 586.108 26.478 578.038 26.478Z"
-                fill="#AAD4C8"
+                d="M108.05 8.015A8.015 8.015 0 0 0 100.035 0h-11.02A8.015 8.015 0 0 0 81 8.015v32.964c0 6.712 7.757 10.451 13.007 6.27l11.021-8.776a8.01 8.01 0 0 0 3.022-6.27z"
+                fill="#82afae"
               />
+              <rect width="98.783" height="155.087" rx="8.015" fill="#82afae" />
               <path
-                d="M574.171 99.012L233.643 98.737L205.74 29.359L193.941 0H30.953C13.844 0 0 13.85 0 30.96V454.232C0 471.32 13.844 485.188 30.953 485.188H609.327C626.434 485.188 640.299 471.32 640.299 454.232V162.994C640.299 133.59 620.378 108.849 593.362 101.254C586.508 99.708 574.171 99.012 574.171 99.012ZM633.426 416.031V439.132H6.92V416.031H633.426Z"
-                fill="#616E7D"
+                d="M108 146.985A8.014 8.014 0 0 1 99.985 155h-18.97A8.015 8.015 0 0 1 73 146.985v-35.59c0-6.281 6.897-10.121 12.236-6.813l18.971 11.755a8.01 8.01 0 0 1 3.793 6.812z"
+                fill="#82afae"
               />
-              <path
-                d="M6.92004 416.031H633.426V439.132H6.92004V416.031Z"
-                fill="#82BFAB"
-              />
+              <path d="M4.54 8.015v139.057H2.282V8.015z" fill="#c3cbd4" />
             </svg>
-            <span className="text-[10px] font-bold text-slate-600 bg-white/80 px-2 py-0.5 rounded-full border border-slate-200 shadow-sm">
+            <span className="text-4 font-bold text-slate-600">
               {title}
             </span>
           </div>
