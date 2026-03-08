@@ -91,7 +91,7 @@ export class FolderShapeUtil extends BaseBoxShapeUtil {
               />
               <path d="M4.54 8.015v139.057H2.282V8.015z" fill="#c3cbd4" />
             </svg>
-            <span className="text-4 font-bold text-slate-600">
+            <span className="text-6 font-bold text-slate-600">
               {title}
             </span>
           </div>

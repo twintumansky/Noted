@@ -1,4 +1,5 @@
-import { toRichText } from 'tldraw';
+// import { FolderShapeUtil } from './FolderShape';
+// import { toRichText } from 'tldraw';
 import { useCanvas } from "@/context/CanvasContext";
 import {
   Sidebar,
@@ -39,31 +40,39 @@ const dummy_data = [
   },
 ]
 
-export function AppSidebar() {
+export function AppSidebar(){
 
   const { state } = useSidebar();
   const { editor } = useCanvas();
 
-  const handleCreateNote = () => {
+  const handleCreateFolder = () => {
     if (!editor) return
 
-    const center = editor.getViewportScreenCenter();
+    // const center = editor.getViewportScreenCenter();
 
+    //STICKY NOTE
+    // editor.createShape({
+    //   type: 'note',
+    //   x: center.x - 150,
+    //   y: center.y - 125,
+    //   props: {
+    //     color: 'yellow',
+    //     labelColor: 'black',
+    //     richText: toRichText('Note from Sidebar'),
+    //     size: 'm',
+    //     font: 'draw',
+    //     align: 'middle',
+    //     verticalAlign: 'middle',
+    //   },
+    // });
+
+    //FOLDER
     editor.createShape({
-      type: 'note',
-      x: center.x - 150,
-      y: center.y - 125,
-      props: {
-        color: 'yellow',
-        labelColor: 'black',
-        richText: toRichText('Note from Sidebar'),
-        size: 'm',
-        font: 'draw',
-        align: 'middle',
-        verticalAlign: 'middle',
-      },
-    })
-  };
+      type: 'folder',
+      x: 400,
+      y: 300,
+    });
+  }
 
   return (
     <Sidebar variant="floating" collapsible="icon">
@@ -79,11 +88,11 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
-              onClick={handleCreateNote}
+              onClick={handleCreateFolder}
               className="flex items-center justify-center bg-sidebar-primary hover:bg-[#c4c4c4] mt-2 pr-4"
             >
               <HugeiconsIcon icon={Add01Icon} />
-              <span className={state === "collapsed" ? "hidden" : "block"}>Create Note</span>
+              <span className={state === "collapsed" ? "hidden" : "block"}>Add</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
