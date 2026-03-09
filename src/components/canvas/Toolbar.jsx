@@ -1,6 +1,7 @@
 import { useValue } from 'tldraw';
 import { useCanvas } from '@/context/CanvasContext';
 import {
+  Add01Icon,
   PencilIcon,
   SquareIcon,
   ArrowUpRight01Icon,
@@ -28,6 +29,35 @@ export default function Toolbar() {
     { id: 'eraser', icon: EraserIcon, label: 'Eraser' },
   ];
 
+  const handleCreateFolder = () => {
+    if (!editor) return;
+
+    // const center = editor.getViewportScreenCenter();
+
+    //STICKY NOTE
+    // editor.createShape({
+    //   type: 'note',
+    //   x: center.x - 150,
+    //   y: center.y - 125,
+    //   props: {
+    //     color: 'yellow',
+    //     labelColor: 'black',
+    //     richText: toRichText('Note from Sidebar'),
+    //     size: 'm',
+    //     font: 'draw',
+    //     align: 'middle',
+    //     verticalAlign: 'middle',
+    //   },
+    // });
+
+    //FOLDER
+    editor.createShape({
+      type: "folder",
+      x: 400,
+      y: 300,
+    });
+  };
+
   return (
     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1 bg-white/80 backdrop-blur-md border border-slate-200 rounded-2xl shadow-sm">
       {tools.map((tool) => {
@@ -46,6 +76,16 @@ export default function Toolbar() {
           </button>
         )
       })}
+
+      <div className="w-[1px] h-6 bg-slate-200 mx-1" />
+      <button
+        onClick={handleCreateFolder}
+        className="p-2 text-slate-600 hover:bg-slate-100 rounded-xl transition-all"
+        title="Create Folder"
+      >
+        <HugeiconsIcon icon={Folder01Icon} size={20} />
+      </button>
+    </div>
     </div>
   );
 }
