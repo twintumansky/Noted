@@ -13,7 +13,7 @@ export default function LayoutShell() {
       <TooltipProvider delayDuration={0}>
         <SidebarProvider>
           <AppSidebar />
-          <SidebarInset className="flex flex-col h-screen overflow-hidden peer-data-[variant=floating]:rounded-none peer-data-[variant=floating]:m-0 peer-data-[variant=floating]:border-none">
+          <SidebarInset className="flex flex-col h-100svh overflow-hidden peer-data-[variant=floating]:rounded-none peer-data-[variant=floating]:m-0 peer-data-[variant=floating]:border-none">
             <header className="flex h-8 shrink-0 items-center gap-2 border-b bg-white px-1 z-10">
               <SidebarTrigger>
               </SidebarTrigger>

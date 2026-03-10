@@ -83,9 +83,8 @@ export default function Toolbar() {
         className="p-2 text-slate-600 hover:bg-slate-100 rounded-xl transition-all"
         title="Create Folder"
       >
-        <HugeiconsIcon icon={Folder01Icon} size={20} />
+        <HugeiconsIcon icon={Add01Icon} size={20} />
       </button>
-    </div>
     </div>
   );
 }
