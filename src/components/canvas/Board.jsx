@@ -1,57 +1,70 @@
-import { Tldraw } from 'tldraw';
-import { useCanvas } from '@/context/CanvasContext';
-import { useCallback } from 'react';
-import { FolderShapeUtil } from './FolderShape';
-import 'tldraw/tldraw.css';
+import { Tldraw, useValue } from "tldraw";
+import { useCanvas } from "@/context/CanvasContext";
+import { useCallback } from "react";
+import { FolderShapeUtil } from "./FolderShape";
+import "tldraw/tldraw.css";
 
 const customShapes = [FolderShapeUtil];
 
 export default function Board() {
+  const { editor, setEditor } = useCanvas();
 
-  const { setEditor } = useCanvas();
+  const zoomLevel = useValue(
+    'zoom-level',
+    () => {
+      if (!editor) return 1;
+      return Math.round(editor.getZoomLevel() * 100);
+    },
+    [editor]
+  );
 
-  const handleMount = useCallback((editor) => {
-    setEditor(editor);
-    // editor.updateInstanceState({ isGridMode: true });
-    const currentShapes = editor.getCurrentPageShapes();
-    if (currentShapes == 0) {
+  const handleMount = useCallback(
+    (editor) => {
+      setEditor(editor);
+      // editor.updateInstanceState({ isGridMode: true });
+      const currentShapes = editor.getCurrentPageShapes();
+      if (currentShapes == 0) {
 
-      //NOTE SHAPE
-      // editor.createShape({
-      //   type: 'note',
-      //   x: 100,
-      //   y: 100,
-      //   props: {
-      //     color: 'yellow',
-      //     labelColor: 'black',
-      //     richText: toRichText('Welcome to Noted...'),
-      //     size: 'm',
-      //     font: 'draw',
-      //     align: 'middle',
-      //     verticalAlign: 'middle',
-      //   },
-      // });
+        //FOLDER SHAPE
+        editor.createShape({
+          type: "folder",
+          x: 200,
+          y: 300,
+        });
 
-      //FOLDER SHAPE
-      editor.createShape({
-        type: 'folder',
-        x: 200,
-        y: 300,
-      });
-    }
-  }, [setEditor]);
+        //NOTE SHAPE
+        // editor.createShape({
+        //   type: 'note',
+        //   x: 100,
+        //   y: 100,
+        //   props: {
+        //     color: 'yellow',
+        //     labelColor: 'black',
+        //     richText: toRichText('Welcome to Noted...'),
+        //     size: 'm',
+        //     font: 'draw',
+        //     align: 'middle',
+        //     verticalAlign: 'middle',
+        //   },
+        // });
 
-return (
-  <div className="absolute inset-0 overflow-hidden">
-    <Tldraw
-      hideUi={true}
-      inferDarkMode={false}
-      onMount={handleMount}
-      shapeUtils={customShapes}
-    />
-    <div className="absolute bottom-4 right-4 z-20 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-slate-200 text-xs font-medium text-slate-500 shadow-sm">
-      100%
+        
+      }
+    },
+    [setEditor],
+  );
+
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <Tldraw
+        hideUi={true}
+        inferDarkMode={false}
+        onMount={handleMount}
+        shapeUtils={customShapes}
+      />
+      <div className="absolute bottom-4 right-4 z-20 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-slate-200 text-xs font-medium text-slate-500 shadow-sm">
+        {zoomLevel}%
+      </div>
     </div>
-  </div>
-)
-};
+  );
+}
