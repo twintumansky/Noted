@@ -1,5 +1,5 @@
-import { useValue } from 'tldraw';
-import { useCanvas } from '@/context/CanvasContext';
+import { useValue } from "tldraw";
+import { useCanvas } from "@/context/CanvasContext";
 import {
   Add01Icon,
   PencilIcon,
@@ -14,19 +14,23 @@ import { HugeiconsIcon } from "@hugeicons/react";
 export default function Toolbar() {
   const { editor } = useCanvas();
 
-  const currentToolId = useValue('current tool id', () => editor?.getCurrentToolId(), [editor]);
+  const currentToolId = useValue(
+    "current tool id",
+    () => editor?.getCurrentToolId(),
+    [editor],
+  );
 
   const setTool = (tool) => {
     if (editor) editor.setCurrentTool(tool);
   };
 
   const tools = [
-    { id: 'select', icon: Cursor02Icon, label: 'Select' },
-    { id: 'hand', icon: Hold03Icon, label: 'Hand' },
-    { id: 'draw', icon: PencilIcon, label: 'Draw' },
-    { id: 'geo', icon: SquareIcon, label: 'Shape' },
-    { id: 'arrow', icon: ArrowUpRight01Icon, label: 'Arrow' },
-    { id: 'eraser', icon: EraserIcon, label: 'Eraser' },
+    { id: "select", icon: Cursor02Icon, label: "Select" },
+    { id: "hand", icon: Hold03Icon, label: "Hand" },
+    { id: "draw", icon: PencilIcon, label: "Draw" },
+    { id: "geo", icon: SquareIcon, label: "Shape" },
+    { id: "arrow", icon: ArrowUpRight01Icon, label: "Arrow" },
+    { id: "eraser", icon: EraserIcon, label: "Eraser" },
   ];
 
   const handleCreateFolder = () => {
@@ -60,31 +64,31 @@ export default function Toolbar() {
 
   return (
     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1 bg-white/80 backdrop-blur-md border border-slate-200 rounded-2xl shadow-sm">
+      <button
+        onClick={handleCreateFolder}
+        className="p-2 text-slate-600 hover:bg-popover rounded-xl transition-all"
+        title="Create Folder"
+      >
+        <HugeiconsIcon icon={Add01Icon} size={20} />
+      </button>
+      {/* <div className="w-[1px] h-6 bg-[#d0c8ca] mx-1" /> */}
       {tools.map((tool) => {
         const isActive = currentToolId === tool.id;
         return (
           <button
             key={tool.id}
             onClick={() => setTool(tool.id)}
-            className={`p-2 rounded-xl transition-all ${isActive
+            className={`p-2 rounded-xl transition-all ${
+              isActive
                 ? "bg-popover text-popover-foreground shadow-inner"
-                : "text-slate-600 hover:bg-slate-100"
-              }`}
+                : "text-slate-600 hover:bg-popover"
+            }`}
             title={tool.label}
           >
             <HugeiconsIcon icon={tool.icon} size={20} />
           </button>
-        )
+        );
       })}
-
-      <div className="w-[1px] h-6 bg-slate-200 mx-1" />
-      <button
-        onClick={handleCreateFolder}
-        className="p-2 text-slate-600 hover:bg-slate-100 rounded-xl transition-all"
-        title="Create Folder"
-      >
-        <HugeiconsIcon icon={Add01Icon} size={20} />
-      </button>
     </div>
   );
 }
