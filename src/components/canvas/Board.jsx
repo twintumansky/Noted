@@ -21,7 +21,6 @@ export default function Board() {
   const handleMount = useCallback(
     (editor) => {
       setEditor(editor);
-      // editor.updateInstanceState({ isGridMode: true });
       const currentShapes = editor.getCurrentPageShapes();
       if (currentShapes == 0) {
 
@@ -48,7 +47,7 @@ export default function Board() {
         //   },
         // });
 
-        
+
       }
     },
     [setEditor],
