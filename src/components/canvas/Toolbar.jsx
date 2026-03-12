@@ -43,40 +43,11 @@ export default function Toolbar() {
     { id: "eraser", icon: EraserIcon, label: "Eraser" },
   ];
 
-  const handleCreateFolder = () => {
-    if (!editor) return;
-
-    // const center = editor.getViewportScreenCenter();
-
-    //STICKY NOTE
-    // editor.createShape({
-    //   type: 'note',
-    //   x: center.x - 150,
-    //   y: center.y - 125,
-    //   props: {
-    //     color: 'yellow',
-    //     labelColor: 'black',
-    //     richText: toRichText('Note from Sidebar'),
-    //     size: 'm',
-    //     font: 'draw',
-    //     align: 'middle',
-    //     verticalAlign: 'middle',
-    //   },
-    // });
-
-    //FOLDER
-    editor.createShape({
-      type: "folder",
-      x: 400,
-      y: 300,
-    });
-  };
-
   const createShapes = (type, title) => {
     if (!editor) return;
 
     const center = editor.getViewportScreenCenter();
-    editor.craeteShape({
+    editor.createShape({
       type: type,
       x: center.x - 150,
       y: center.y - 100,
@@ -100,20 +71,19 @@ export default function Toolbar() {
       <Popover>
         <PopoverTrigger asChild>
           <button
-            onClick={handleCreateFolder}
             className="p-2 text-slate-600 hover:bg-popover rounded-xl transition-all"
             title="Add shapes"
           >
             <HugeiconsIcon icon={Add01Icon} size={20} />
           </button>
         </PopoverTrigger>
-        <PopoverContent side='top ' align='start' className="w-48 p-2 rounded-2xl shadow-xl border-slate-200">
+        <PopoverContent side='top ' align='end' className="absolute bottom-8 w-48 p-2 z-20 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border-slate-200">
           <div className='grid gap-1'>
             {shapesArray.map((shape) => {
               return (
                 <button
                   key={shape.id}
-                  onClick={() => { createShapes(shape.id, `New {shape.labe}`) }}
+                  onClick={() => { createShapes(shape.id, `New ${shape.label}`) }}
                   className=' flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-popover rounded-xl transition-colors text-sm font-medium'
                   title={shape.label}>
                   <HugeiconsIcon icon={shape.icon} size={20} />
