@@ -63,7 +63,7 @@ export default function Toolbar() {
     { id: 'notebook', label: 'Notebook', icon: Notebook02Icon },
     { id: 'note', label: 'Note', icon: File01Icon },
     { id: 'todo', label: 'Todo', icon: ParagraphBulletsPoint01Icon },
-    { id: 'note', label: 'Sticky note', icon: StickyNote03Icon },
+    { id: 'stickynote', label: 'Sticky note', icon: StickyNote03Icon },
   ];
 
   return (
@@ -77,7 +77,7 @@ export default function Toolbar() {
             <HugeiconsIcon icon={Add01Icon} size={20} />
           </button>
         </PopoverTrigger>
-        <PopoverContent side='top ' align='end' className="absolute bottom-8 w-48 p-2 z-20 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border-slate-200">
+        <PopoverContent side='top ' align='start' className="absolute bottom-4 w-48 p-2 z-20 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border-slate-200">
           <div className='grid gap-1'>
             {shapesArray.map((shape) => {
               return (
