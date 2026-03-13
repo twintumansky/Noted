@@ -23,9 +23,9 @@ function Intro() {
 
     return (
         <>
-            <div className="h-dvh w-dvw flex flex-column items-center justify-center text-center relative bg-[#dbdcd5] text-[#0c0c0c] overflow-x-hidden">
+            <div className="h-100svh w-100svw flex flex-column items-center justify-center text-center relative bg-[#dbdcd5] text-[#0c0c0c] overflow-x-hidden">
                 <div className="inline-block">
-                    <h1 className="text-[4rem] font-extralight overflow-y-hidden tracking-tighter">
+                    <h1 className="text-16 font-extralight overflow-y-hidden tracking-tighter">
                         <TypingAnimation
                             text={[mainText]}
                             loop={1}
