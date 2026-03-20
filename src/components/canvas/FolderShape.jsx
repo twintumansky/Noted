@@ -67,7 +67,7 @@ export class FolderShapeUtil extends BaseBoxShapeUtil {
               </div>
             </div>
             <div className="flex-1 p-4 italic text-slate-400 text-xs">
-              Drop items here to add to project...
+              Add to the folder...
             </div>
           </div>
         ) : (
@@ -99,10 +99,6 @@ export class FolderShapeUtil extends BaseBoxShapeUtil {
       </HTMLContainer>
     );
   }
-
-  // indicator(shape) {
-  //   return <rect width={shape.props.w} height={shape.props.h} rx={16} />;
-  // }
 
   indicator(shape) {
     return (

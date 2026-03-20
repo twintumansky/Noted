@@ -43,7 +43,7 @@ export class NotebookShapeUtil extends BaseBoxShapeUtil {
                             </div>
                         </div>
                         <div className="flex-1 p-4 italic text-slate-400 text-xs">
-                            Drop items here to add to project...
+                            Add to the notebook...
                         </div>
                     </div>
                 ) : (
