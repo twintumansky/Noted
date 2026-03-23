@@ -1,22 +1,22 @@
 import { Tldraw, useValue } from "tldraw";
 import { useCanvas } from "@/context/CanvasContext";
 import { useCallback } from "react";
-import { FolderShapeUtil } from "./FolderShape";
+import { FolderUtil } from "./Folder";
 import { NotebookUtil } from "./Notebook";
 import "tldraw/tldraw.css";
 
-const customShapes = [FolderShapeUtil, NotebookUtil];
+const customShapes = [FolderUtil, NotebookUtil];
 
 export default function Board() {
   const { editor, setEditor } = useCanvas();
 
   const zoomLevel = useValue(
-    'zoom-level',
+    "zoom-level",
     () => {
       if (!editor) return 1;
       return Math.round(editor.getZoomLevel() * 100);
     },
-    [editor]
+    [editor],
   );
 
   const handleMount = useCallback(
@@ -24,11 +24,17 @@ export default function Board() {
       setEditor(editor);
       const currentShapes = editor.getCurrentPageShapes();
       if (currentShapes == 0) {
-
         //FOLDER SHAPE
         editor.createShape({
           type: "folder",
           x: 200,
+          y: 300,
+        });
+
+        //NOTEBOOK SHAPE
+        editor.createShape({
+          type: "notebook",
+          x: 500,
           y: 300,
         });
 
@@ -47,8 +53,6 @@ export default function Board() {
         //     verticalAlign: 'middle',
         //   },
         // });
-
-
       }
     },
     [setEditor],

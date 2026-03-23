@@ -56,12 +56,8 @@ export class NotebookUtil extends BaseBoxShapeUtil {
             // </HTMLContainer>
 
             <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
-                <NotebookShape
-                    isOpen={isOpen}
-                    title={title}
-                />
+                <NotebookShape isOpen={isOpen} title={title} />
             </HTMLContainer>
-
         );
     }
 

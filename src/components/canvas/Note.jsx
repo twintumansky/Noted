@@ -1,6 +1,6 @@
 import { BaseBoxShapeUtil, HTMLContainer } from 'tldraw';
 
-export class NoteShapeUtil extends BaseBoxShapeUtil {
+export class NoteUtil extends BaseBoxShapeUtil {
   static type = 'note'
 
   getDefaultProps() {
