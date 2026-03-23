@@ -31,12 +31,12 @@ export default function Board() {
           y: 300,
         });
 
-        //NOTEBOOK SHAPE
-        editor.createShape({
-          type: "notebook",
-          x: 500,
-          y: 300,
-        });
+        // NOTEBOOK SHAPE
+        // editor.createShape({
+        //   type: "notebook",
+        //   x: 500,
+        //   y: 300,
+        // });
 
         //NOTE SHAPE
         // editor.createShape({

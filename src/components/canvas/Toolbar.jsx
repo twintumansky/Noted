@@ -53,7 +53,7 @@ export default function Toolbar() {
       y: center.y - 100,
       props: {
         title: title,
-        isExpanded: false,
+        isOpen: false,
       },
     });
   };
