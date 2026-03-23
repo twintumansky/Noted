@@ -2,9 +2,10 @@ import { Tldraw, useValue } from "tldraw";
 import { useCanvas } from "@/context/CanvasContext";
 import { useCallback } from "react";
 import { FolderShapeUtil } from "./FolderShape";
+import { NotebookUtil } from "./Notebook";
 import "tldraw/tldraw.css";
 
-const customShapes = [FolderShapeUtil];
+const customShapes = [FolderShapeUtil, NotebookUtil];
 
 export default function Board() {
   const { editor, setEditor } = useCanvas();
