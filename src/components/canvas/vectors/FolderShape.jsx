@@ -1,4 +1,4 @@
-export const FolderShape = (isOpen, title) => {
+export const FolderShape = ({ isOpen, title }) => {
     return isOpen ? (
         <div className="flex flex-col w-full h-full rounded-3xl bg-white/40 backdrop-blur-xl border border-white/50 shadow-2xl overflow-hidden transition-all duration-500">
             <div className="p-4 flex items-center justify-between bg-white/30 border-b border-white/20">
