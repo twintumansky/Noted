@@ -39,9 +39,9 @@ export const NoteShape = ({ isOpen, title }) => {
                         width="118.563"
                         height="159.148"
                         filterUnits="userSpaceOnUse"
-                        colorInterpolationFilters="sRGB"
+                        color-interpolation-filters="sRGB"
                     >
-                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
                         <feColorMatrix
                             in="SourceAlpha"
                             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
@@ -63,6 +63,7 @@ export const NoteShape = ({ isOpen, title }) => {
                     </filter>
                 </defs>
             </svg>
+
             <span className="text-6 font-bold text-slate-600">{title}</span>
         </div>
     );
