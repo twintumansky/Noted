@@ -39,9 +39,9 @@ export const NoteShape = ({ isOpen, title }) => {
                         width="118.563"
                         height="159.148"
                         filterUnits="userSpaceOnUse"
-                        color-interpolation-filters="sRGB"
+                        colorInterpolationFilters="sRGB"
                     >
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
                         <feColorMatrix
                             in="SourceAlpha"
                             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
