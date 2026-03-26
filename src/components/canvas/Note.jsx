@@ -1,26 +1,41 @@
 import { BaseBoxShapeUtil, HTMLContainer } from 'tldraw';
+import { NoteShape } from './vectors/NoteShape';
 
 export class NoteUtil extends BaseBoxShapeUtil {
-  static type = 'note'
+  static type = 'note';
 
   getDefaultProps() {
     return {
-      w: 300,
-      h: 250,
+      w: 109,
+      h: 156,
       title: 'New Note',
-      content: '',
+      isOpen: false,
+      childrenIds: [],
     }
   }
 
+  onDoubleClick = (shape) => {
+    const isNoteOpen = !shape.props.isOpen;
+
+    this.editor.updateShape({
+      id: shape.id,
+      type: "note",
+      props: {
+        isOpen: isNoteOpen,
+        w: isNoteOpen ? 200 : 109,
+        h: isNoteOpen ? 180 : 156,
+      },
+    });
+  };
+
   component(shape) {
+    const { isOpen, title } = shape.props;
     return (
       <HTMLContainer className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col h-full pointer-events-auto">
-        <div className="font-bold text-slate-800 mb-2 border-b border-slate-100 pb-1">
-          {shape.props.title}
-        </div>
-        <div className="text-sm text-slate-600 flex-1 overflow-hidden">
-          {shape.props.content || 'Start typing...'}
-        </div>
+        <NoteShape
+          title={title}
+          isOpen={isOpen}
+        />
       </HTMLContainer>
     )
   }
