@@ -69,10 +69,7 @@
 //     );
 // };
 
-export const NoteShape = ({ id, isOpen, title }) => {
-    // Create a unique filter ID for this specific instance
-    const filterId = `filter_${id.replace(':', '_')}`;
-
+export const NoteShape = ({ isOpen, title }) => {
     return isOpen ? (
         <div className="flex flex-col w-full h-full rounded-3xl bg-white/40 backdrop-blur-xl border border-white/50 shadow-2xl overflow-hidden transition-all duration-500">
             <div className="p-4 flex items-center justify-between bg-white/30 border-b border-white/20">
@@ -89,49 +86,13 @@ export const NoteShape = ({ id, isOpen, title }) => {
     ) : (
         <div className="group relative flex flex-col items-center gap-1 animate-in zoom-in-90 duration-300">
             <svg
-                width="119"
-                height="160"
-                viewBox="0 0 119 160"
+                width="114"
+                height="155"
+                viewBox="0 0 114 155"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
-                {/* Reference the dynamic filterId */}
-                <g filter={`url(#${filterId})`}>
-                    <path
-                        d="M108.362 1.001h.126c4.318 0 7.862 3.754 7.88 8.352v.125c.107 27.163.398 110.87-.034 121.599-.517 12.832-17.018 25.071-27.018 25.071H9.883c-4.332 0-7.883-3.779-7.883-8.391V9.122C2 4.615 5.396 1 9.629 1h.382z"
-                        fill="#e5e5e5"
-                    />
-                    <path
-                        d="M116.421 127.335a169 169 0 0 1-.087 3.742c-.476 11.81-14.492 23.117-24.518 24.843v-20.575a8.01 8.01 0 0 1 8.01-8.01z"
-                        fill="#dcdcdc"
-                    />
-                </g>
-                <defs>
-                    <filter
-                        id={filterId} // Use the dynamic ID here
-                        x="-10%" // Adding some margin to prevent shadow clipping
-                        y="-10%"
-                        width="120%"
-                        height="120%"
-                        filterUnits="userSpaceOnUse"
-                        colorInterpolationFilters="sRGB"
-                    >
-                        {/* Simplified filter: feFlood removed to prevent white boxes */}
-                        <feColorMatrix
-                            in="SourceAlpha"
-                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                            result="hardAlpha"
-                        />
-                        <feOffset dy="1" />
-                        <feGaussianBlur stdDeviation="1" />
-                        <feComposite in2="hardAlpha" operator="out" />
-                        <feColorMatrix
-                            values="0 0 0 0 0.66 0 0 0 0 0.65 0 0 0 0 0.65 0 0 0 0.25 0"
-                        />
-                        {/* Blend directly with the SourceGraphic */}
-                        <feBlend in="SourceGraphic" result="shape" />
-                    </filter>
-                </defs>
+                <rect width="114" height="155" rx="8.01" fill="#e5e5e5" />
             </svg>
             <span className="text-6 font-bold text-slate-600">{title}</span>
         </div>
