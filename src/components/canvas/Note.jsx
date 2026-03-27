@@ -33,6 +33,7 @@ export class NoteUtil extends BaseBoxShapeUtil {
     return (
       <HTMLContainer className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col h-full pointer-events-auto">
         <NoteShape
+          id={shape.id}
           title={title}
           isOpen={isOpen}
         />
