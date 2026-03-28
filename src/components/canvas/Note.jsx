@@ -31,7 +31,7 @@ export class NoteUtil extends BaseBoxShapeUtil {
   component(shape) {
     const { isOpen, title } = shape.props;
     return (
-      <HTMLContainer className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col h-full pointer-events-auto">
+      <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
         <NoteShape
           title={title}
           isOpen={isOpen}
