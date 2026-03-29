@@ -6,8 +6,8 @@ export class FolderUtil extends BaseBoxShapeUtil {
 
   getDefaultProps() {
     return {
-      w: 109,
-      h: 156,
+      w: 115,
+      h: 185,
       title: "New Folder",
       isOpen: false,
       childrenIds: [],
@@ -21,8 +21,8 @@ export class FolderUtil extends BaseBoxShapeUtil {
       type: "folder",
       props: {
         isOpen: isFolderOpen,
-        w: isFolderOpen ? 200 : 109,
-        h: isFolderOpen ? 180 : 156,
+        w: isFolderOpen ? 200 : 115,
+        h: isFolderOpen ? 180 : 185,
       },
     });
   };

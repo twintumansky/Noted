@@ -6,8 +6,8 @@ export class NoteUtil extends BaseBoxShapeUtil {
 
   getDefaultProps() {
     return {
-      w: 109,
-      h: 156,
+      w: 115,
+      h: 185,
       title: 'New Note',
       isOpen: false,
       childrenIds: [],
@@ -22,8 +22,8 @@ export class NoteUtil extends BaseBoxShapeUtil {
       type: "note",
       props: {
         isOpen: isNoteOpen,
-        w: isNoteOpen ? 200 : 109,
-        h: isNoteOpen ? 180 : 156,
+        w: isNoteOpen ? 200 : 115,
+        h: isNoteOpen ? 180 : 185,
       },
     });
   };

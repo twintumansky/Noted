@@ -6,8 +6,8 @@ export class NotebookUtil extends BaseBoxShapeUtil {
 
     getDefaultProps() {
         return {
-            w: 109,
-            h: 156,
+            w: 115,
+            h: 185,
             title: "New notebook",
             isOpen: false,
             childrenIds: [],
@@ -21,8 +21,8 @@ export class NotebookUtil extends BaseBoxShapeUtil {
             type: "notebook",
             props: {
                 isOpen: isNotebookOpen,
-                w: isNotebookOpen ? 200 : 109,
-                h: isNotebookOpen ? 180 : 156,
+                w: isNotebookOpen ? 200 : 115,
+                h: isNotebookOpen ? 180 : 185,
             },
         });
     };
