@@ -1,5 +1,5 @@
 import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
-import { NotebookShape } from "./vectors/NotebookShape";
+import { NotebookShape } from "../vectors/NotebookShape"
 
 export class NotebookUtil extends BaseBoxShapeUtil {
     static type = "notebook";

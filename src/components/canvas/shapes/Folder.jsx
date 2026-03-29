@@ -1,5 +1,5 @@
 import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
-import { FolderShape } from "./vectors/FolderShape";
+import { FolderShape } from "../vectors/FolderShape";
 
 export class FolderUtil extends BaseBoxShapeUtil {
   static type = "folder";

@@ -1,9 +1,9 @@
 import { Tldraw, useValue } from "tldraw";
 import { useCanvas } from "@/context/CanvasContext";
 import { useCallback } from "react";
-import { FolderUtil } from "./Folder";
-import { NotebookUtil } from "./Notebook";
-import { NoteUtil } from "./Note";
+import { FolderUtil } from "./shapes/Folder";
+import { NotebookUtil } from "./shapes/Notebook";
+import { NoteUtil } from "./shapes/Note";
 import "tldraw/tldraw.css";
 
 const customShapes = [FolderUtil, NotebookUtil, NoteUtil];

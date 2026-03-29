@@ -31,8 +31,7 @@
   --chart-4: oklch(0.4900 0.2200 264);
   --chart-5: oklch(0.4200 0.1800 266);
   /* --sidebar: oklch(0.9850 0 0); */
-  --sidebar: oklch(0.8766 0.0271 249.93)
-  --sidebar-foreground: oklch(0.1450 0 0);
+  --sidebar: oklch(0.8766 0.0271 249.93) --sidebar-foreground: oklch(0.1450 0 0);
   --sidebar-primary: oklch(0.91 0 0);
   --sidebar-primary-foreground: oklch(0.9850 0 0);
   --sidebar-accent: oklch(0.9700 0 0);
@@ -170,16 +169,17 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    }
+  }
+
   body {
     @apply font-mono bg-background text-foreground;
-    }
+  }
 }
 
 .tl-container.tl-theme__light {
-  --tl-color-background: hsl(211, 40%, 85%) !important;
+  --tl-color-background: #c5cbd0c2 !important;
 }
 
-.tl-watermark_SEE-LICENSE{
+.tl-watermark_SEE-LICENSE {
   display: none !important;
 }
