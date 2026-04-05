@@ -14,6 +14,8 @@ export class NoteUtil extends BaseBoxShapeUtil {
     };
   }
 
+  canResize = () => false;
+
   onDoubleClick = (shape) => {
     const isNoteOpen = !shape.props.isOpen;
 

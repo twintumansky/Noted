@@ -183,3 +183,10 @@
 .tl-watermark_SEE-LICENSE {
   display: none !important;
 }
+
+[data-shape-type="notebook"] .tl-selection-foreground,
+[data-shape-type="note"] .tl-selection-foreground,
+[data-shape-type="folder"] .tl-selection-foreground {
+  display: none !important;
+  pointer-events: none;
+}

@@ -27,6 +27,8 @@ export class FolderUtil extends BaseBoxShapeUtil {
     });
   };
 
+  canResize = () => false;
+
   component(shape) {
     const { isOpen, title } = shape.props;
 

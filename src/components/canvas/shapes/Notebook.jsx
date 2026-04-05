@@ -14,6 +14,8 @@ export class NotebookUtil extends BaseBoxShapeUtil {
         };
     }
 
+    canResize = () => false;
+
     onDoubleClick = (shape) => {
         const isNotebookOpen = !shape.props.isOpen;
         this.editor.updateShape({
