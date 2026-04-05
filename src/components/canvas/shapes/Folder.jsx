@@ -39,14 +39,4 @@ export class FolderUtil extends BaseBoxShapeUtil {
       </HTMLContainer >
     );
   }
-
-  indicator(shape) {
-    return (
-      <rect
-        width={shape.props.w}
-        height={shape.props.h}
-        rx={shape.props.isOpen ? 24 : 12}
-      />
-    );
-  }
 }

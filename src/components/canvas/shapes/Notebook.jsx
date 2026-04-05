@@ -1,5 +1,5 @@
 import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
-import { NotebookShape } from "../vectors/NotebookShape"
+import { NotebookShape } from "../vectors/NotebookShape";
 
 export class NotebookUtil extends BaseBoxShapeUtil {
     static type = "notebook";
@@ -58,16 +58,6 @@ export class NotebookUtil extends BaseBoxShapeUtil {
             <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
                 <NotebookShape isOpen={isOpen} title={title} />
             </HTMLContainer>
-        );
-    }
-
-    indicator(shape) {
-        return (
-            <rect
-                width={shape.props.w}
-                height={shape.props.h}
-                rx={shape.props.isOpen ? 24 : 12}
-            />
         );
     }
 }
