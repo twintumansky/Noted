@@ -60,4 +60,8 @@ export class NotebookUtil extends BaseBoxShapeUtil {
             </HTMLContainer>
         );
     }
+
+    indicator() {
+        return null;
+    }
 }

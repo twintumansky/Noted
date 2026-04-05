@@ -1,17 +1,17 @@
-import { BaseBoxShapeUtil, HTMLContainer } from 'tldraw';
-import { NoteShape } from '../vectors/NoteShape';
+import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
+import { NoteShape } from "../vectors/NoteShape";
 
 export class NoteUtil extends BaseBoxShapeUtil {
-  static type = 'note';
+  static type = "note";
 
   getDefaultProps() {
     return {
       w: 115,
       h: 185,
-      title: 'New Note',
+      title: "New Note",
       isOpen: false,
       childrenIds: [],
-    }
+    };
   }
 
   onDoubleClick = (shape) => {
@@ -32,15 +32,12 @@ export class NoteUtil extends BaseBoxShapeUtil {
     const { isOpen, title } = shape.props;
     return (
       <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
-        <NoteShape
-          title={title}
-          isOpen={isOpen}
-        />
+        <NoteShape title={title} isOpen={isOpen} />
       </HTMLContainer>
-    )
+    );
   }
 
-  indicator(shape) {
-    return <rect width={shape.props.w} height={shape.props.h} rx={12} />
+  indicator() {
+    return null;
   }
-};
+}

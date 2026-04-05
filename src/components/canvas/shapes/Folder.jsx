@@ -39,4 +39,8 @@ export class FolderUtil extends BaseBoxShapeUtil {
       </HTMLContainer >
     );
   }
+
+  indicator() {
+    return null;
+  }
 }
