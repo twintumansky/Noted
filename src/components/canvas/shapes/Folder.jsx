@@ -14,6 +14,19 @@ export class FolderUtil extends BaseBoxShapeUtil {
     };
   }
 
+  hideSelectionBoundsBg() {
+    return true;
+  }
+  hideSelectionBoundsFg() {
+    return true;
+  }
+  hideResizeHandles() {
+    return true;
+  }
+  hideRotateHandle() {
+    return true;
+  }
+
   onDoubleClick = (shape) => {
     const isFolderOpen = !shape.props.isOpen;
     this.editor.updateShape({
@@ -27,22 +40,18 @@ export class FolderUtil extends BaseBoxShapeUtil {
     });
   };
 
-  canResize = () => false;
-
   component(shape) {
     const { isOpen, title } = shape.props;
 
     return (
       <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
-        <FolderShape
-          title={title}
-          isOpen={isOpen}
-        />
-      </HTMLContainer >
+        <FolderShape title={title} isOpen={isOpen} />
+      </HTMLContainer>
     );
   }
 
-  indicator() {
+  // eslint-disable-next-line no-unused-vars
+  indicator(shape) {
     return null;
   }
 }

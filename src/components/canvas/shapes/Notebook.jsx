@@ -14,7 +14,18 @@ export class NotebookUtil extends BaseBoxShapeUtil {
         };
     }
 
-    canResize = () => false;
+    hideSelectionBoundsBg() {
+        return true;
+    }
+    hideSelectionBoundsFg() {
+        return true;
+    }
+    hideResizeHandles() {
+        return true;
+    }
+    hideRotateHandle() {
+        return true;
+    }
 
     onDoubleClick = (shape) => {
         const isNotebookOpen = !shape.props.isOpen;
@@ -63,7 +74,8 @@ export class NotebookUtil extends BaseBoxShapeUtil {
         );
     }
 
-    indicator() {
+    // eslint-disable-next-line no-unused-vars
+    indicator(shape) {
         return null;
     }
 }
