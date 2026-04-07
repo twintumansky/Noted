@@ -4,9 +4,10 @@ import { useCallback } from "react";
 import { FolderUtil } from "./shapes/Folder";
 import { NotebookUtil } from "./shapes/Notebook";
 import { NoteUtil } from "./shapes/Note";
+import { TodoUtil } from "./shapes/Todo";
 import "tldraw/tldraw.css";
 
-const customShapes = [FolderUtil, NotebookUtil, NoteUtil];
+const customShapes = [FolderUtil, NotebookUtil, NoteUtil, TodoUtil];
 
 export default function Board() {
   const { editor, setEditor } = useCanvas();
