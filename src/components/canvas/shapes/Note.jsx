@@ -4,6 +4,7 @@ import { NoteShape } from "../vectors/NoteShape";
 export class NoteUtil extends BaseBoxShapeUtil {
   static type = "note";
 
+
   getDefaultProps() {
     return {
       w: 115,
@@ -44,7 +45,7 @@ export class NoteUtil extends BaseBoxShapeUtil {
   component(shape) {
     const { isOpen, title } = shape.props;
     return (
-      <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
+      <HTMLContainer className="cursor-pointer pointer-events-auto select-none flex items-center justify-center">
         <NoteShape title={title} isOpen={isOpen} />
       </HTMLContainer>
     );

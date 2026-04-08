@@ -44,7 +44,7 @@ export class FolderUtil extends BaseBoxShapeUtil {
     const { isOpen, title } = shape.props;
 
     return (
-      <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
+      <HTMLContainer className="cursor-pointer pointer-events-auto select-none flex items-center justify-center">
         <FolderShape title={title} isOpen={isOpen} />
       </HTMLContainer>
     );

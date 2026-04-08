@@ -26,36 +26,33 @@ export default function Board() {
       setEditor(editor);
       const currentShapes = editor.getCurrentPageShapes();
       if (currentShapes == 0) {
-        //FOLDER SHAPE
+        //NOTEBOOK SHAPE
         editor.createShape({
-          type: "folder",
-          x: 200,
+          type: "notebook",
+          x: 500,
           y: 300,
         });
-
-        // NOTEBOOK SHAPE
-        // editor.createShape({
-        //   type: "notebook",
-        //   x: 500,
-        //   y: 300,
-        // });
-
-        //NOTE SHAPE
-        // editor.createShape({
-        //   type: 'note',
-        //   x: 100,
-        //   y: 100,
-        //   props: {
-        //     color: 'yellow',
-        //     labelColor: 'black',
-        //     richText: toRichText('Welcome to Noted...'),
-        //     size: 'm',
-        //     font: 'draw',
-        //     align: 'middle',
-        //     verticalAlign: 'middle',
-        //   },
-        // });
       }
+
+      editor.sideEffects.registerAfterChangeHandler(
+        "instance_page_state",
+        (prev, next) => {
+          if (prev.hoveredShapeId !== next.hoveredShapeId) {
+            if (next.hoveredShapeId) {
+              const shape = editor.getShape(next.hoveredShapeId);
+
+              if (
+                shape &&
+                ["notebook", "note", "folder"].includes(shape.type)
+              ) {
+                editor.setCursor({ type: "pointer", rotation: 0 });
+                return;
+              }
+            }
+            editor.setCursor({ type: "default", rotation: 0 });
+          }
+        },
+      );
     },
     [setEditor],
   );
