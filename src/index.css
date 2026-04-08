@@ -178,36 +178,14 @@
 
 .tl-container.tl-theme__light {
   --tl-color-background: #c5cbd0c2 !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1.5"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87c.45 0 .67-.54.35-.85L5.5 3.21z"/></svg>'), default !important;
 }
 
 .tl-watermark_SEE-LICENSE {
   display: none !important;
 }
 
-/* [data-shape-type="notebook"] .tl-selection-foreground,
-[data-shape-type="note"] .tl-selection-foreground,
-[data-shape-type="folder"] .tl-selection-foreground {
-  display: none !important;
-  pointer-events: none;
-} */
-
 /* 1. Force the default tldraw canvas cursor to be a White Arrow */
 .tl-container {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1.5"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87c.45 0 .67-.54.35-.85L5.5 3.21z"/></svg>'), default !important;
-}
-
-/* 2. When our API hook (above) sets the type to 'pointer', tldraw injects style="cursor: pointer". 
-    This forces that pointer to be a White Hand instead of the OS default. */
-.tl-container[style*="cursor: pointer"] {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1.5"><path d="M9 11.5V8a3 3 0 0 1 6 0v6.5"/><path d="M15 10.5V9a3 3 0 0 1 6 0v7.5a8 8 0 0 1-16 0v-5a3 3 0 0 1 6 0v3"/></svg>'), pointer !important;
-}
-
-/* 3. Force the grab/pan cursor to be a White Open Hand */
-.tl-container[style*="cursor: grab"] {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1.5"><path d="M8 9V6a3 3 0 0 1 6 0v3"/><path d="M14 8V5a3 3 0 0 1 6 0v6"/><path d="M20 11V9a3 3 0 0 1 6 0v7a8 8 0 0 1-16 0v-4a3 3 0 0 1 6 0v2"/></svg>'), grab !important;
-}
-
-/* 4. Force the active panning cursor to be a White Closed Hand */
-.tl-container[style*="cursor: grabbing"] {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="1.5"><path d="M8 9V6a3 3 0 0 1 6 0v3"/><path d="M14 8V5a3 3 0 0 1 6 0v6"/><path d="M20 11V9a3 3 0 0 1 6 0v7a8 8 0 0 1-16 0v-4a3 3 0 0 1 6 0v2"/></svg>'), grabbing !important;
 }
