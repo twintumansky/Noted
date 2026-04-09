@@ -13,7 +13,7 @@ export const NotebookShape = ({ isOpen, title }) => {
             </div>
         </div>
     ) : (
-        <div className="group relative flex flex-col items-center gap-1 animate-in zoom-in-90 duration-300">
+        <div className="group relative flex flex-col items-center gap-1 animate-in zoom-in-90 duration-300 hover:-translate-y-1 hover:drop-shadow-xl">
             <svg
                 width="115"
                 height="156"
