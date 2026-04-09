@@ -33,26 +33,6 @@ export default function Board() {
           y: 300,
         });
       }
-
-      editor.sideEffects.registerAfterChangeHandler(
-        "instance_page_state",
-        (prev, next) => {
-          if (prev.hoveredShapeId !== next.hoveredShapeId) {
-            if (next.hoveredShapeId) {
-              const shape = editor.getShape(next.hoveredShapeId);
-
-              if (
-                shape &&
-                ["notebook", "note", "folder"].includes(shape.type)
-              ) {
-                editor.setCursor({ type: "pointer", rotation: 0 });
-                return;
-              }
-            }
-            editor.setCursor({ type: "default", rotation: 0 });
-          }
-        },
-      );
     },
     [setEditor],
   );
