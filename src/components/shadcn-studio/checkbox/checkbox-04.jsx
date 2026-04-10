@@ -6,7 +6,7 @@ export const CheckboxTodoList = () => {
   const id = useId()
 
   return (
-    <div className='flex items-center gap-2'>
+    <div className='bg-[#ffd494] w-[150] h-[150] flex items-center p-3 gap-2'>
       <Checkbox id={id} defaultChecked />
       <Label htmlFor={id} className='peer-data-[state=checked]:line-through'>
         Add item

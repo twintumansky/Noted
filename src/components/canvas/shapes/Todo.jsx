@@ -29,7 +29,7 @@ export class TodoUtil extends BaseBoxShapeUtil {
 
     component(shape) {
         return (
-            <HTMLContainer className="bg-[#ffd494] cursor-pointer pointer-events-auto p-3 h-full w-full rounded-xl overflow-hidden animate-in zoom-in-90 duration-300">
+            <HTMLContainer className="pointer-events-auto h-full w-full rounded-xl overflow-hidden animate-in zoom-in-90 duration-300">
                 <ShapeInteractiveState shapeId={shape.id}>
                     <CheckboxTodoList />
                 </ShapeInteractiveState>
