@@ -1,4 +1,5 @@
 import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
+import { ShapeInteractiveState } from "../utils/ShapeInteractiveState";
 import { FolderShape } from "../vectors/FolderShape";
 
 export class FolderUtil extends BaseBoxShapeUtil {
@@ -45,7 +46,9 @@ export class FolderUtil extends BaseBoxShapeUtil {
 
     return (
       <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
-        <FolderShape title={title} isOpen={isOpen} />
+        <ShapeInteractiveState shapeId={shape.id}>
+          <FolderShape isOpen={isOpen} titile={title} />
+        </ShapeInteractiveState>
       </HTMLContainer>
     );
   }

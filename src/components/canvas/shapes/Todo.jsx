@@ -1,4 +1,5 @@
 import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
+import { ShapeInteractiveState } from "../utils/ShapeInteractiveState";
 import { CheckboxTodoList } from "@/components/shadcn-studio/checkbox/checkbox-04";
 
 export class TodoUtil extends BaseBoxShapeUtil {
@@ -26,10 +27,12 @@ export class TodoUtil extends BaseBoxShapeUtil {
         return true;
     }
 
-    component() {
+    component(shape) {
         return (
             <HTMLContainer className="bg-[#ffd494] cursor-pointer pointer-events-auto p-3 h-full w-full rounded-xl overflow-hidden animate-in zoom-in-90 duration-300">
-                <CheckboxTodoList />
+                <ShapeInteractiveState shapeId={shape.id}>
+                    <CheckboxTodoList />
+                </ShapeInteractiveState>
             </HTMLContainer>
         );
     }

@@ -1,9 +1,9 @@
 import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
+import { ShapeInteractiveState } from "../utils/ShapeInteractiveState";
 import { NoteShape } from "../vectors/NoteShape";
 
 export class NoteUtil extends BaseBoxShapeUtil {
   static type = "note";
-
 
   getDefaultProps() {
     return {
@@ -46,7 +46,9 @@ export class NoteUtil extends BaseBoxShapeUtil {
     const { isOpen, title } = shape.props;
     return (
       <HTMLContainer className="cursor-pointer pointer-events-auto select-none flex items-center justify-center">
-        <NoteShape title={title} isOpen={isOpen} />
+        <ShapeInteractiveState shapeId={shape.id}>
+          <NoteShape isOpen={isOpen} titile={title} />
+        </ShapeInteractiveState>
       </HTMLContainer>
     );
   }
