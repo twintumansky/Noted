@@ -1,27 +1,6 @@
-import { BaseBoxShapeUtil, HTMLContainer, useEditor, useValue } from "tldraw";
+import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
+import { ShapeInteractiveState } from "../utils/ShapeInteractiveState";
 import { NotebookShape } from "../vectors/NotebookShape";
-
-const NotebookInteractiveState = ({ shape }) => {
-    const editor = useEditor();
-    const isSelected = useValue(
-        'is-selected',
-        () => editor.getSelectedShapeIds().includes(shape.id),
-        [editor, shape.id]
-    );
-    const { isOpen, title } = shape.props;
-
-    return (
-        <div
-            className={`
-                w-full h-full transition-all duration-300 ease-out
-                hover:-translate-y-1 hover:drop-shadow-xl
-                ${isSelected ? 'drop-shadow-2xl scale-[1.02]' : ''}
-            `}
-        >
-            <NotebookShape isOpen={isOpen} title={title} />
-        </div>
-    );
-}
 
 export class NotebookUtil extends BaseBoxShapeUtil {
     static type = "notebook";
@@ -63,6 +42,7 @@ export class NotebookUtil extends BaseBoxShapeUtil {
     };
 
     component(shape) {
+        const { isOpen, title } = shape.props;
 
         return (
             // <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
@@ -89,8 +69,10 @@ export class NotebookUtil extends BaseBoxShapeUtil {
             //     )}
             // </HTMLContainer>
 
-            <HTMLContainer className="cursor-pointer pointer-events-auto select-none flex items-center justify-center">
-                <NotebookInteractiveState shape={shape} />
+            <HTMLContainer className="pointer-events-auto select-none flex items-center justify-center">
+                <ShapeInteractiveState shapeId={shape.id}>
+                    <NotebookShape isOpen={isOpen} titile={title} />
+                </ShapeInteractiveState>
             </HTMLContainer>
         );
     }
@@ -100,5 +82,3 @@ export class NotebookUtil extends BaseBoxShapeUtil {
         return null;
     }
 }
-
-
