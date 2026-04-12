@@ -1,9 +1,7 @@
-import { useId } from "react";
 import { useEditor } from "tldraw";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export const CheckboxTodoList = ({ shape }) => {
-  const id = useId();
   const editor = useEditor();
   const { checked, text } = shape.props;
 
@@ -23,14 +21,13 @@ export const CheckboxTodoList = ({ shape }) => {
     });
   };
 
+  const stopPropagation = (e) => e.stopPropagation();
+
   return (
     <div className="w-full h-full flex items-center p-3 gap-2">
-      <Checkbox
-        id={id}
-        checked={checked}
-        onCheckedChange={handleCheckedChange}
-        className={`flex-1 bg-transparent border-none outline-none text-sm text-slate-800 placeholder:text-slate-600/70 ${checked ? "line-through opacity-50" : ""}`}
-      />
+      <div onPointerDown={stopPropagation} onClick={stopPropagation}>
+        <Checkbox checked={checked} onCheckedChange={handleCheckedChange} />
+      </div>
       <input
         type="text"
         value={text}
@@ -38,12 +35,12 @@ export const CheckboxTodoList = ({ shape }) => {
         placeholder="Add item..."
         className={`
             flex-1 bg-transparent border-none outline-none text-sm text-slate-800 placeholder:text-slate-600/70
-            /* Apply strikethrough and fade out text when checked */
+            select-text
             ${checked ? "line-through opacity-50" : ""}
           `}
-        onKeyDown={(e) => e.stopPropagation()}
-        onKeyUp={(e) => e.stopPropagation()}
-        onPointerDown={(e) => e.stopPropagation()}
+        onKeyDown={stopPropagation}
+        onKeyUp={stopPropagation}
+        onPointerDown={stopPropagation}
       />
     </div>
   );
