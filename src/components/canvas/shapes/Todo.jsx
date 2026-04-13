@@ -14,6 +14,10 @@ export class TodoUtil extends BaseBoxShapeUtil {
         };
     }
 
+    canEdit() {
+        return true;
+    }
+
     hideSelectionBoundsBg() {
         return true;
     }
@@ -29,7 +33,7 @@ export class TodoUtil extends BaseBoxShapeUtil {
 
     component(shape) {
         return (
-            <HTMLContainer className="pointer-events-auto select-none">
+            <HTMLContainer>
                 <ShapeInteractiveState shapeId={shape.id}>
                     <div className="w-full h-full bg-[#ffd494] rounded-xl overflow-hidden animate-in zoom-in-90 duration-300">
                         <CheckboxTodoList shape={shape} />
