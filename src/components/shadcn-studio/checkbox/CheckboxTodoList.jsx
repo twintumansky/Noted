@@ -1,9 +1,22 @@
-import { useEditor } from "tldraw";
+import { useEffect, useRef } from "react";
+import { useEditor, useIsEditing } from "tldraw";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export const CheckboxTodoList = ({ shape }) => {
+  const inputRef = useRef(null);
   const editor = useEditor();
+
   const { checked, text } = shape.props;
+  const isEditing = useIsEditing(shape.id);
+
+  useEffect(() => {
+    if (isEditing) {
+      // this ensures tldraw has finished its own state transition before attempting to focus, avoiding a race condition.
+      requestAnimationFrame(() => {
+        inputRef.current?.focus();
+      });
+    }
+  }, [isEditing]);
 
   const handleCheckedChange = (newChecked) => {
     editor.updateShape({
