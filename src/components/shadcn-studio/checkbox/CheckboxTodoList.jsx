@@ -34,11 +34,11 @@ export const CheckboxTodoList = ({ shape }) => {
     });
   };
 
-  const stopPropagation = (e) => e.stopPropagation();
+  const stopEventPropagation = (e) => e.stopPropagation();
 
   return (
     <div className="w-full h-full flex items-center p-3 gap-2">
-      <div onPointerDown={stopPropagation} onClick={stopPropagation}>
+      <div onPointerDown={stopEventPropagation} onClick={stopEventPropagation}>
         <Checkbox checked={checked} onCheckedChange={handleCheckedChange} />
       </div>
       <input
@@ -51,9 +51,9 @@ export const CheckboxTodoList = ({ shape }) => {
             select-text
             ${checked ? "line-through opacity-50" : ""}
           `}
-        onKeyDown={stopPropagation}
-        onKeyUp={stopPropagation}
-        onPointerDown={stopPropagation}
+        onKeyDown={stopEventPropagation}
+        onKeyUp={stopEventPropagation}
+        onPointerDown={stopEventPropagation}
       />
     </div>
   );
