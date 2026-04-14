@@ -1,11 +1,22 @@
+import { useId } from "react";
 import { BaseBoxShapeUtil, HTMLContainer } from "tldraw";
 import { ShapeInteractiveState } from "../utils/ShapeInteractiveState";
 import { CheckboxTodoList } from "@/components/shadcn-studio/checkbox/CheckboxTodoList";
 
+export const ITEM_H = 40;
+export const HEADER_H = 48;
+export const ADD_BTN_H = 36;
+
+export function computeHeight(itemCount) {
+    return HEADER_H + itemCount * ITEM_H + ADD_BTN_H;
+}
+
 export class TodoUtil extends BaseBoxShapeUtil {
     static type = "todo";
+    static id = useId();
 
     getDefaultProps() {
+        const itemId = id;
         return {
             w: 150,
             h: 150,
