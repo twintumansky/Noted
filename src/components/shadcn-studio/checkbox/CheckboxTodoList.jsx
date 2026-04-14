@@ -38,14 +38,16 @@ export const CheckboxTodoList = ({ shape }) => {
 
   return (
     <div className="w-full h-full flex items-center p-3 gap-2">
-      <div onPointerDown={stopEventPropagation} onClick={stopEventPropagation}>
+      <div className="pointer-events-all" onPointerDown={stopEventPropagation} onClick={stopEventPropagation}>
         <Checkbox checked={checked} onCheckedChange={handleCheckedChange} />
       </div>
       <input
+        ref={inputRef}
         type="text"
         value={text}
         onChange={handleTextChange}
         placeholder="Add item..."
+        style={{ pointerEvents: isEditing ? "all" : "none" }}
         className={`
             flex-1 bg-transparent border-none outline-none text-sm text-slate-800 placeholder:text-slate-600/70
             select-text
