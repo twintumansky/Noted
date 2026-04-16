@@ -28,7 +28,7 @@ export default function Board() {
       if (currentShapes == 0) {
         //NOTEBOOK SHAPE
         editor.createShape({
-          type: "notebook",
+          type: "todo",
           x: 500,
           y: 300,
         });

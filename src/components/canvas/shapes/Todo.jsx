@@ -43,9 +43,12 @@ export class TodoUtil extends BaseBoxShapeUtil {
         return (
             <HTMLContainer>
                 <ShapeInteractiveState shapeId={shape.id}>
-                    <div className="w-full h-full bg-[#ffd494] rounded-xl animate-in zoom-in-90 duration-300 p-1">
-                        <div className="w-full h-full bg-[#ffffff] rounded-xl overflow-hidden">
+                    <div className="w-full h-full bg-[#c7c0b7] rounded-xl animate-in zoom-in-90 duration-300 p-1">
+                        <div className="flex flex-col items-center w-full h-full bg-white/40 rounded-xl overflow-hidden">
                             <CheckboxTodoList shape={shape} />
+                            <div>
+                                <button className="bg-[#4a4a4a] rounded-xl text-sm font-semibold text-[#f5f4f5] px-3 py-1">Add item</button>
+                            </div>
                         </div>
                     </div>
                 </ShapeInteractiveState>
